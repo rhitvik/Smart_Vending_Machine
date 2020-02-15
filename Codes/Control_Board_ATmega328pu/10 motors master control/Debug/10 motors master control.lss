@@ -1,0 +1,3647 @@
+
+10 motors master control.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  000013a4  00001438  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000013a4  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000017  00800102  00800102  0000143a  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  0000143c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00001b08  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000080  00000000  00000000  00001b90  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001e2f  00000000  00000000  00001c10  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000229  00000000  00000000  00003a3f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b3c  00000000  00000000  00003c68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001d0  00000000  00000000  000047a4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000555  00000000  00000000  00004974  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000164f  00000000  00000000  00004ec9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+       4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+       8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+       c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      40:	0c 94 ea 05 	jmp	0xbd4	; 0xbd4 <__vector_16>
+      44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf ef       	ldi	r28, 0xFF	; 255
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+      74:	11 e0       	ldi	r17, 0x01	; 1
+      76:	a0 e0       	ldi	r26, 0x00	; 0
+      78:	b1 e0       	ldi	r27, 0x01	; 1
+      7a:	e4 ea       	ldi	r30, 0xA4	; 164
+      7c:	f3 e1       	ldi	r31, 0x13	; 19
+      7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+      80:	05 90       	lpm	r0, Z+
+      82:	0d 92       	st	X+, r0
+      84:	a2 30       	cpi	r26, 0x02	; 2
+      86:	b1 07       	cpc	r27, r17
+      88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+      8a:	11 e0       	ldi	r17, 0x01	; 1
+      8c:	a2 e0       	ldi	r26, 0x02	; 2
+      8e:	b1 e0       	ldi	r27, 0x01	; 1
+      90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+      92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+      94:	a9 31       	cpi	r26, 0x19	; 25
+      96:	b1 07       	cpc	r27, r17
+      98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+      9a:	0e 94 39 08 	call	0x1072	; 0x1072 <main>
+      9e:	0c 94 d0 09 	jmp	0x13a0	; 0x13a0 <_exit>
+
+000000a2 <__bad_interrupt>:
+      a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <_Z16reset_Everythingv>:
+	}
+}	
+// reset function
+void reset_Everything(void)
+{
+	b = false;
+      a6:	10 92 18 01 	sts	0x0118, r1
+	talkFunc_exitParameter = false;
+      aa:	10 92 17 01 	sts	0x0117, r1
+
+	count = 0;
+      ae:	10 92 16 01 	sts	0x0116, r1
+      b2:	10 92 15 01 	sts	0x0115, r1
+	count1 = 0;
+      b6:	10 92 14 01 	sts	0x0114, r1
+      ba:	10 92 13 01 	sts	0x0113, r1
+	count2 = 0;
+      be:	10 92 12 01 	sts	0x0112, r1
+      c2:	10 92 11 01 	sts	0x0111, r1
+	clock_init_patameter = false;
+      c6:	10 92 10 01 	sts	0x0110, r1
+	loadValue = true;
+      ca:	81 e0       	ldi	r24, 0x01	; 1
+      cc:	80 93 01 01 	sts	0x0101, r24
+	readValue = false;
+      d0:	10 92 0f 01 	sts	0x010F, r1
+
+	otp_number = 0;
+      d4:	10 92 0e 01 	sts	0x010E, r1
+      d8:	10 92 0d 01 	sts	0x010D, r1
+
+	ARD_BUS_val = 0;
+      dc:	10 92 0c 01 	sts	0x010C, r1
+
+	masterDATA = 'q';
+      e0:	91 e7       	ldi	r25, 0x71	; 113
+      e2:	90 93 0b 01 	sts	0x010B, r25
+	data = 0; 
+      e6:	10 92 0a 01 	sts	0x010A, r1
+	retrieving_parameter = true;
+      ea:	80 93 00 01 	sts	0x0100, r24
+	a = 0;
+      ee:	10 92 09 01 	sts	0x0109, r1
+
+	IO_receivedDATA = 0;
+      f2:	10 92 08 01 	sts	0x0108, r1
+	ACTUATOR_control_DATA = 0;
+      f6:	10 92 07 01 	sts	0x0107, r1
+
+	OTP[0]=0;
+      fa:	10 92 02 01 	sts	0x0102, r1
+	OTP[1]=0;
+      fe:	10 92 03 01 	sts	0x0103, r1
+	OTP[2]=0;
+     102:	10 92 04 01 	sts	0x0104, r1
+	OTP[3]=0;
+     106:	10 92 05 01 	sts	0x0105, r1
+	OTP[4]=0;
+     10a:	10 92 06 01 	sts	0x0106, r1
+	
+	PORTD |= (1<<PIND6);	//pull up D6
+     10e:	5e 9a       	sbi	0x0b, 6	; 11
+	
+	PORTB &=~ (1<<PINB0);
+     110:	28 98       	cbi	0x05, 0	; 5
+	PORTB &=~ (1<<PINB1);
+     112:	29 98       	cbi	0x05, 1	; 5
+	PORTC &=~ (1<<PINC2);
+     114:	42 98       	cbi	0x08, 2	; 8
+	PORTC &=~ (1<<PINC5);
+     116:	45 98       	cbi	0x08, 5	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     118:	8f e3       	ldi	r24, 0x3F	; 63
+     11a:	9c e9       	ldi	r25, 0x9C	; 156
+     11c:	01 97       	sbiw	r24, 0x01	; 1
+     11e:	f1 f7       	brne	.-4      	; 0x11c <_Z16reset_Everythingv+0x76>
+     120:	00 c0       	rjmp	.+0      	; 0x122 <_Z16reset_Everythingv+0x7c>
+     122:	00 00       	nop
+	
+	_delay_ms(10);
+}
+     124:	08 95       	ret
+
+00000126 <_Z25spi_init_master_INTERRUPTv>:
+// Initialize SPI Master Device (with SPI interrupt)
+void spi_init_master_INTERRUPT (void)
+{
+	// Set MOSI, SCK as Output
+	
+	DDRB |= (1<<PINB3)|(1<<PINB5);
+     126:	84 b1       	in	r24, 0x04	; 4
+     128:	88 62       	ori	r24, 0x28	; 40
+     12a:	84 b9       	out	0x04, r24	; 4
+	
+	DDRB &=~ (1<<PINB4);
+     12c:	24 98       	cbi	0x04, 4	; 4
+	PORTB |= (1<<PINB4);
+     12e:	2c 9a       	sbi	0x05, 4	; 5
+	
+	DDRB &=~ (1<<PINB2);	//SS as input
+     130:	22 98       	cbi	0x04, 2	; 4
+	PORTB |= (1<<PINB2);
+     132:	2a 9a       	sbi	0x05, 2	; 5
+	
+	// Enable SPI, Set as Master
+	// Prescaler: Fosc/16, Enable Interrupts
+	//The MOSI, SCK pins are as per ATMega8
+	SPCR |= (1<<SPE)|(1<<MSTR)|(1<<SPR0)|(1<<SPIE);
+     134:	8c b5       	in	r24, 0x2c	; 44
+     136:	81 6d       	ori	r24, 0xD1	; 209
+     138:	8c bd       	out	0x2c, r24	; 44
+	
+	// Enable Global Interrupts
+	//sei();
+}
+     13a:	08 95       	ret
+
+0000013c <_Z15spi_init_masterv>:
+// Initialize SPI Master Device (without interrupt)
+void spi_init_master (void)
+{
+	// Set MOSI, SCK as Output
+	DDRB |= (1<<PINB3)|(1<<PINB5);
+     13c:	84 b1       	in	r24, 0x04	; 4
+     13e:	88 62       	ori	r24, 0x28	; 40
+     140:	84 b9       	out	0x04, r24	; 4
+	PORTB |= (1<<PINB3)|(1<<PINB5);	
+     142:	85 b1       	in	r24, 0x05	; 5
+     144:	88 62       	ori	r24, 0x28	; 40
+     146:	85 b9       	out	0x05, r24	; 5
+		
+	DDRB &=~ (1<<PINB4);	//MISO as input
+     148:	24 98       	cbi	0x04, 4	; 4
+	PORTB |= (1<<PINB4);
+     14a:	2c 9a       	sbi	0x05, 4	; 5
+	
+	DDRB &=~ (1<<PINB2);	//SS as input
+     14c:	22 98       	cbi	0x04, 2	; 4
+	PORTB |= (1<<PINB2);
+     14e:	2a 9a       	sbi	0x05, 2	; 5
+	
+	// Enable SPI, Set as Master
+	//Prescaler: Fosc/16, Enable Interrupts
+	SPCR |= (1<<SPE)|(1<<MSTR)|(1<<SPR0)|(1<<SPR1);//
+     150:	8c b5       	in	r24, 0x2c	; 44
+     152:	83 65       	ori	r24, 0x53	; 83
+     154:	8c bd       	out	0x2c, r24	; 44
+}
+     156:	08 95       	ret
+
+00000158 <_Z14spi_init_slavev>:
+// Initialize SPI Slave Device
+void spi_init_slave (void)
+{
+	DDRB |= (1<<PINB4);     //MISO as OUTPUT
+     158:	24 9a       	sbi	0x04, 4	; 4
+	PORTB &=~ (1<<PINB4);
+     15a:	2c 98       	cbi	0x05, 4	; 5
+	
+	DDRB &=~ (1<<PINB5);	//SCK as input
+     15c:	25 98       	cbi	0x04, 5	; 4
+	PORTB |= (1<<PINB5);
+     15e:	2d 9a       	sbi	0x05, 5	; 5
+	
+	DDRB &=~ (1<<PINB3);	//MOSI as input
+     160:	23 98       	cbi	0x04, 3	; 4
+	PORTB |= (1<<PINB3);
+     162:	2b 9a       	sbi	0x05, 3	; 5
+	
+	DDRB &=~ (1<<PINB2);	//SS as input
+     164:	22 98       	cbi	0x04, 2	; 4
+	PORTB |= (1<<PINB2);
+     166:	2a 9a       	sbi	0x05, 2	; 5
+	
+	SPCR |= (1<<SPE);		//Enable SPI
+     168:	8c b5       	in	r24, 0x2c	; 44
+     16a:	80 64       	ori	r24, 0x40	; 64
+     16c:	8c bd       	out	0x2c, r24	; 44
+	SPCR &=~ (1<<MSTR);		//disable master mode
+     16e:	8c b5       	in	r24, 0x2c	; 44
+     170:	8f 7e       	andi	r24, 0xEF	; 239
+     172:	8c bd       	out	0x2c, r24	; 44
+}
+     174:	08 95       	ret
+
+00000176 <_Z14spi_tranceiverjh>:
+//Function to send and receive data for both master and slave
+char spi_tranceiver (unsigned int chip_select,unsigned char data)
+{
+	if (chip_select == actuator_control)
+     176:	81 30       	cpi	r24, 0x01	; 1
+     178:	91 05       	cpc	r25, r1
+     17a:	39 f4       	brne	.+14     	; 0x18a <_Z14spi_tranceiverjh+0x14>
+	{
+		PORTC &=~ (1<<PINC3);
+     17c:	43 98       	cbi	0x08, 3	; 8
+		
+		SPDR = data;// Load data into the buffer
+     17e:	6e bd       	out	0x2e, r22	; 46
+		while(!(SPSR & (1<<SPIF) ));//Wait until transmission complete
+     180:	0d b4       	in	r0, 0x2d	; 45
+     182:	07 fe       	sbrs	r0, 7
+     184:	fd cf       	rjmp	.-6      	; 0x180 <_Z14spi_tranceiverjh+0xa>
+		return SPDR;// Return received data
+     186:	8e b5       	in	r24, 0x2e	; 46
+     188:	08 95       	ret
+				
+		PORTC |= (1<<PINC3);
+	}
+	
+	if (chip_select == IO_control)
+     18a:	83 30       	cpi	r24, 0x03	; 3
+     18c:	91 05       	cpc	r25, r1
+     18e:	39 f4       	brne	.+14     	; 0x19e <_Z14spi_tranceiverjh+0x28>
+	{
+		PORTC &=~ (1<<PINC4);
+     190:	44 98       	cbi	0x08, 4	; 8
+		
+		SPDR = data;// Load data into the buffer
+     192:	6e bd       	out	0x2e, r22	; 46
+		while(!(SPSR & (1<<SPIF) ));//Wait until transmission complete
+     194:	0d b4       	in	r0, 0x2d	; 45
+     196:	07 fe       	sbrs	r0, 7
+     198:	fd cf       	rjmp	.-6      	; 0x194 <_Z14spi_tranceiverjh+0x1e>
+		return SPDR;// Return received data
+     19a:	8e b5       	in	r24, 0x2e	; 46
+     19c:	08 95       	ret
+			
+		PORTC |= (1<<PINC4);
+	}
+}
+     19e:	08 95       	ret
+
+000001a0 <_Z15spi_kill_masterv>:
+{
+	// Set MOSI, SCK as Output
+	
+	// Enable SPI, Set as Master
+	//Prescaler: Fosc/16, Enable Interrupts
+	SPCR &=~ (1<<SPE);
+     1a0:	8c b5       	in	r24, 0x2c	; 44
+     1a2:	8f 7b       	andi	r24, 0xBF	; 191
+     1a4:	8c bd       	out	0x2c, r24	; 44
+	SPCR &=~ (1<<MSTR);
+     1a6:	8c b5       	in	r24, 0x2c	; 44
+     1a8:	8f 7e       	andi	r24, 0xEF	; 239
+     1aa:	8c bd       	out	0x2c, r24	; 44
+	SPCR &=~ (1<<SPR0);
+     1ac:	8c b5       	in	r24, 0x2c	; 44
+     1ae:	8e 7f       	andi	r24, 0xFE	; 254
+     1b0:	8c bd       	out	0x2c, r24	; 44
+}
+     1b2:	08 95       	ret
+
+000001b4 <_Z14spi_kill_slavev>:
+void spi_kill_slave(void)
+{
+	SPCR &=~ (1<<SPE);   //disable SPI
+     1b4:	8c b5       	in	r24, 0x2c	; 44
+     1b6:	8f 7b       	andi	r24, 0xBF	; 191
+     1b8:	8c bd       	out	0x2c, r24	; 44
+	SPCR &=~ (1<<MSTR);
+     1ba:	8c b5       	in	r24, 0x2c	; 44
+     1bc:	8f 7e       	andi	r24, 0xEF	; 239
+     1be:	8c bd       	out	0x2c, r24	; 44
+}
+     1c0:	08 95       	ret
+
+000001c2 <_Z9vend_somebh>:
+
+void vend_some(bool state, unsigned char product)
+{
+     1c2:	cf 93       	push	r28
+     1c4:	df 93       	push	r29
+     1c6:	d8 2f       	mov	r29, r24
+     1c8:	c6 2f       	mov	r28, r22
+	spi_tranceiver(actuator_control, 255);_delay_ms(1);
+     1ca:	81 e0       	ldi	r24, 0x01	; 1
+     1cc:	90 e0       	ldi	r25, 0x00	; 0
+     1ce:	6f ef       	ldi	r22, 0xFF	; 255
+     1d0:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     1d4:	8f e9       	ldi	r24, 0x9F	; 159
+     1d6:	9f e0       	ldi	r25, 0x0F	; 15
+     1d8:	01 97       	sbiw	r24, 0x01	; 1
+     1da:	f1 f7       	brne	.-4      	; 0x1d8 <_Z9vend_somebh+0x16>
+     1dc:	00 c0       	rjmp	.+0      	; 0x1de <_Z9vend_somebh+0x1c>
+     1de:	00 00       	nop
+	spi_tranceiver(actuator_control, 255);_delay_ms(1);
+     1e0:	81 e0       	ldi	r24, 0x01	; 1
+     1e2:	90 e0       	ldi	r25, 0x00	; 0
+     1e4:	6f ef       	ldi	r22, 0xFF	; 255
+     1e6:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     1ea:	8f e9       	ldi	r24, 0x9F	; 159
+     1ec:	9f e0       	ldi	r25, 0x0F	; 15
+     1ee:	01 97       	sbiw	r24, 0x01	; 1
+     1f0:	f1 f7       	brne	.-4      	; 0x1ee <_Z9vend_somebh+0x2c>
+     1f2:	00 c0       	rjmp	.+0      	; 0x1f4 <_Z9vend_somebh+0x32>
+     1f4:	00 00       	nop
+	spi_tranceiver(actuator_control, 255);_delay_ms(1);
+     1f6:	81 e0       	ldi	r24, 0x01	; 1
+     1f8:	90 e0       	ldi	r25, 0x00	; 0
+     1fa:	6f ef       	ldi	r22, 0xFF	; 255
+     1fc:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     200:	8f e9       	ldi	r24, 0x9F	; 159
+     202:	9f e0       	ldi	r25, 0x0F	; 15
+     204:	01 97       	sbiw	r24, 0x01	; 1
+     206:	f1 f7       	brne	.-4      	; 0x204 <_Z9vend_somebh+0x42>
+     208:	00 c0       	rjmp	.+0      	; 0x20a <_Z9vend_somebh+0x48>
+     20a:	00 00       	nop
+	
+	if (state == ON)
+     20c:	dd 23       	and	r29, r29
+     20e:	09 f4       	brne	.+2      	; 0x212 <_Z9vend_somebh+0x50>
+     210:	7f c0       	rjmp	.+254    	; 0x310 <_Z9vend_somebh+0x14e>
+	{
+		switch (product)
+     212:	c5 30       	cpi	r28, 0x05	; 5
+     214:	09 f4       	brne	.+2      	; 0x218 <_Z9vend_somebh+0x56>
+     216:	46 c0       	rjmp	.+140    	; 0x2a4 <_Z9vend_somebh+0xe2>
+     218:	c6 30       	cpi	r28, 0x06	; 6
+     21a:	70 f4       	brcc	.+28     	; 0x238 <_Z9vend_somebh+0x76>
+     21c:	c2 30       	cpi	r28, 0x02	; 2
+     21e:	39 f1       	breq	.+78     	; 0x26e <_Z9vend_somebh+0xac>
+     220:	c3 30       	cpi	r28, 0x03	; 3
+     222:	20 f4       	brcc	.+8      	; 0x22c <_Z9vend_somebh+0x6a>
+     224:	c1 30       	cpi	r28, 0x01	; 1
+     226:	09 f0       	breq	.+2      	; 0x22a <_Z9vend_somebh+0x68>
+     228:	f1 c0       	rjmp	.+482    	; 0x40c <_Z9vend_somebh+0x24a>
+     22a:	18 c0       	rjmp	.+48     	; 0x25c <_Z9vend_somebh+0x9a>
+     22c:	c3 30       	cpi	r28, 0x03	; 3
+     22e:	41 f1       	breq	.+80     	; 0x280 <_Z9vend_somebh+0xbe>
+     230:	c4 30       	cpi	r28, 0x04	; 4
+     232:	09 f0       	breq	.+2      	; 0x236 <_Z9vend_somebh+0x74>
+     234:	eb c0       	rjmp	.+470    	; 0x40c <_Z9vend_somebh+0x24a>
+     236:	2d c0       	rjmp	.+90     	; 0x292 <_Z9vend_somebh+0xd0>
+     238:	c8 30       	cpi	r28, 0x08	; 8
+     23a:	09 f4       	brne	.+2      	; 0x23e <_Z9vend_somebh+0x7c>
+     23c:	4e c0       	rjmp	.+156    	; 0x2da <_Z9vend_somebh+0x118>
+     23e:	c9 30       	cpi	r28, 0x09	; 9
+     240:	30 f4       	brcc	.+12     	; 0x24e <_Z9vend_somebh+0x8c>
+     242:	c6 30       	cpi	r28, 0x06	; 6
+     244:	c1 f1       	breq	.+112    	; 0x2b6 <_Z9vend_somebh+0xf4>
+     246:	c7 30       	cpi	r28, 0x07	; 7
+     248:	09 f0       	breq	.+2      	; 0x24c <_Z9vend_somebh+0x8a>
+     24a:	e0 c0       	rjmp	.+448    	; 0x40c <_Z9vend_somebh+0x24a>
+     24c:	3d c0       	rjmp	.+122    	; 0x2c8 <_Z9vend_somebh+0x106>
+     24e:	c9 30       	cpi	r28, 0x09	; 9
+     250:	09 f4       	brne	.+2      	; 0x254 <_Z9vend_somebh+0x92>
+     252:	4c c0       	rjmp	.+152    	; 0x2ec <_Z9vend_somebh+0x12a>
+     254:	ca 30       	cpi	r28, 0x0A	; 10
+     256:	09 f0       	breq	.+2      	; 0x25a <_Z9vend_somebh+0x98>
+     258:	d9 c0       	rjmp	.+434    	; 0x40c <_Z9vend_somebh+0x24a>
+     25a:	51 c0       	rjmp	.+162    	; 0x2fe <_Z9vend_somebh+0x13c>
+		{
+			case 1:
+			
+			spi_tranceiver(actuator_control, 'A');
+     25c:	81 e0       	ldi	r24, 0x01	; 1
+     25e:	90 e0       	ldi	r25, 0x00	; 0
+     260:	61 e4       	ldi	r22, 0x41	; 65
+     262:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     266:	8e b5       	in	r24, 0x2e	; 46
+     268:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     26c:	cf c0       	rjmp	.+414    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 2:
+			
+			spi_tranceiver(actuator_control, 'B');
+     26e:	81 e0       	ldi	r24, 0x01	; 1
+     270:	90 e0       	ldi	r25, 0x00	; 0
+     272:	62 e4       	ldi	r22, 0x42	; 66
+     274:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     278:	8e b5       	in	r24, 0x2e	; 46
+     27a:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     27e:	c6 c0       	rjmp	.+396    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 3:
+			
+			spi_tranceiver(actuator_control, 'C');
+     280:	81 e0       	ldi	r24, 0x01	; 1
+     282:	90 e0       	ldi	r25, 0x00	; 0
+     284:	63 e4       	ldi	r22, 0x43	; 67
+     286:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     28a:	8e b5       	in	r24, 0x2e	; 46
+     28c:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     290:	bd c0       	rjmp	.+378    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 4:
+			
+			spi_tranceiver(actuator_control, 'D');
+     292:	81 e0       	ldi	r24, 0x01	; 1
+     294:	90 e0       	ldi	r25, 0x00	; 0
+     296:	64 e4       	ldi	r22, 0x44	; 68
+     298:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     29c:	8e b5       	in	r24, 0x2e	; 46
+     29e:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     2a2:	b4 c0       	rjmp	.+360    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 5:
+			
+			spi_tranceiver(actuator_control, 'E');
+     2a4:	81 e0       	ldi	r24, 0x01	; 1
+     2a6:	90 e0       	ldi	r25, 0x00	; 0
+     2a8:	65 e4       	ldi	r22, 0x45	; 69
+     2aa:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     2ae:	8e b5       	in	r24, 0x2e	; 46
+     2b0:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     2b4:	ab c0       	rjmp	.+342    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 6:
+			
+			spi_tranceiver(actuator_control, 'F');
+     2b6:	81 e0       	ldi	r24, 0x01	; 1
+     2b8:	90 e0       	ldi	r25, 0x00	; 0
+     2ba:	66 e4       	ldi	r22, 0x46	; 70
+     2bc:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     2c0:	8e b5       	in	r24, 0x2e	; 46
+     2c2:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     2c6:	a2 c0       	rjmp	.+324    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 7:
+			
+			spi_tranceiver(actuator_control, 'G');
+     2c8:	81 e0       	ldi	r24, 0x01	; 1
+     2ca:	90 e0       	ldi	r25, 0x00	; 0
+     2cc:	67 e4       	ldi	r22, 0x47	; 71
+     2ce:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     2d2:	8e b5       	in	r24, 0x2e	; 46
+     2d4:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     2d8:	99 c0       	rjmp	.+306    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 8:
+			
+			spi_tranceiver(actuator_control, 'H');
+     2da:	81 e0       	ldi	r24, 0x01	; 1
+     2dc:	90 e0       	ldi	r25, 0x00	; 0
+     2de:	68 e4       	ldi	r22, 0x48	; 72
+     2e0:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     2e4:	8e b5       	in	r24, 0x2e	; 46
+     2e6:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     2ea:	90 c0       	rjmp	.+288    	; 0x40c <_Z9vend_somebh+0x24a>
+						
+			case 9:
+			
+			spi_tranceiver(actuator_control, 'I');
+     2ec:	81 e0       	ldi	r24, 0x01	; 1
+     2ee:	90 e0       	ldi	r25, 0x00	; 0
+     2f0:	69 e4       	ldi	r22, 0x49	; 73
+     2f2:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     2f6:	8e b5       	in	r24, 0x2e	; 46
+     2f8:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     2fc:	87 c0       	rjmp	.+270    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 10:
+			
+			spi_tranceiver(actuator_control, 'J');
+     2fe:	81 e0       	ldi	r24, 0x01	; 1
+     300:	90 e0       	ldi	r25, 0x00	; 0
+     302:	6a e4       	ldi	r22, 0x4A	; 74
+     304:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     308:	8e b5       	in	r24, 0x2e	; 46
+     30a:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     30e:	7e c0       	rjmp	.+252    	; 0x40c <_Z9vend_somebh+0x24a>
+		}
+	}
+	else
+	if (state == OFF)
+	{
+		switch (product)
+     310:	c5 30       	cpi	r28, 0x05	; 5
+     312:	09 f4       	brne	.+2      	; 0x316 <_Z9vend_somebh+0x154>
+     314:	46 c0       	rjmp	.+140    	; 0x3a2 <_Z9vend_somebh+0x1e0>
+     316:	c6 30       	cpi	r28, 0x06	; 6
+     318:	70 f4       	brcc	.+28     	; 0x336 <_Z9vend_somebh+0x174>
+     31a:	c2 30       	cpi	r28, 0x02	; 2
+     31c:	39 f1       	breq	.+78     	; 0x36c <_Z9vend_somebh+0x1aa>
+     31e:	c3 30       	cpi	r28, 0x03	; 3
+     320:	20 f4       	brcc	.+8      	; 0x32a <_Z9vend_somebh+0x168>
+     322:	c1 30       	cpi	r28, 0x01	; 1
+     324:	09 f0       	breq	.+2      	; 0x328 <_Z9vend_somebh+0x166>
+     326:	72 c0       	rjmp	.+228    	; 0x40c <_Z9vend_somebh+0x24a>
+     328:	18 c0       	rjmp	.+48     	; 0x35a <_Z9vend_somebh+0x198>
+     32a:	c3 30       	cpi	r28, 0x03	; 3
+     32c:	41 f1       	breq	.+80     	; 0x37e <_Z9vend_somebh+0x1bc>
+     32e:	c4 30       	cpi	r28, 0x04	; 4
+     330:	09 f0       	breq	.+2      	; 0x334 <_Z9vend_somebh+0x172>
+     332:	6c c0       	rjmp	.+216    	; 0x40c <_Z9vend_somebh+0x24a>
+     334:	2d c0       	rjmp	.+90     	; 0x390 <_Z9vend_somebh+0x1ce>
+     336:	c8 30       	cpi	r28, 0x08	; 8
+     338:	09 f4       	brne	.+2      	; 0x33c <_Z9vend_somebh+0x17a>
+     33a:	4e c0       	rjmp	.+156    	; 0x3d8 <_Z9vend_somebh+0x216>
+     33c:	c9 30       	cpi	r28, 0x09	; 9
+     33e:	30 f4       	brcc	.+12     	; 0x34c <_Z9vend_somebh+0x18a>
+     340:	c6 30       	cpi	r28, 0x06	; 6
+     342:	c1 f1       	breq	.+112    	; 0x3b4 <_Z9vend_somebh+0x1f2>
+     344:	c7 30       	cpi	r28, 0x07	; 7
+     346:	09 f0       	breq	.+2      	; 0x34a <_Z9vend_somebh+0x188>
+     348:	61 c0       	rjmp	.+194    	; 0x40c <_Z9vend_somebh+0x24a>
+     34a:	3d c0       	rjmp	.+122    	; 0x3c6 <_Z9vend_somebh+0x204>
+     34c:	c9 30       	cpi	r28, 0x09	; 9
+     34e:	09 f4       	brne	.+2      	; 0x352 <_Z9vend_somebh+0x190>
+     350:	4c c0       	rjmp	.+152    	; 0x3ea <_Z9vend_somebh+0x228>
+     352:	ca 30       	cpi	r28, 0x0A	; 10
+     354:	09 f0       	breq	.+2      	; 0x358 <_Z9vend_somebh+0x196>
+     356:	5a c0       	rjmp	.+180    	; 0x40c <_Z9vend_somebh+0x24a>
+     358:	51 c0       	rjmp	.+162    	; 0x3fc <_Z9vend_somebh+0x23a>
+		{
+			case 1:
+			
+			spi_tranceiver(actuator_control, 'a');
+     35a:	81 e0       	ldi	r24, 0x01	; 1
+     35c:	90 e0       	ldi	r25, 0x00	; 0
+     35e:	61 e6       	ldi	r22, 0x61	; 97
+     360:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     364:	8e b5       	in	r24, 0x2e	; 46
+     366:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     36a:	50 c0       	rjmp	.+160    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 2:
+			
+			spi_tranceiver(actuator_control, 'b');
+     36c:	81 e0       	ldi	r24, 0x01	; 1
+     36e:	90 e0       	ldi	r25, 0x00	; 0
+     370:	62 e6       	ldi	r22, 0x62	; 98
+     372:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     376:	8e b5       	in	r24, 0x2e	; 46
+     378:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     37c:	47 c0       	rjmp	.+142    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 3:
+			
+			spi_tranceiver(actuator_control, 'c');
+     37e:	81 e0       	ldi	r24, 0x01	; 1
+     380:	90 e0       	ldi	r25, 0x00	; 0
+     382:	63 e6       	ldi	r22, 0x63	; 99
+     384:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     388:	8e b5       	in	r24, 0x2e	; 46
+     38a:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     38e:	3e c0       	rjmp	.+124    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 4:
+			
+			spi_tranceiver(actuator_control, 'd');
+     390:	81 e0       	ldi	r24, 0x01	; 1
+     392:	90 e0       	ldi	r25, 0x00	; 0
+     394:	64 e6       	ldi	r22, 0x64	; 100
+     396:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     39a:	8e b5       	in	r24, 0x2e	; 46
+     39c:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     3a0:	35 c0       	rjmp	.+106    	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 5:
+			
+			spi_tranceiver(actuator_control, 'e');
+     3a2:	81 e0       	ldi	r24, 0x01	; 1
+     3a4:	90 e0       	ldi	r25, 0x00	; 0
+     3a6:	65 e6       	ldi	r22, 0x65	; 101
+     3a8:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     3ac:	8e b5       	in	r24, 0x2e	; 46
+     3ae:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     3b2:	2c c0       	rjmp	.+88     	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 6:
+			
+			spi_tranceiver(actuator_control, 'f');
+     3b4:	81 e0       	ldi	r24, 0x01	; 1
+     3b6:	90 e0       	ldi	r25, 0x00	; 0
+     3b8:	66 e6       	ldi	r22, 0x66	; 102
+     3ba:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     3be:	8e b5       	in	r24, 0x2e	; 46
+     3c0:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     3c4:	23 c0       	rjmp	.+70     	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 7:
+			
+			spi_tranceiver(actuator_control, 'g');
+     3c6:	81 e0       	ldi	r24, 0x01	; 1
+     3c8:	90 e0       	ldi	r25, 0x00	; 0
+     3ca:	67 e6       	ldi	r22, 0x67	; 103
+     3cc:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     3d0:	8e b5       	in	r24, 0x2e	; 46
+     3d2:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     3d6:	1a c0       	rjmp	.+52     	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 8:
+			
+			spi_tranceiver(actuator_control, 'h');
+     3d8:	81 e0       	ldi	r24, 0x01	; 1
+     3da:	90 e0       	ldi	r25, 0x00	; 0
+     3dc:	68 e6       	ldi	r22, 0x68	; 104
+     3de:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     3e2:	8e b5       	in	r24, 0x2e	; 46
+     3e4:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     3e8:	11 c0       	rjmp	.+34     	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 9:
+			
+			spi_tranceiver(actuator_control, 'i');
+     3ea:	81 e0       	ldi	r24, 0x01	; 1
+     3ec:	90 e0       	ldi	r25, 0x00	; 0
+     3ee:	69 e6       	ldi	r22, 0x69	; 105
+     3f0:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     3f4:	8e b5       	in	r24, 0x2e	; 46
+     3f6:	80 93 0a 01 	sts	0x010A, r24
+			break;
+     3fa:	08 c0       	rjmp	.+16     	; 0x40c <_Z9vend_somebh+0x24a>
+			
+			case 10:
+			
+			spi_tranceiver(actuator_control, 'j');
+     3fc:	81 e0       	ldi	r24, 0x01	; 1
+     3fe:	90 e0       	ldi	r25, 0x00	; 0
+     400:	6a e6       	ldi	r22, 0x6A	; 106
+     402:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			data = SPDR;
+     406:	8e b5       	in	r24, 0x2e	; 46
+     408:	80 93 0a 01 	sts	0x010A, r24
+			break;
+		}
+	}
+}
+     40c:	df 91       	pop	r29
+     40e:	cf 91       	pop	r28
+     410:	08 95       	ret
+
+00000412 <_Z12retrieve_OTPv>:
+void retrieve_OTP (void)
+{
+     412:	cf 92       	push	r12
+     414:	df 92       	push	r13
+     416:	ef 92       	push	r14
+     418:	ff 92       	push	r15
+     41a:	0f 93       	push	r16
+     41c:	1f 93       	push	r17
+     41e:	cf 93       	push	r28
+     420:	df 93       	push	r29
+	if (retrieving_parameter==true)
+     422:	80 91 00 01 	lds	r24, 0x0100
+     426:	88 23       	and	r24, r24
+     428:	09 f4       	brne	.+2      	; 0x42c <_Z12retrieve_OTPv+0x1a>
+     42a:	89 c0       	rjmp	.+274    	; 0x53e <_Z12retrieve_OTPv+0x12c>
+			
+			if (IO_receivedDATA == 'x')
+			{
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+				OTP[4] = SPDR;
+     42c:	c6 e0       	ldi	r28, 0x06	; 6
+     42e:	d1 e0       	ldi	r29, 0x01	; 1
+				
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+				OTP[3] = SPDR;
+     430:	8e 01       	movw	r16, r28
+     432:	01 50       	subi	r16, 0x01	; 1
+     434:	10 40       	sbci	r17, 0x00	; 0
+				
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+				OTP[2] = SPDR;
+     436:	0f 2e       	mov	r0, r31
+     438:	fe ef       	ldi	r31, 0xFE	; 254
+     43a:	ef 2e       	mov	r14, r31
+     43c:	ff ef       	ldi	r31, 0xFF	; 255
+     43e:	ff 2e       	mov	r15, r31
+     440:	f0 2d       	mov	r31, r0
+     442:	ec 0e       	add	r14, r28
+     444:	fd 1e       	adc	r15, r29
+				
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+				OTP[1] = SPDR;
+     446:	0f 2e       	mov	r0, r31
+     448:	fd ef       	ldi	r31, 0xFD	; 253
+     44a:	cf 2e       	mov	r12, r31
+     44c:	ff ef       	ldi	r31, 0xFF	; 255
+     44e:	df 2e       	mov	r13, r31
+     450:	f0 2d       	mov	r31, r0
+     452:	cc 0e       	add	r12, r28
+     454:	dd 1e       	adc	r13, r29
+     456:	8f ef       	ldi	r24, 0xFF	; 255
+     458:	91 ee       	ldi	r25, 0xE1	; 225
+     45a:	a4 e0       	ldi	r26, 0x04	; 4
+     45c:	81 50       	subi	r24, 0x01	; 1
+     45e:	90 40       	sbci	r25, 0x00	; 0
+     460:	a0 40       	sbci	r26, 0x00	; 0
+     462:	e1 f7       	brne	.-8      	; 0x45c <_Z12retrieve_OTPv+0x4a>
+     464:	00 c0       	rjmp	.+0      	; 0x466 <_Z12retrieve_OTPv+0x54>
+     466:	00 00       	nop
+	{
+		while (8)///////run IO control service routine
+		{
+			_delay_ms(100);//have to be re-calibrated
+			
+			spi_tranceiver(IO_control, 'q');
+     468:	83 e0       	ldi	r24, 0x03	; 3
+     46a:	90 e0       	ldi	r25, 0x00	; 0
+     46c:	61 e7       	ldi	r22, 0x71	; 113
+     46e:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			IO_receivedDATA = SPDR;
+     472:	8e b5       	in	r24, 0x2e	; 46
+     474:	80 93 08 01 	sts	0x0108, r24
+			
+			if (IO_receivedDATA == 'x')
+     478:	88 37       	cpi	r24, 0x78	; 120
+     47a:	09 f0       	breq	.+2      	; 0x47e <_Z12retrieve_OTPv+0x6c>
+     47c:	41 c0       	rjmp	.+130    	; 0x500 <_Z12retrieve_OTPv+0xee>
+     47e:	af e3       	ldi	r26, 0x3F	; 63
+     480:	bc e9       	ldi	r27, 0x9C	; 156
+     482:	11 97       	sbiw	r26, 0x01	; 1
+     484:	f1 f7       	brne	.-4      	; 0x482 <_Z12retrieve_OTPv+0x70>
+     486:	00 c0       	rjmp	.+0      	; 0x488 <_Z12retrieve_OTPv+0x76>
+     488:	00 00       	nop
+			{
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+     48a:	83 e0       	ldi	r24, 0x03	; 3
+     48c:	90 e0       	ldi	r25, 0x00	; 0
+     48e:	60 e0       	ldi	r22, 0x00	; 0
+     490:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+				OTP[4] = SPDR;
+     494:	8e b5       	in	r24, 0x2e	; 46
+     496:	88 83       	st	Y, r24
+     498:	ef e3       	ldi	r30, 0x3F	; 63
+     49a:	fc e9       	ldi	r31, 0x9C	; 156
+     49c:	31 97       	sbiw	r30, 0x01	; 1
+     49e:	f1 f7       	brne	.-4      	; 0x49c <_Z12retrieve_OTPv+0x8a>
+     4a0:	00 c0       	rjmp	.+0      	; 0x4a2 <_Z12retrieve_OTPv+0x90>
+     4a2:	00 00       	nop
+				
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+     4a4:	83 e0       	ldi	r24, 0x03	; 3
+     4a6:	90 e0       	ldi	r25, 0x00	; 0
+     4a8:	60 e0       	ldi	r22, 0x00	; 0
+     4aa:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+				OTP[3] = SPDR;
+     4ae:	8e b5       	in	r24, 0x2e	; 46
+     4b0:	d8 01       	movw	r26, r16
+     4b2:	8c 93       	st	X, r24
+     4b4:	ef e3       	ldi	r30, 0x3F	; 63
+     4b6:	fc e9       	ldi	r31, 0x9C	; 156
+     4b8:	31 97       	sbiw	r30, 0x01	; 1
+     4ba:	f1 f7       	brne	.-4      	; 0x4b8 <_Z12retrieve_OTPv+0xa6>
+     4bc:	00 c0       	rjmp	.+0      	; 0x4be <_Z12retrieve_OTPv+0xac>
+     4be:	00 00       	nop
+				
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+     4c0:	83 e0       	ldi	r24, 0x03	; 3
+     4c2:	90 e0       	ldi	r25, 0x00	; 0
+     4c4:	60 e0       	ldi	r22, 0x00	; 0
+     4c6:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+				OTP[2] = SPDR;
+     4ca:	8e b5       	in	r24, 0x2e	; 46
+     4cc:	d7 01       	movw	r26, r14
+     4ce:	8c 93       	st	X, r24
+     4d0:	ef e3       	ldi	r30, 0x3F	; 63
+     4d2:	fc e9       	ldi	r31, 0x9C	; 156
+     4d4:	31 97       	sbiw	r30, 0x01	; 1
+     4d6:	f1 f7       	brne	.-4      	; 0x4d4 <_Z12retrieve_OTPv+0xc2>
+     4d8:	00 c0       	rjmp	.+0      	; 0x4da <_Z12retrieve_OTPv+0xc8>
+     4da:	00 00       	nop
+				
+				_delay_ms(10);//have to be re-calibrated
+				spi_tranceiver(IO_control, 0);
+     4dc:	83 e0       	ldi	r24, 0x03	; 3
+     4de:	90 e0       	ldi	r25, 0x00	; 0
+     4e0:	60 e0       	ldi	r22, 0x00	; 0
+     4e2:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+				OTP[1] = SPDR;
+     4e6:	8e b5       	in	r24, 0x2e	; 46
+     4e8:	d6 01       	movw	r26, r12
+     4ea:	8c 93       	st	X, r24
+				
+				PORTC |= (1<<PINC2) | (1<<PINC5);
+     4ec:	88 b1       	in	r24, 0x08	; 8
+     4ee:	84 62       	ori	r24, 0x24	; 36
+     4f0:	88 b9       	out	0x08, r24	; 8
+     4f2:	ef e3       	ldi	r30, 0x3F	; 63
+     4f4:	fc e9       	ldi	r31, 0x9C	; 156
+     4f6:	31 97       	sbiw	r30, 0x01	; 1
+     4f8:	f1 f7       	brne	.-4      	; 0x4f6 <_Z12retrieve_OTPv+0xe4>
+     4fa:	00 c0       	rjmp	.+0      	; 0x4fc <_Z12retrieve_OTPv+0xea>
+     4fc:	00 00       	nop
+     4fe:	ab cf       	rjmp	.-170    	; 0x456 <_Z12retrieve_OTPv+0x44>
+				_delay_ms(10);
+			}
+			
+			else
+			if (IO_receivedDATA == 'X')
+     500:	88 35       	cpi	r24, 0x58	; 88
+     502:	09 f0       	breq	.+2      	; 0x506 <_Z12retrieve_OTPv+0xf4>
+     504:	a8 cf       	rjmp	.-176    	; 0x456 <_Z12retrieve_OTPv+0x44>
+			{
+				PORTC |= (1<<PINC2) | (1<<PINC5);
+     506:	88 b1       	in	r24, 0x08	; 8
+     508:	84 62       	ori	r24, 0x24	; 36
+     50a:	88 b9       	out	0x08, r24	; 8
+				PORTB |= (1<<PINB0) | (1<<PINB1);
+     50c:	85 b1       	in	r24, 0x05	; 5
+     50e:	83 60       	ori	r24, 0x03	; 3
+     510:	85 b9       	out	0x05, r24	; 5
+     512:	8f ef       	ldi	r24, 0xFF	; 255
+     514:	92 e5       	ldi	r25, 0x52	; 82
+     516:	a7 e0       	ldi	r26, 0x07	; 7
+     518:	81 50       	subi	r24, 0x01	; 1
+     51a:	90 40       	sbci	r25, 0x00	; 0
+     51c:	a0 40       	sbci	r26, 0x00	; 0
+     51e:	e1 f7       	brne	.-8      	; 0x518 <_Z12retrieve_OTPv+0x106>
+     520:	00 c0       	rjmp	.+0      	; 0x522 <_Z12retrieve_OTPv+0x110>
+     522:	00 00       	nop
+
+				_delay_ms(150);
+
+				PORTC &=~ (1<<PINC2);
+     524:	42 98       	cbi	0x08, 2	; 8
+				PORTC &=~ (1<<PINC5);
+     526:	45 98       	cbi	0x08, 5	; 8
+				PORTB &=~ (1<<PINB0);
+     528:	28 98       	cbi	0x05, 0	; 5
+				PORTB &=~ (1<<PINB1);
+     52a:	29 98       	cbi	0x05, 1	; 5
+     52c:	8f ef       	ldi	r24, 0xFF	; 255
+     52e:	92 e5       	ldi	r25, 0x52	; 82
+     530:	a7 e0       	ldi	r26, 0x07	; 7
+     532:	81 50       	subi	r24, 0x01	; 1
+     534:	90 40       	sbci	r25, 0x00	; 0
+     536:	a0 40       	sbci	r26, 0x00	; 0
+     538:	e1 f7       	brne	.-8      	; 0x532 <_Z12retrieve_OTPv+0x120>
+     53a:	00 c0       	rjmp	.+0      	; 0x53c <_Z12retrieve_OTPv+0x12a>
+     53c:	00 00       	nop
+				
+				break;
+			}
+		}
+	}	
+}
+     53e:	df 91       	pop	r29
+     540:	cf 91       	pop	r28
+     542:	1f 91       	pop	r17
+     544:	0f 91       	pop	r16
+     546:	ff 90       	pop	r15
+     548:	ef 90       	pop	r14
+     54a:	df 90       	pop	r13
+     54c:	cf 90       	pop	r12
+     54e:	08 95       	ret
+
+00000550 <_Z12validate_OTPv>:
+void validate_OTP(void)//
+{
+	if ((OTP[4] == 1 ) && (OTP[3] == 2) && (OTP[2] ==  1) && (OTP[1] == 2 ))
+     550:	80 91 06 01 	lds	r24, 0x0106
+     554:	81 30       	cpi	r24, 0x01	; 1
+     556:	09 f0       	breq	.+2      	; 0x55a <_Z12validate_OTPv+0xa>
+     558:	5b c0       	rjmp	.+182    	; 0x610 <_Z12validate_OTPv+0xc0>
+     55a:	90 91 05 01 	lds	r25, 0x0105
+     55e:	92 30       	cpi	r25, 0x02	; 2
+     560:	81 f5       	brne	.+96     	; 0x5c2 <_Z12validate_OTPv+0x72>
+     562:	20 91 04 01 	lds	r18, 0x0104
+     566:	21 30       	cpi	r18, 0x01	; 1
+     568:	61 f5       	brne	.+88     	; 0x5c2 <_Z12validate_OTPv+0x72>
+     56a:	90 91 03 01 	lds	r25, 0x0103
+     56e:	92 30       	cpi	r25, 0x02	; 2
+     570:	09 f0       	breq	.+2      	; 0x574 <_Z12validate_OTPv+0x24>
+     572:	4e c0       	rjmp	.+156    	; 0x610 <_Z12validate_OTPv+0xc0>
+	{
+		PORTB |= (1<<PINB0) | (1<<PINB1);
+     574:	85 b1       	in	r24, 0x05	; 5
+     576:	83 60       	ori	r24, 0x03	; 3
+     578:	85 b9       	out	0x05, r24	; 5
+     57a:	8f ef       	ldi	r24, 0xFF	; 255
+     57c:	93 ed       	ldi	r25, 0xD3	; 211
+     57e:	a0 e3       	ldi	r26, 0x30	; 48
+     580:	81 50       	subi	r24, 0x01	; 1
+     582:	90 40       	sbci	r25, 0x00	; 0
+     584:	a0 40       	sbci	r26, 0x00	; 0
+     586:	e1 f7       	brne	.-8      	; 0x580 <_Z12validate_OTPv+0x30>
+     588:	00 c0       	rjmp	.+0      	; 0x58a <_Z12validate_OTPv+0x3a>
+     58a:	00 00       	nop
+		_delay_ms(1000);
+		spi_tranceiver(actuator_control,255);
+     58c:	81 e0       	ldi	r24, 0x01	; 1
+     58e:	90 e0       	ldi	r25, 0x00	; 0
+     590:	6f ef       	ldi	r22, 0xFF	; 255
+     592:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     596:	af e3       	ldi	r26, 0x3F	; 63
+     598:	bc e9       	ldi	r27, 0x9C	; 156
+     59a:	11 97       	sbiw	r26, 0x01	; 1
+     59c:	f1 f7       	brne	.-4      	; 0x59a <_Z12validate_OTPv+0x4a>
+     59e:	00 c0       	rjmp	.+0      	; 0x5a0 <_Z12validate_OTPv+0x50>
+     5a0:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'A');
+     5a2:	81 e0       	ldi	r24, 0x01	; 1
+     5a4:	90 e0       	ldi	r25, 0x00	; 0
+     5a6:	61 e4       	ldi	r22, 0x41	; 65
+     5a8:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     5ac:	8f e3       	ldi	r24, 0x3F	; 63
+     5ae:	9c e9       	ldi	r25, 0x9C	; 156
+     5b0:	01 97       	sbiw	r24, 0x01	; 1
+     5b2:	f1 f7       	brne	.-4      	; 0x5b0 <_Z12validate_OTPv+0x60>
+     5b4:	00 c0       	rjmp	.+0      	; 0x5b6 <_Z12validate_OTPv+0x66>
+     5b6:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     5b8:	8e b5       	in	r24, 0x2e	; 46
+     5ba:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     5be:	1e bc       	out	0x2e, r1	; 46
+     5c0:	08 95       	ret
+	}	
+	else
+	if ((OTP[4] == 1) && (OTP[3] == 1) && (OTP[2] == 1) && (OTP[1] == 1))
+     5c2:	91 30       	cpi	r25, 0x01	; 1
+     5c4:	29 f5       	brne	.+74     	; 0x610 <_Z12validate_OTPv+0xc0>
+     5c6:	90 91 04 01 	lds	r25, 0x0104
+     5ca:	91 30       	cpi	r25, 0x01	; 1
+     5cc:	09 f0       	breq	.+2      	; 0x5d0 <_Z12validate_OTPv+0x80>
+     5ce:	4b c0       	rjmp	.+150    	; 0x666 <_Z12validate_OTPv+0x116>
+     5d0:	90 91 03 01 	lds	r25, 0x0103
+     5d4:	91 30       	cpi	r25, 0x01	; 1
+     5d6:	09 f0       	breq	.+2      	; 0x5da <_Z12validate_OTPv+0x8a>
+     5d8:	46 c0       	rjmp	.+140    	; 0x666 <_Z12validate_OTPv+0x116>
+	{
+		spi_tranceiver(actuator_control,255);
+     5da:	81 e0       	ldi	r24, 0x01	; 1
+     5dc:	90 e0       	ldi	r25, 0x00	; 0
+     5de:	6f ef       	ldi	r22, 0xFF	; 255
+     5e0:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     5e4:	af e3       	ldi	r26, 0x3F	; 63
+     5e6:	bc e9       	ldi	r27, 0x9C	; 156
+     5e8:	11 97       	sbiw	r26, 0x01	; 1
+     5ea:	f1 f7       	brne	.-4      	; 0x5e8 <_Z12validate_OTPv+0x98>
+     5ec:	00 c0       	rjmp	.+0      	; 0x5ee <_Z12validate_OTPv+0x9e>
+     5ee:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'B');
+     5f0:	81 e0       	ldi	r24, 0x01	; 1
+     5f2:	90 e0       	ldi	r25, 0x00	; 0
+     5f4:	62 e4       	ldi	r22, 0x42	; 66
+     5f6:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     5fa:	8f e3       	ldi	r24, 0x3F	; 63
+     5fc:	9c e9       	ldi	r25, 0x9C	; 156
+     5fe:	01 97       	sbiw	r24, 0x01	; 1
+     600:	f1 f7       	brne	.-4      	; 0x5fe <_Z12validate_OTPv+0xae>
+     602:	00 c0       	rjmp	.+0      	; 0x604 <_Z12validate_OTPv+0xb4>
+     604:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     606:	8e b5       	in	r24, 0x2e	; 46
+     608:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     60c:	1e bc       	out	0x2e, r1	; 46
+     60e:	08 95       	ret
+	}
+	else
+	if ((OTP[4] ==  2) && (OTP[3] == 2) && (OTP[2] ==  2) && (OTP[1] == 2 ))
+     610:	82 30       	cpi	r24, 0x02	; 2
+     612:	49 f5       	brne	.+82     	; 0x666 <_Z12validate_OTPv+0x116>
+     614:	90 91 05 01 	lds	r25, 0x0105
+     618:	92 30       	cpi	r25, 0x02	; 2
+     61a:	29 f5       	brne	.+74     	; 0x666 <_Z12validate_OTPv+0x116>
+     61c:	90 91 04 01 	lds	r25, 0x0104
+     620:	92 30       	cpi	r25, 0x02	; 2
+     622:	09 f0       	breq	.+2      	; 0x626 <_Z12validate_OTPv+0xd6>
+     624:	76 c0       	rjmp	.+236    	; 0x712 <_Z12validate_OTPv+0x1c2>
+     626:	90 91 03 01 	lds	r25, 0x0103
+     62a:	92 30       	cpi	r25, 0x02	; 2
+     62c:	09 f0       	breq	.+2      	; 0x630 <_Z12validate_OTPv+0xe0>
+     62e:	71 c0       	rjmp	.+226    	; 0x712 <_Z12validate_OTPv+0x1c2>
+	{
+		spi_tranceiver(actuator_control,255);
+     630:	81 e0       	ldi	r24, 0x01	; 1
+     632:	90 e0       	ldi	r25, 0x00	; 0
+     634:	6f ef       	ldi	r22, 0xFF	; 255
+     636:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     63a:	af e3       	ldi	r26, 0x3F	; 63
+     63c:	bc e9       	ldi	r27, 0x9C	; 156
+     63e:	11 97       	sbiw	r26, 0x01	; 1
+     640:	f1 f7       	brne	.-4      	; 0x63e <_Z12validate_OTPv+0xee>
+     642:	00 c0       	rjmp	.+0      	; 0x644 <_Z12validate_OTPv+0xf4>
+     644:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'C');
+     646:	81 e0       	ldi	r24, 0x01	; 1
+     648:	90 e0       	ldi	r25, 0x00	; 0
+     64a:	63 e4       	ldi	r22, 0x43	; 67
+     64c:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     650:	8f e3       	ldi	r24, 0x3F	; 63
+     652:	9c e9       	ldi	r25, 0x9C	; 156
+     654:	01 97       	sbiw	r24, 0x01	; 1
+     656:	f1 f7       	brne	.-4      	; 0x654 <_Z12validate_OTPv+0x104>
+     658:	00 c0       	rjmp	.+0      	; 0x65a <_Z12validate_OTPv+0x10a>
+     65a:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     65c:	8e b5       	in	r24, 0x2e	; 46
+     65e:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     662:	1e bc       	out	0x2e, r1	; 46
+     664:	08 95       	ret
+	}
+	else
+	if ((OTP[4] ==  3) && (OTP[3] == 3) && (OTP[2] ==  3) && (OTP[1] ==  3))
+     666:	83 30       	cpi	r24, 0x03	; 3
+     668:	49 f5       	brne	.+82     	; 0x6bc <_Z12validate_OTPv+0x16c>
+     66a:	90 91 05 01 	lds	r25, 0x0105
+     66e:	93 30       	cpi	r25, 0x03	; 3
+     670:	29 f5       	brne	.+74     	; 0x6bc <_Z12validate_OTPv+0x16c>
+     672:	90 91 04 01 	lds	r25, 0x0104
+     676:	93 30       	cpi	r25, 0x03	; 3
+     678:	09 f0       	breq	.+2      	; 0x67c <_Z12validate_OTPv+0x12c>
+     67a:	76 c0       	rjmp	.+236    	; 0x768 <_Z12validate_OTPv+0x218>
+     67c:	90 91 03 01 	lds	r25, 0x0103
+     680:	93 30       	cpi	r25, 0x03	; 3
+     682:	09 f0       	breq	.+2      	; 0x686 <_Z12validate_OTPv+0x136>
+     684:	71 c0       	rjmp	.+226    	; 0x768 <_Z12validate_OTPv+0x218>
+	{
+		spi_tranceiver(actuator_control,255);
+     686:	81 e0       	ldi	r24, 0x01	; 1
+     688:	90 e0       	ldi	r25, 0x00	; 0
+     68a:	6f ef       	ldi	r22, 0xFF	; 255
+     68c:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     690:	af e3       	ldi	r26, 0x3F	; 63
+     692:	bc e9       	ldi	r27, 0x9C	; 156
+     694:	11 97       	sbiw	r26, 0x01	; 1
+     696:	f1 f7       	brne	.-4      	; 0x694 <_Z12validate_OTPv+0x144>
+     698:	00 c0       	rjmp	.+0      	; 0x69a <_Z12validate_OTPv+0x14a>
+     69a:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'D');
+     69c:	81 e0       	ldi	r24, 0x01	; 1
+     69e:	90 e0       	ldi	r25, 0x00	; 0
+     6a0:	64 e4       	ldi	r22, 0x44	; 68
+     6a2:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     6a6:	8f e3       	ldi	r24, 0x3F	; 63
+     6a8:	9c e9       	ldi	r25, 0x9C	; 156
+     6aa:	01 97       	sbiw	r24, 0x01	; 1
+     6ac:	f1 f7       	brne	.-4      	; 0x6aa <_Z12validate_OTPv+0x15a>
+     6ae:	00 c0       	rjmp	.+0      	; 0x6b0 <_Z12validate_OTPv+0x160>
+     6b0:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     6b2:	8e b5       	in	r24, 0x2e	; 46
+     6b4:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     6b8:	1e bc       	out	0x2e, r1	; 46
+     6ba:	08 95       	ret
+	}
+	else
+	if ((OTP[4] ==  4) && (OTP[3] == 4) && (OTP[2] ==  4) && (OTP[1] == 4 ))
+     6bc:	84 30       	cpi	r24, 0x04	; 4
+     6be:	49 f5       	brne	.+82     	; 0x712 <_Z12validate_OTPv+0x1c2>
+     6c0:	90 91 05 01 	lds	r25, 0x0105
+     6c4:	94 30       	cpi	r25, 0x04	; 4
+     6c6:	29 f5       	brne	.+74     	; 0x712 <_Z12validate_OTPv+0x1c2>
+     6c8:	90 91 04 01 	lds	r25, 0x0104
+     6cc:	94 30       	cpi	r25, 0x04	; 4
+     6ce:	09 f0       	breq	.+2      	; 0x6d2 <_Z12validate_OTPv+0x182>
+     6d0:	76 c0       	rjmp	.+236    	; 0x7be <_Z12validate_OTPv+0x26e>
+     6d2:	90 91 03 01 	lds	r25, 0x0103
+     6d6:	94 30       	cpi	r25, 0x04	; 4
+     6d8:	09 f0       	breq	.+2      	; 0x6dc <_Z12validate_OTPv+0x18c>
+     6da:	71 c0       	rjmp	.+226    	; 0x7be <_Z12validate_OTPv+0x26e>
+	{
+		spi_tranceiver(actuator_control,255);
+     6dc:	81 e0       	ldi	r24, 0x01	; 1
+     6de:	90 e0       	ldi	r25, 0x00	; 0
+     6e0:	6f ef       	ldi	r22, 0xFF	; 255
+     6e2:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     6e6:	af e3       	ldi	r26, 0x3F	; 63
+     6e8:	bc e9       	ldi	r27, 0x9C	; 156
+     6ea:	11 97       	sbiw	r26, 0x01	; 1
+     6ec:	f1 f7       	brne	.-4      	; 0x6ea <_Z12validate_OTPv+0x19a>
+     6ee:	00 c0       	rjmp	.+0      	; 0x6f0 <_Z12validate_OTPv+0x1a0>
+     6f0:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'E');
+     6f2:	81 e0       	ldi	r24, 0x01	; 1
+     6f4:	90 e0       	ldi	r25, 0x00	; 0
+     6f6:	65 e4       	ldi	r22, 0x45	; 69
+     6f8:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     6fc:	8f e3       	ldi	r24, 0x3F	; 63
+     6fe:	9c e9       	ldi	r25, 0x9C	; 156
+     700:	01 97       	sbiw	r24, 0x01	; 1
+     702:	f1 f7       	brne	.-4      	; 0x700 <_Z12validate_OTPv+0x1b0>
+     704:	00 c0       	rjmp	.+0      	; 0x706 <_Z12validate_OTPv+0x1b6>
+     706:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     708:	8e b5       	in	r24, 0x2e	; 46
+     70a:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     70e:	1e bc       	out	0x2e, r1	; 46
+     710:	08 95       	ret
+	}
+	else
+	if ((OTP[4] ==  5) && (OTP[3] == 5) && (OTP[2] ==  5) && (OTP[1] ==  5))
+     712:	85 30       	cpi	r24, 0x05	; 5
+     714:	49 f5       	brne	.+82     	; 0x768 <_Z12validate_OTPv+0x218>
+     716:	90 91 05 01 	lds	r25, 0x0105
+     71a:	95 30       	cpi	r25, 0x05	; 5
+     71c:	29 f5       	brne	.+74     	; 0x768 <_Z12validate_OTPv+0x218>
+     71e:	90 91 04 01 	lds	r25, 0x0104
+     722:	95 30       	cpi	r25, 0x05	; 5
+     724:	09 f0       	breq	.+2      	; 0x728 <_Z12validate_OTPv+0x1d8>
+     726:	76 c0       	rjmp	.+236    	; 0x814 <_Z12validate_OTPv+0x2c4>
+     728:	90 91 03 01 	lds	r25, 0x0103
+     72c:	95 30       	cpi	r25, 0x05	; 5
+     72e:	09 f0       	breq	.+2      	; 0x732 <_Z12validate_OTPv+0x1e2>
+     730:	71 c0       	rjmp	.+226    	; 0x814 <_Z12validate_OTPv+0x2c4>
+	{
+		spi_tranceiver(actuator_control,255);
+     732:	81 e0       	ldi	r24, 0x01	; 1
+     734:	90 e0       	ldi	r25, 0x00	; 0
+     736:	6f ef       	ldi	r22, 0xFF	; 255
+     738:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     73c:	af e3       	ldi	r26, 0x3F	; 63
+     73e:	bc e9       	ldi	r27, 0x9C	; 156
+     740:	11 97       	sbiw	r26, 0x01	; 1
+     742:	f1 f7       	brne	.-4      	; 0x740 <_Z12validate_OTPv+0x1f0>
+     744:	00 c0       	rjmp	.+0      	; 0x746 <_Z12validate_OTPv+0x1f6>
+     746:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'F');
+     748:	81 e0       	ldi	r24, 0x01	; 1
+     74a:	90 e0       	ldi	r25, 0x00	; 0
+     74c:	66 e4       	ldi	r22, 0x46	; 70
+     74e:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     752:	8f e3       	ldi	r24, 0x3F	; 63
+     754:	9c e9       	ldi	r25, 0x9C	; 156
+     756:	01 97       	sbiw	r24, 0x01	; 1
+     758:	f1 f7       	brne	.-4      	; 0x756 <_Z12validate_OTPv+0x206>
+     75a:	00 c0       	rjmp	.+0      	; 0x75c <_Z12validate_OTPv+0x20c>
+     75c:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     75e:	8e b5       	in	r24, 0x2e	; 46
+     760:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     764:	1e bc       	out	0x2e, r1	; 46
+     766:	08 95       	ret
+	}
+	else
+	if ((OTP[4] ==  6) && (OTP[3] == 6) && (OTP[2] == 6 ) && (OTP[1] == 6 ))
+     768:	86 30       	cpi	r24, 0x06	; 6
+     76a:	49 f5       	brne	.+82     	; 0x7be <_Z12validate_OTPv+0x26e>
+     76c:	90 91 05 01 	lds	r25, 0x0105
+     770:	96 30       	cpi	r25, 0x06	; 6
+     772:	29 f5       	brne	.+74     	; 0x7be <_Z12validate_OTPv+0x26e>
+     774:	90 91 04 01 	lds	r25, 0x0104
+     778:	96 30       	cpi	r25, 0x06	; 6
+     77a:	09 f0       	breq	.+2      	; 0x77e <_Z12validate_OTPv+0x22e>
+     77c:	77 c0       	rjmp	.+238    	; 0x86c <_Z12validate_OTPv+0x31c>
+     77e:	90 91 03 01 	lds	r25, 0x0103
+     782:	96 30       	cpi	r25, 0x06	; 6
+     784:	09 f0       	breq	.+2      	; 0x788 <_Z12validate_OTPv+0x238>
+     786:	72 c0       	rjmp	.+228    	; 0x86c <_Z12validate_OTPv+0x31c>
+	{
+		spi_tranceiver(actuator_control,255);
+     788:	81 e0       	ldi	r24, 0x01	; 1
+     78a:	90 e0       	ldi	r25, 0x00	; 0
+     78c:	6f ef       	ldi	r22, 0xFF	; 255
+     78e:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     792:	af e3       	ldi	r26, 0x3F	; 63
+     794:	bc e9       	ldi	r27, 0x9C	; 156
+     796:	11 97       	sbiw	r26, 0x01	; 1
+     798:	f1 f7       	brne	.-4      	; 0x796 <_Z12validate_OTPv+0x246>
+     79a:	00 c0       	rjmp	.+0      	; 0x79c <_Z12validate_OTPv+0x24c>
+     79c:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'G');
+     79e:	81 e0       	ldi	r24, 0x01	; 1
+     7a0:	90 e0       	ldi	r25, 0x00	; 0
+     7a2:	67 e4       	ldi	r22, 0x47	; 71
+     7a4:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     7a8:	8f e3       	ldi	r24, 0x3F	; 63
+     7aa:	9c e9       	ldi	r25, 0x9C	; 156
+     7ac:	01 97       	sbiw	r24, 0x01	; 1
+     7ae:	f1 f7       	brne	.-4      	; 0x7ac <_Z12validate_OTPv+0x25c>
+     7b0:	00 c0       	rjmp	.+0      	; 0x7b2 <_Z12validate_OTPv+0x262>
+     7b2:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     7b4:	8e b5       	in	r24, 0x2e	; 46
+     7b6:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     7ba:	1e bc       	out	0x2e, r1	; 46
+     7bc:	08 95       	ret
+	}
+	else
+	if ((OTP[4] == 7 ) && (OTP[3] == 7) && (OTP[2] == 7 ) && (OTP[1] == 7 ))
+     7be:	87 30       	cpi	r24, 0x07	; 7
+     7c0:	49 f5       	brne	.+82     	; 0x814 <_Z12validate_OTPv+0x2c4>
+     7c2:	90 91 05 01 	lds	r25, 0x0105
+     7c6:	97 30       	cpi	r25, 0x07	; 7
+     7c8:	29 f5       	brne	.+74     	; 0x814 <_Z12validate_OTPv+0x2c4>
+     7ca:	80 91 04 01 	lds	r24, 0x0104
+     7ce:	87 30       	cpi	r24, 0x07	; 7
+     7d0:	09 f0       	breq	.+2      	; 0x7d4 <_Z12validate_OTPv+0x284>
+     7d2:	74 c0       	rjmp	.+232    	; 0x8bc <_Z12validate_OTPv+0x36c>
+     7d4:	80 91 03 01 	lds	r24, 0x0103
+     7d8:	87 30       	cpi	r24, 0x07	; 7
+     7da:	09 f0       	breq	.+2      	; 0x7de <_Z12validate_OTPv+0x28e>
+     7dc:	6f c0       	rjmp	.+222    	; 0x8bc <_Z12validate_OTPv+0x36c>
+	{
+		spi_tranceiver(actuator_control,255);
+     7de:	81 e0       	ldi	r24, 0x01	; 1
+     7e0:	90 e0       	ldi	r25, 0x00	; 0
+     7e2:	6f ef       	ldi	r22, 0xFF	; 255
+     7e4:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     7e8:	af e3       	ldi	r26, 0x3F	; 63
+     7ea:	bc e9       	ldi	r27, 0x9C	; 156
+     7ec:	11 97       	sbiw	r26, 0x01	; 1
+     7ee:	f1 f7       	brne	.-4      	; 0x7ec <_Z12validate_OTPv+0x29c>
+     7f0:	00 c0       	rjmp	.+0      	; 0x7f2 <_Z12validate_OTPv+0x2a2>
+     7f2:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'H');
+     7f4:	81 e0       	ldi	r24, 0x01	; 1
+     7f6:	90 e0       	ldi	r25, 0x00	; 0
+     7f8:	68 e4       	ldi	r22, 0x48	; 72
+     7fa:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     7fe:	8f e3       	ldi	r24, 0x3F	; 63
+     800:	9c e9       	ldi	r25, 0x9C	; 156
+     802:	01 97       	sbiw	r24, 0x01	; 1
+     804:	f1 f7       	brne	.-4      	; 0x802 <_Z12validate_OTPv+0x2b2>
+     806:	00 c0       	rjmp	.+0      	; 0x808 <_Z12validate_OTPv+0x2b8>
+     808:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     80a:	8e b5       	in	r24, 0x2e	; 46
+     80c:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     810:	1e bc       	out	0x2e, r1	; 46
+     812:	08 95       	ret
+	}
+	else
+	if ((OTP[4] == 8 ) && (OTP[3] == 8) && (OTP[2] == 8 ) && (OTP[1] == 8 ))
+     814:	88 30       	cpi	r24, 0x08	; 8
+     816:	51 f5       	brne	.+84     	; 0x86c <_Z12validate_OTPv+0x31c>
+     818:	80 91 05 01 	lds	r24, 0x0105
+     81c:	88 30       	cpi	r24, 0x08	; 8
+     81e:	09 f0       	breq	.+2      	; 0x822 <_Z12validate_OTPv+0x2d2>
+     820:	4d c0       	rjmp	.+154    	; 0x8bc <_Z12validate_OTPv+0x36c>
+     822:	80 91 04 01 	lds	r24, 0x0104
+     826:	88 30       	cpi	r24, 0x08	; 8
+     828:	09 f0       	breq	.+2      	; 0x82c <_Z12validate_OTPv+0x2dc>
+     82a:	48 c0       	rjmp	.+144    	; 0x8bc <_Z12validate_OTPv+0x36c>
+     82c:	80 91 03 01 	lds	r24, 0x0103
+     830:	88 30       	cpi	r24, 0x08	; 8
+     832:	09 f0       	breq	.+2      	; 0x836 <_Z12validate_OTPv+0x2e6>
+     834:	43 c0       	rjmp	.+134    	; 0x8bc <_Z12validate_OTPv+0x36c>
+	{
+		spi_tranceiver(actuator_control,255);
+     836:	81 e0       	ldi	r24, 0x01	; 1
+     838:	90 e0       	ldi	r25, 0x00	; 0
+     83a:	6f ef       	ldi	r22, 0xFF	; 255
+     83c:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     840:	af e3       	ldi	r26, 0x3F	; 63
+     842:	bc e9       	ldi	r27, 0x9C	; 156
+     844:	11 97       	sbiw	r26, 0x01	; 1
+     846:	f1 f7       	brne	.-4      	; 0x844 <_Z12validate_OTPv+0x2f4>
+     848:	00 c0       	rjmp	.+0      	; 0x84a <_Z12validate_OTPv+0x2fa>
+     84a:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'I');
+     84c:	81 e0       	ldi	r24, 0x01	; 1
+     84e:	90 e0       	ldi	r25, 0x00	; 0
+     850:	69 e4       	ldi	r22, 0x49	; 73
+     852:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     856:	8f e3       	ldi	r24, 0x3F	; 63
+     858:	9c e9       	ldi	r25, 0x9C	; 156
+     85a:	01 97       	sbiw	r24, 0x01	; 1
+     85c:	f1 f7       	brne	.-4      	; 0x85a <_Z12validate_OTPv+0x30a>
+     85e:	00 c0       	rjmp	.+0      	; 0x860 <_Z12validate_OTPv+0x310>
+     860:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     862:	8e b5       	in	r24, 0x2e	; 46
+     864:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     868:	1e bc       	out	0x2e, r1	; 46
+     86a:	08 95       	ret
+	}
+	else
+	if ((OTP[4] == 9 ) && (OTP[3] == 9) && (OTP[2] ==  9) && (OTP[1] ==  9))
+     86c:	89 30       	cpi	r24, 0x09	; 9
+     86e:	31 f5       	brne	.+76     	; 0x8bc <_Z12validate_OTPv+0x36c>
+     870:	80 91 05 01 	lds	r24, 0x0105
+     874:	89 30       	cpi	r24, 0x09	; 9
+     876:	11 f5       	brne	.+68     	; 0x8bc <_Z12validate_OTPv+0x36c>
+     878:	80 91 04 01 	lds	r24, 0x0104
+     87c:	89 30       	cpi	r24, 0x09	; 9
+     87e:	f1 f4       	brne	.+60     	; 0x8bc <_Z12validate_OTPv+0x36c>
+     880:	80 91 03 01 	lds	r24, 0x0103
+     884:	89 30       	cpi	r24, 0x09	; 9
+     886:	d1 f4       	brne	.+52     	; 0x8bc <_Z12validate_OTPv+0x36c>
+	{
+		spi_tranceiver(actuator_control,255);
+     888:	81 e0       	ldi	r24, 0x01	; 1
+     88a:	90 e0       	ldi	r25, 0x00	; 0
+     88c:	6f ef       	ldi	r22, 0xFF	; 255
+     88e:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     892:	af e3       	ldi	r26, 0x3F	; 63
+     894:	bc e9       	ldi	r27, 0x9C	; 156
+     896:	11 97       	sbiw	r26, 0x01	; 1
+     898:	f1 f7       	brne	.-4      	; 0x896 <_Z12validate_OTPv+0x346>
+     89a:	00 c0       	rjmp	.+0      	; 0x89c <_Z12validate_OTPv+0x34c>
+     89c:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'J');
+     89e:	81 e0       	ldi	r24, 0x01	; 1
+     8a0:	90 e0       	ldi	r25, 0x00	; 0
+     8a2:	6a e4       	ldi	r22, 0x4A	; 74
+     8a4:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     8a8:	8f e3       	ldi	r24, 0x3F	; 63
+     8aa:	9c e9       	ldi	r25, 0x9C	; 156
+     8ac:	01 97       	sbiw	r24, 0x01	; 1
+     8ae:	f1 f7       	brne	.-4      	; 0x8ac <_Z12validate_OTPv+0x35c>
+     8b0:	00 c0       	rjmp	.+0      	; 0x8b2 <_Z12validate_OTPv+0x362>
+     8b2:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     8b4:	8e b5       	in	r24, 0x2e	; 46
+     8b6:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     8ba:	1e bc       	out	0x2e, r1	; 46
+     8bc:	08 95       	ret
+
+000008be <_Z20process_VEND_REQUESTv>:
+	}
+}
+
+void process_VEND_REQUEST(void)
+{
+	switch (ARD_BUS_val)
+     8be:	80 91 0c 01 	lds	r24, 0x010C
+     8c2:	85 30       	cpi	r24, 0x05	; 5
+     8c4:	09 f4       	brne	.+2      	; 0x8c8 <_Z20process_VEND_REQUESTv+0xa>
+     8c6:	c6 c0       	rjmp	.+396    	; 0xa54 <__stack+0x155>
+     8c8:	86 30       	cpi	r24, 0x06	; 6
+     8ca:	90 f4       	brcc	.+36     	; 0x8f0 <_Z20process_VEND_REQUESTv+0x32>
+     8cc:	82 30       	cpi	r24, 0x02	; 2
+     8ce:	09 f4       	brne	.+2      	; 0x8d2 <_Z20process_VEND_REQUESTv+0x14>
+     8d0:	70 c0       	rjmp	.+224    	; 0x9b2 <__stack+0xb3>
+     8d2:	83 30       	cpi	r24, 0x03	; 3
+     8d4:	30 f4       	brcc	.+12     	; 0x8e2 <_Z20process_VEND_REQUESTv+0x24>
+     8d6:	88 23       	and	r24, r24
+     8d8:	f1 f0       	breq	.+60     	; 0x916 <__stack+0x17>
+     8da:	81 30       	cpi	r24, 0x01	; 1
+     8dc:	09 f0       	breq	.+2      	; 0x8e0 <_Z20process_VEND_REQUESTv+0x22>
+     8de:	5b c1       	rjmp	.+694    	; 0xb96 <__stack+0x297>
+     8e0:	41 c0       	rjmp	.+130    	; 0x964 <__stack+0x65>
+     8e2:	83 30       	cpi	r24, 0x03	; 3
+     8e4:	09 f4       	brne	.+2      	; 0x8e8 <_Z20process_VEND_REQUESTv+0x2a>
+     8e6:	80 c0       	rjmp	.+256    	; 0x9e8 <__stack+0xe9>
+     8e8:	84 30       	cpi	r24, 0x04	; 4
+     8ea:	09 f0       	breq	.+2      	; 0x8ee <_Z20process_VEND_REQUESTv+0x30>
+     8ec:	54 c1       	rjmp	.+680    	; 0xb96 <__stack+0x297>
+     8ee:	97 c0       	rjmp	.+302    	; 0xa1e <__stack+0x11f>
+     8f0:	88 30       	cpi	r24, 0x08	; 8
+     8f2:	09 f4       	brne	.+2      	; 0x8f6 <_Z20process_VEND_REQUESTv+0x38>
+     8f4:	00 c1       	rjmp	.+512    	; 0xaf6 <__stack+0x1f7>
+     8f6:	89 30       	cpi	r24, 0x09	; 9
+     8f8:	38 f4       	brcc	.+14     	; 0x908 <__stack+0x9>
+     8fa:	86 30       	cpi	r24, 0x06	; 6
+     8fc:	09 f4       	brne	.+2      	; 0x900 <__stack+0x1>
+     8fe:	c5 c0       	rjmp	.+394    	; 0xa8a <__stack+0x18b>
+     900:	87 30       	cpi	r24, 0x07	; 7
+     902:	09 f0       	breq	.+2      	; 0x906 <__stack+0x7>
+     904:	48 c1       	rjmp	.+656    	; 0xb96 <__stack+0x297>
+     906:	dc c0       	rjmp	.+440    	; 0xac0 <__stack+0x1c1>
+     908:	89 30       	cpi	r24, 0x09	; 9
+     90a:	09 f4       	brne	.+2      	; 0x90e <__stack+0xf>
+     90c:	0f c1       	rjmp	.+542    	; 0xb2c <__stack+0x22d>
+     90e:	8a 30       	cpi	r24, 0x0A	; 10
+     910:	09 f0       	breq	.+2      	; 0x914 <__stack+0x15>
+     912:	41 c1       	rjmp	.+642    	; 0xb96 <__stack+0x297>
+     914:	26 c1       	rjmp	.+588    	; 0xb62 <__stack+0x263>
+	{		
+		case 0:
+		PORTB |= (1<<PINB0) | (1<<PINB1);
+     916:	85 b1       	in	r24, 0x05	; 5
+     918:	83 60       	ori	r24, 0x03	; 3
+     91a:	85 b9       	out	0x05, r24	; 5
+     91c:	8f ef       	ldi	r24, 0xFF	; 255
+     91e:	93 ed       	ldi	r25, 0xD3	; 211
+     920:	a0 e3       	ldi	r26, 0x30	; 48
+     922:	81 50       	subi	r24, 0x01	; 1
+     924:	90 40       	sbci	r25, 0x00	; 0
+     926:	a0 40       	sbci	r26, 0x00	; 0
+     928:	e1 f7       	brne	.-8      	; 0x922 <__stack+0x23>
+     92a:	00 c0       	rjmp	.+0      	; 0x92c <__stack+0x2d>
+     92c:	00 00       	nop
+		_delay_ms(1000);
+		spi_tranceiver(actuator_control,255);
+     92e:	81 e0       	ldi	r24, 0x01	; 1
+     930:	90 e0       	ldi	r25, 0x00	; 0
+     932:	6f ef       	ldi	r22, 0xFF	; 255
+     934:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     938:	af e3       	ldi	r26, 0x3F	; 63
+     93a:	bc e9       	ldi	r27, 0x9C	; 156
+     93c:	11 97       	sbiw	r26, 0x01	; 1
+     93e:	f1 f7       	brne	.-4      	; 0x93c <__stack+0x3d>
+     940:	00 c0       	rjmp	.+0      	; 0x942 <__stack+0x43>
+     942:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,0);
+     944:	81 e0       	ldi	r24, 0x01	; 1
+     946:	90 e0       	ldi	r25, 0x00	; 0
+     948:	60 e0       	ldi	r22, 0x00	; 0
+     94a:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     94e:	8f e3       	ldi	r24, 0x3F	; 63
+     950:	9c e9       	ldi	r25, 0x9C	; 156
+     952:	01 97       	sbiw	r24, 0x01	; 1
+     954:	f1 f7       	brne	.-4      	; 0x952 <__stack+0x53>
+     956:	00 c0       	rjmp	.+0      	; 0x958 <__stack+0x59>
+     958:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     95a:	8e b5       	in	r24, 0x2e	; 46
+     95c:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     960:	1e bc       	out	0x2e, r1	; 46
+		break;
+     962:	08 95       	ret
+		
+		case 1:
+		PORTB |= (1<<PINB0) | (1<<PINB1);
+     964:	85 b1       	in	r24, 0x05	; 5
+     966:	83 60       	ori	r24, 0x03	; 3
+     968:	85 b9       	out	0x05, r24	; 5
+     96a:	8f ef       	ldi	r24, 0xFF	; 255
+     96c:	93 ed       	ldi	r25, 0xD3	; 211
+     96e:	a0 e3       	ldi	r26, 0x30	; 48
+     970:	81 50       	subi	r24, 0x01	; 1
+     972:	90 40       	sbci	r25, 0x00	; 0
+     974:	a0 40       	sbci	r26, 0x00	; 0
+     976:	e1 f7       	brne	.-8      	; 0x970 <__stack+0x71>
+     978:	00 c0       	rjmp	.+0      	; 0x97a <__stack+0x7b>
+     97a:	00 00       	nop
+		_delay_ms(1000);
+		spi_tranceiver(actuator_control,255);
+     97c:	81 e0       	ldi	r24, 0x01	; 1
+     97e:	90 e0       	ldi	r25, 0x00	; 0
+     980:	6f ef       	ldi	r22, 0xFF	; 255
+     982:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     986:	af e3       	ldi	r26, 0x3F	; 63
+     988:	bc e9       	ldi	r27, 0x9C	; 156
+     98a:	11 97       	sbiw	r26, 0x01	; 1
+     98c:	f1 f7       	brne	.-4      	; 0x98a <__stack+0x8b>
+     98e:	00 c0       	rjmp	.+0      	; 0x990 <__stack+0x91>
+     990:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'A');
+     992:	81 e0       	ldi	r24, 0x01	; 1
+     994:	90 e0       	ldi	r25, 0x00	; 0
+     996:	61 e4       	ldi	r22, 0x41	; 65
+     998:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     99c:	8f e3       	ldi	r24, 0x3F	; 63
+     99e:	9c e9       	ldi	r25, 0x9C	; 156
+     9a0:	01 97       	sbiw	r24, 0x01	; 1
+     9a2:	f1 f7       	brne	.-4      	; 0x9a0 <__stack+0xa1>
+     9a4:	00 c0       	rjmp	.+0      	; 0x9a6 <__stack+0xa7>
+     9a6:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     9a8:	8e b5       	in	r24, 0x2e	; 46
+     9aa:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     9ae:	1e bc       	out	0x2e, r1	; 46
+		break;
+     9b0:	08 95       	ret
+		
+		case 2:
+		spi_tranceiver(actuator_control,255);
+     9b2:	81 e0       	ldi	r24, 0x01	; 1
+     9b4:	90 e0       	ldi	r25, 0x00	; 0
+     9b6:	6f ef       	ldi	r22, 0xFF	; 255
+     9b8:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     9bc:	af e3       	ldi	r26, 0x3F	; 63
+     9be:	bc e9       	ldi	r27, 0x9C	; 156
+     9c0:	11 97       	sbiw	r26, 0x01	; 1
+     9c2:	f1 f7       	brne	.-4      	; 0x9c0 <__stack+0xc1>
+     9c4:	00 c0       	rjmp	.+0      	; 0x9c6 <__stack+0xc7>
+     9c6:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'B');
+     9c8:	81 e0       	ldi	r24, 0x01	; 1
+     9ca:	90 e0       	ldi	r25, 0x00	; 0
+     9cc:	62 e4       	ldi	r22, 0x42	; 66
+     9ce:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     9d2:	8f e3       	ldi	r24, 0x3F	; 63
+     9d4:	9c e9       	ldi	r25, 0x9C	; 156
+     9d6:	01 97       	sbiw	r24, 0x01	; 1
+     9d8:	f1 f7       	brne	.-4      	; 0x9d6 <__stack+0xd7>
+     9da:	00 c0       	rjmp	.+0      	; 0x9dc <__stack+0xdd>
+     9dc:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     9de:	8e b5       	in	r24, 0x2e	; 46
+     9e0:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     9e4:	1e bc       	out	0x2e, r1	; 46
+		break;
+     9e6:	08 95       	ret
+		
+		case 3:
+		spi_tranceiver(actuator_control,255);
+     9e8:	81 e0       	ldi	r24, 0x01	; 1
+     9ea:	90 e0       	ldi	r25, 0x00	; 0
+     9ec:	6f ef       	ldi	r22, 0xFF	; 255
+     9ee:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     9f2:	af e3       	ldi	r26, 0x3F	; 63
+     9f4:	bc e9       	ldi	r27, 0x9C	; 156
+     9f6:	11 97       	sbiw	r26, 0x01	; 1
+     9f8:	f1 f7       	brne	.-4      	; 0x9f6 <__stack+0xf7>
+     9fa:	00 c0       	rjmp	.+0      	; 0x9fc <__stack+0xfd>
+     9fc:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'C');
+     9fe:	81 e0       	ldi	r24, 0x01	; 1
+     a00:	90 e0       	ldi	r25, 0x00	; 0
+     a02:	63 e4       	ldi	r22, 0x43	; 67
+     a04:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     a08:	8f e3       	ldi	r24, 0x3F	; 63
+     a0a:	9c e9       	ldi	r25, 0x9C	; 156
+     a0c:	01 97       	sbiw	r24, 0x01	; 1
+     a0e:	f1 f7       	brne	.-4      	; 0xa0c <__stack+0x10d>
+     a10:	00 c0       	rjmp	.+0      	; 0xa12 <__stack+0x113>
+     a12:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     a14:	8e b5       	in	r24, 0x2e	; 46
+     a16:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     a1a:	1e bc       	out	0x2e, r1	; 46
+		break;
+     a1c:	08 95       	ret
+		
+		case 4:
+		spi_tranceiver(actuator_control,255);
+     a1e:	81 e0       	ldi	r24, 0x01	; 1
+     a20:	90 e0       	ldi	r25, 0x00	; 0
+     a22:	6f ef       	ldi	r22, 0xFF	; 255
+     a24:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     a28:	af e3       	ldi	r26, 0x3F	; 63
+     a2a:	bc e9       	ldi	r27, 0x9C	; 156
+     a2c:	11 97       	sbiw	r26, 0x01	; 1
+     a2e:	f1 f7       	brne	.-4      	; 0xa2c <__stack+0x12d>
+     a30:	00 c0       	rjmp	.+0      	; 0xa32 <__stack+0x133>
+     a32:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'D');
+     a34:	81 e0       	ldi	r24, 0x01	; 1
+     a36:	90 e0       	ldi	r25, 0x00	; 0
+     a38:	64 e4       	ldi	r22, 0x44	; 68
+     a3a:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     a3e:	8f e3       	ldi	r24, 0x3F	; 63
+     a40:	9c e9       	ldi	r25, 0x9C	; 156
+     a42:	01 97       	sbiw	r24, 0x01	; 1
+     a44:	f1 f7       	brne	.-4      	; 0xa42 <__stack+0x143>
+     a46:	00 c0       	rjmp	.+0      	; 0xa48 <__stack+0x149>
+     a48:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     a4a:	8e b5       	in	r24, 0x2e	; 46
+     a4c:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     a50:	1e bc       	out	0x2e, r1	; 46
+		break;
+     a52:	08 95       	ret
+		
+		case 5:
+		spi_tranceiver(actuator_control,255);
+     a54:	81 e0       	ldi	r24, 0x01	; 1
+     a56:	90 e0       	ldi	r25, 0x00	; 0
+     a58:	6f ef       	ldi	r22, 0xFF	; 255
+     a5a:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     a5e:	af e3       	ldi	r26, 0x3F	; 63
+     a60:	bc e9       	ldi	r27, 0x9C	; 156
+     a62:	11 97       	sbiw	r26, 0x01	; 1
+     a64:	f1 f7       	brne	.-4      	; 0xa62 <__stack+0x163>
+     a66:	00 c0       	rjmp	.+0      	; 0xa68 <__stack+0x169>
+     a68:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'E');
+     a6a:	81 e0       	ldi	r24, 0x01	; 1
+     a6c:	90 e0       	ldi	r25, 0x00	; 0
+     a6e:	65 e4       	ldi	r22, 0x45	; 69
+     a70:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     a74:	8f e3       	ldi	r24, 0x3F	; 63
+     a76:	9c e9       	ldi	r25, 0x9C	; 156
+     a78:	01 97       	sbiw	r24, 0x01	; 1
+     a7a:	f1 f7       	brne	.-4      	; 0xa78 <__stack+0x179>
+     a7c:	00 c0       	rjmp	.+0      	; 0xa7e <__stack+0x17f>
+     a7e:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     a80:	8e b5       	in	r24, 0x2e	; 46
+     a82:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     a86:	1e bc       	out	0x2e, r1	; 46
+		break;
+     a88:	08 95       	ret
+		
+		case 6:
+		spi_tranceiver(actuator_control,255);
+     a8a:	81 e0       	ldi	r24, 0x01	; 1
+     a8c:	90 e0       	ldi	r25, 0x00	; 0
+     a8e:	6f ef       	ldi	r22, 0xFF	; 255
+     a90:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     a94:	af e3       	ldi	r26, 0x3F	; 63
+     a96:	bc e9       	ldi	r27, 0x9C	; 156
+     a98:	11 97       	sbiw	r26, 0x01	; 1
+     a9a:	f1 f7       	brne	.-4      	; 0xa98 <__stack+0x199>
+     a9c:	00 c0       	rjmp	.+0      	; 0xa9e <__stack+0x19f>
+     a9e:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'F');
+     aa0:	81 e0       	ldi	r24, 0x01	; 1
+     aa2:	90 e0       	ldi	r25, 0x00	; 0
+     aa4:	66 e4       	ldi	r22, 0x46	; 70
+     aa6:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     aaa:	8f e3       	ldi	r24, 0x3F	; 63
+     aac:	9c e9       	ldi	r25, 0x9C	; 156
+     aae:	01 97       	sbiw	r24, 0x01	; 1
+     ab0:	f1 f7       	brne	.-4      	; 0xaae <__stack+0x1af>
+     ab2:	00 c0       	rjmp	.+0      	; 0xab4 <__stack+0x1b5>
+     ab4:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     ab6:	8e b5       	in	r24, 0x2e	; 46
+     ab8:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     abc:	1e bc       	out	0x2e, r1	; 46
+		break;
+     abe:	08 95       	ret
+		
+		case 7:
+		spi_tranceiver(actuator_control,255);
+     ac0:	81 e0       	ldi	r24, 0x01	; 1
+     ac2:	90 e0       	ldi	r25, 0x00	; 0
+     ac4:	6f ef       	ldi	r22, 0xFF	; 255
+     ac6:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     aca:	af e3       	ldi	r26, 0x3F	; 63
+     acc:	bc e9       	ldi	r27, 0x9C	; 156
+     ace:	11 97       	sbiw	r26, 0x01	; 1
+     ad0:	f1 f7       	brne	.-4      	; 0xace <__stack+0x1cf>
+     ad2:	00 c0       	rjmp	.+0      	; 0xad4 <__stack+0x1d5>
+     ad4:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'G');
+     ad6:	81 e0       	ldi	r24, 0x01	; 1
+     ad8:	90 e0       	ldi	r25, 0x00	; 0
+     ada:	67 e4       	ldi	r22, 0x47	; 71
+     adc:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     ae0:	8f e3       	ldi	r24, 0x3F	; 63
+     ae2:	9c e9       	ldi	r25, 0x9C	; 156
+     ae4:	01 97       	sbiw	r24, 0x01	; 1
+     ae6:	f1 f7       	brne	.-4      	; 0xae4 <__stack+0x1e5>
+     ae8:	00 c0       	rjmp	.+0      	; 0xaea <__stack+0x1eb>
+     aea:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     aec:	8e b5       	in	r24, 0x2e	; 46
+     aee:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     af2:	1e bc       	out	0x2e, r1	; 46
+		break;
+     af4:	08 95       	ret
+		
+		case 8:
+		spi_tranceiver(actuator_control,255);
+     af6:	81 e0       	ldi	r24, 0x01	; 1
+     af8:	90 e0       	ldi	r25, 0x00	; 0
+     afa:	6f ef       	ldi	r22, 0xFF	; 255
+     afc:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     b00:	af e3       	ldi	r26, 0x3F	; 63
+     b02:	bc e9       	ldi	r27, 0x9C	; 156
+     b04:	11 97       	sbiw	r26, 0x01	; 1
+     b06:	f1 f7       	brne	.-4      	; 0xb04 <__stack+0x205>
+     b08:	00 c0       	rjmp	.+0      	; 0xb0a <__stack+0x20b>
+     b0a:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'H');
+     b0c:	81 e0       	ldi	r24, 0x01	; 1
+     b0e:	90 e0       	ldi	r25, 0x00	; 0
+     b10:	68 e4       	ldi	r22, 0x48	; 72
+     b12:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     b16:	8f e3       	ldi	r24, 0x3F	; 63
+     b18:	9c e9       	ldi	r25, 0x9C	; 156
+     b1a:	01 97       	sbiw	r24, 0x01	; 1
+     b1c:	f1 f7       	brne	.-4      	; 0xb1a <__stack+0x21b>
+     b1e:	00 c0       	rjmp	.+0      	; 0xb20 <__stack+0x221>
+     b20:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     b22:	8e b5       	in	r24, 0x2e	; 46
+     b24:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     b28:	1e bc       	out	0x2e, r1	; 46
+		break;
+     b2a:	08 95       	ret
+		
+		case 9:
+		spi_tranceiver(actuator_control,255);
+     b2c:	81 e0       	ldi	r24, 0x01	; 1
+     b2e:	90 e0       	ldi	r25, 0x00	; 0
+     b30:	6f ef       	ldi	r22, 0xFF	; 255
+     b32:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     b36:	af e3       	ldi	r26, 0x3F	; 63
+     b38:	bc e9       	ldi	r27, 0x9C	; 156
+     b3a:	11 97       	sbiw	r26, 0x01	; 1
+     b3c:	f1 f7       	brne	.-4      	; 0xb3a <__stack+0x23b>
+     b3e:	00 c0       	rjmp	.+0      	; 0xb40 <__stack+0x241>
+     b40:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'I');
+     b42:	81 e0       	ldi	r24, 0x01	; 1
+     b44:	90 e0       	ldi	r25, 0x00	; 0
+     b46:	69 e4       	ldi	r22, 0x49	; 73
+     b48:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     b4c:	8f e3       	ldi	r24, 0x3F	; 63
+     b4e:	9c e9       	ldi	r25, 0x9C	; 156
+     b50:	01 97       	sbiw	r24, 0x01	; 1
+     b52:	f1 f7       	brne	.-4      	; 0xb50 <__stack+0x251>
+     b54:	00 c0       	rjmp	.+0      	; 0xb56 <__stack+0x257>
+     b56:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     b58:	8e b5       	in	r24, 0x2e	; 46
+     b5a:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     b5e:	1e bc       	out	0x2e, r1	; 46
+		break;
+     b60:	08 95       	ret
+		
+		case 10:
+		spi_tranceiver(actuator_control,255);
+     b62:	81 e0       	ldi	r24, 0x01	; 1
+     b64:	90 e0       	ldi	r25, 0x00	; 0
+     b66:	6f ef       	ldi	r22, 0xFF	; 255
+     b68:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     b6c:	af e3       	ldi	r26, 0x3F	; 63
+     b6e:	bc e9       	ldi	r27, 0x9C	; 156
+     b70:	11 97       	sbiw	r26, 0x01	; 1
+     b72:	f1 f7       	brne	.-4      	; 0xb70 <__stack+0x271>
+     b74:	00 c0       	rjmp	.+0      	; 0xb76 <__stack+0x277>
+     b76:	00 00       	nop
+		_delay_ms(10);
+		spi_tranceiver(actuator_control,'J');
+     b78:	81 e0       	ldi	r24, 0x01	; 1
+     b7a:	90 e0       	ldi	r25, 0x00	; 0
+     b7c:	6a e4       	ldi	r22, 0x4A	; 74
+     b7e:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+     b82:	8f e3       	ldi	r24, 0x3F	; 63
+     b84:	9c e9       	ldi	r25, 0x9C	; 156
+     b86:	01 97       	sbiw	r24, 0x01	; 1
+     b88:	f1 f7       	brne	.-4      	; 0xb86 <__stack+0x287>
+     b8a:	00 c0       	rjmp	.+0      	; 0xb8c <__stack+0x28d>
+     b8c:	00 00       	nop
+		_delay_ms(10);
+		ACTUATOR_control_DATA = SPDR;
+     b8e:	8e b5       	in	r24, 0x2e	; 46
+     b90:	80 93 07 01 	sts	0x0107, r24
+		SPDR = 0;
+     b94:	1e bc       	out	0x2e, r1	; 46
+     b96:	08 95       	ret
+
+00000b98 <_Z16initialise_clockv>:
+	}
+}
+
+void initialise_clock(void)
+{
+	TCCR0B |= (1<<CS01)|(1<<CS00);
+     b98:	85 b5       	in	r24, 0x25	; 37
+     b9a:	83 60       	ori	r24, 0x03	; 3
+     b9c:	85 bd       	out	0x25, r24	; 37
+	TIMSK0 |= (1<<TOIE0);
+     b9e:	ee e6       	ldi	r30, 0x6E	; 110
+     ba0:	f0 e0       	ldi	r31, 0x00	; 0
+     ba2:	80 81       	ld	r24, Z
+     ba4:	81 60       	ori	r24, 0x01	; 1
+     ba6:	80 83       	st	Z, r24
+	TCNT0 = 0;
+     ba8:	16 bc       	out	0x26, r1	; 38
+}
+     baa:	08 95       	ret
+
+00000bac <_Z10stop_clockv>:
+void stop_clock(void)
+{
+	TCCR0B &=~ (1<<CS00);
+     bac:	85 b5       	in	r24, 0x25	; 37
+     bae:	8e 7f       	andi	r24, 0xFE	; 254
+     bb0:	85 bd       	out	0x25, r24	; 37
+	TCCR0B &=~ (1<<CS01);
+     bb2:	85 b5       	in	r24, 0x25	; 37
+     bb4:	8d 7f       	andi	r24, 0xFD	; 253
+     bb6:	85 bd       	out	0x25, r24	; 37
+	TIMSK0 &=~ (1<<TOIE0);
+     bb8:	ee e6       	ldi	r30, 0x6E	; 110
+     bba:	f0 e0       	ldi	r31, 0x00	; 0
+     bbc:	80 81       	ld	r24, Z
+     bbe:	8e 7f       	andi	r24, 0xFE	; 254
+     bc0:	80 83       	st	Z, r24
+     bc2:	8f e9       	ldi	r24, 0x9F	; 159
+     bc4:	9f e0       	ldi	r25, 0x0F	; 15
+     bc6:	01 97       	sbiw	r24, 0x01	; 1
+     bc8:	f1 f7       	brne	.-4      	; 0xbc6 <_Z10stop_clockv+0x1a>
+     bca:	00 c0       	rjmp	.+0      	; 0xbcc <_Z10stop_clockv+0x20>
+     bcc:	00 00       	nop
+	_delay_ms(1);
+	TCNT0=0;
+     bce:	16 bc       	out	0x26, r1	; 38
+	PORTD &=~ (1<<PIND5); //pull down clock pin
+     bd0:	5d 98       	cbi	0x0b, 5	; 11
+}
+     bd2:	08 95       	ret
+
+00000bd4 <__vector_16>:
+ISR(TIMER0_OVF_vect)
+{
+     bd4:	1f 92       	push	r1
+     bd6:	0f 92       	push	r0
+     bd8:	0f b6       	in	r0, 0x3f	; 63
+     bda:	0f 92       	push	r0
+     bdc:	11 24       	eor	r1, r1
+     bde:	2f 93       	push	r18
+     be0:	8f 93       	push	r24
+     be2:	9f 93       	push	r25
+	count++;
+     be4:	80 91 15 01 	lds	r24, 0x0115
+     be8:	90 91 16 01 	lds	r25, 0x0116
+     bec:	01 96       	adiw	r24, 0x01	; 1
+     bee:	90 93 16 01 	sts	0x0116, r25
+     bf2:	80 93 15 01 	sts	0x0115, r24
+	if (clock_init_patameter == false)
+     bf6:	80 91 10 01 	lds	r24, 0x0110
+     bfa:	88 23       	and	r24, r24
+     bfc:	21 f4       	brne	.+8      	; 0xc06 <__vector_16+0x32>
+	{
+		clock_init_patameter = true;
+     bfe:	81 e0       	ldi	r24, 0x01	; 1
+     c00:	80 93 10 01 	sts	0x0110, r24
+     c04:	33 c0       	rjmp	.+102    	; 0xc6c <__vector_16+0x98>
+	}
+	else
+	if (count==50)////100count==50
+     c06:	80 91 15 01 	lds	r24, 0x0115
+     c0a:	90 91 16 01 	lds	r25, 0x0116
+     c0e:	82 33       	cpi	r24, 0x32	; 50
+     c10:	91 05       	cpc	r25, r1
+     c12:	61 f5       	brne	.+88     	; 0xc6c <__vector_16+0x98>
+	{
+		// 1 second has elapsed
+		count=0;
+     c14:	10 92 16 01 	sts	0x0116, r1
+     c18:	10 92 15 01 	sts	0x0115, r1
+		
+		count1++;
+     c1c:	80 91 13 01 	lds	r24, 0x0113
+     c20:	90 91 14 01 	lds	r25, 0x0114
+     c24:	01 96       	adiw	r24, 0x01	; 1
+     c26:	90 93 14 01 	sts	0x0114, r25
+     c2a:	80 93 13 01 	sts	0x0113, r24
+		if (count1 == 1)
+     c2e:	80 91 13 01 	lds	r24, 0x0113
+     c32:	90 91 14 01 	lds	r25, 0x0114
+     c36:	81 30       	cpi	r24, 0x01	; 1
+     c38:	91 05       	cpc	r25, r1
+     c3a:	c1 f4       	brne	.+48     	; 0xc6c <__vector_16+0x98>
+		{
+			count1 = 0;
+     c3c:	10 92 14 01 	sts	0x0114, r1
+     c40:	10 92 13 01 	sts	0x0113, r1
+			count2++;
+     c44:	80 91 11 01 	lds	r24, 0x0111
+     c48:	90 91 12 01 	lds	r25, 0x0112
+     c4c:	01 96       	adiw	r24, 0x01	; 1
+     c4e:	90 93 12 01 	sts	0x0112, r25
+     c52:	80 93 11 01 	sts	0x0111, r24
+			PORTD ^= (1<<PIND5);
+     c56:	9b b1       	in	r25, 0x0b	; 11
+     c58:	80 e2       	ldi	r24, 0x20	; 32
+     c5a:	98 27       	eor	r25, r24
+     c5c:	9b b9       	out	0x0b, r25	; 11
+			
+			PORTC ^= (1<<PINC2);
+     c5e:	28 b1       	in	r18, 0x08	; 8
+     c60:	94 e0       	ldi	r25, 0x04	; 4
+     c62:	92 27       	eor	r25, r18
+     c64:	98 b9       	out	0x08, r25	; 8
+			PORTC ^= (1<<PINC5);
+     c66:	98 b1       	in	r25, 0x08	; 8
+     c68:	89 27       	eor	r24, r25
+     c6a:	88 b9       	out	0x08, r24	; 8
+		}	
+	}
+}
+     c6c:	9f 91       	pop	r25
+     c6e:	8f 91       	pop	r24
+     c70:	2f 91       	pop	r18
+     c72:	0f 90       	pop	r0
+     c74:	0f be       	out	0x3f, r0	; 63
+     c76:	0f 90       	pop	r0
+     c78:	1f 90       	pop	r1
+     c7a:	18 95       	reti
+
+00000c7c <_Z8talkFunch>:
+
+void talkFunc (unsigned char val)
+{
+	switch (val)
+     c7c:	87 30       	cpi	r24, 0x07	; 7
+     c7e:	09 f4       	brne	.+2      	; 0xc82 <_Z8talkFunch+0x6>
+     c80:	4e c0       	rjmp	.+156    	; 0xd1e <_Z8talkFunch+0xa2>
+     c82:	88 30       	cpi	r24, 0x08	; 8
+     c84:	70 f4       	brcc	.+28     	; 0xca2 <_Z8talkFunch+0x26>
+     c86:	83 30       	cpi	r24, 0x03	; 3
+     c88:	b1 f1       	breq	.+108    	; 0xcf6 <_Z8talkFunch+0x7a>
+     c8a:	84 30       	cpi	r24, 0x04	; 4
+     c8c:	28 f4       	brcc	.+10     	; 0xc98 <_Z8talkFunch+0x1c>
+     c8e:	81 30       	cpi	r24, 0x01	; 1
+     c90:	41 f1       	breq	.+80     	; 0xce2 <_Z8talkFunch+0x66>
+     c92:	82 30       	cpi	r24, 0x02	; 2
+     c94:	58 f5       	brcc	.+86     	; 0xcec <_Z8talkFunch+0x70>
+     c96:	20 c0       	rjmp	.+64     	; 0xcd8 <_Z8talkFunch+0x5c>
+     c98:	85 30       	cpi	r24, 0x05	; 5
+     c9a:	b9 f1       	breq	.+110    	; 0xd0a <_Z8talkFunch+0x8e>
+     c9c:	86 30       	cpi	r24, 0x06	; 6
+     c9e:	d0 f5       	brcc	.+116    	; 0xd14 <_Z8talkFunch+0x98>
+     ca0:	2f c0       	rjmp	.+94     	; 0xd00 <_Z8talkFunch+0x84>
+     ca2:	82 34       	cpi	r24, 0x42	; 66
+     ca4:	09 f4       	brne	.+2      	; 0xca8 <_Z8talkFunch+0x2c>
+     ca6:	4f c0       	rjmp	.+158    	; 0xd46 <_Z8talkFunch+0xca>
+     ca8:	83 34       	cpi	r24, 0x43	; 67
+     caa:	48 f4       	brcc	.+18     	; 0xcbe <_Z8talkFunch+0x42>
+     cac:	89 30       	cpi	r24, 0x09	; 9
+     cae:	09 f4       	brne	.+2      	; 0xcb2 <_Z8talkFunch+0x36>
+     cb0:	40 c0       	rjmp	.+128    	; 0xd32 <_Z8talkFunch+0xb6>
+     cb2:	89 30       	cpi	r24, 0x09	; 9
+     cb4:	c8 f1       	brcs	.+114    	; 0xd28 <_Z8talkFunch+0xac>
+     cb6:	81 34       	cpi	r24, 0x41	; 65
+     cb8:	09 f0       	breq	.+2      	; 0xcbc <_Z8talkFunch+0x40>
+     cba:	5c c0       	rjmp	.+184    	; 0xd74 <_Z8talkFunch+0xf8>
+     cbc:	3f c0       	rjmp	.+126    	; 0xd3c <_Z8talkFunch+0xc0>
+     cbe:	84 34       	cpi	r24, 0x44	; 68
+     cc0:	09 f4       	brne	.+2      	; 0xcc4 <_Z8talkFunch+0x48>
+     cc2:	4a c0       	rjmp	.+148    	; 0xd58 <_Z8talkFunch+0xdc>
+     cc4:	84 34       	cpi	r24, 0x44	; 68
+     cc6:	08 f4       	brcc	.+2      	; 0xcca <_Z8talkFunch+0x4e>
+     cc8:	43 c0       	rjmp	.+134    	; 0xd50 <_Z8talkFunch+0xd4>
+     cca:	85 34       	cpi	r24, 0x45	; 69
+     ccc:	09 f4       	brne	.+2      	; 0xcd0 <_Z8talkFunch+0x54>
+     cce:	49 c0       	rjmp	.+146    	; 0xd62 <_Z8talkFunch+0xe6>
+     cd0:	86 34       	cpi	r24, 0x46	; 70
+     cd2:	09 f0       	breq	.+2      	; 0xcd6 <_Z8talkFunch+0x5a>
+     cd4:	4f c0       	rjmp	.+158    	; 0xd74 <_Z8talkFunch+0xf8>
+     cd6:	4a c0       	rjmp	.+148    	; 0xd6c <_Z8talkFunch+0xf0>
+	{
+		case 0:
+		PORTD &=~ (1<<PIND0);
+     cd8:	58 98       	cbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     cda:	59 98       	cbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     cdc:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     cde:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     ce0:	08 95       	ret
+		
+		case 1:
+		PORTD |=  (1<<PIND0);
+     ce2:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     ce4:	59 98       	cbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     ce6:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     ce8:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     cea:	08 95       	ret
+		
+		case 2:
+		PORTD &=~ (1<<PIND0);
+     cec:	58 98       	cbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     cee:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     cf0:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     cf2:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     cf4:	08 95       	ret
+		
+		case 3:
+		PORTD |=  (1<<PIND0);
+     cf6:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     cf8:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     cfa:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     cfc:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     cfe:	08 95       	ret
+		
+		case 4:
+		PORTD &=~ (1<<PIND0);
+     d00:	58 98       	cbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     d02:	59 98       	cbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d04:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     d06:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     d08:	08 95       	ret
+		
+		case 5:
+		PORTD |=  (1<<PIND0);
+     d0a:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     d0c:	59 98       	cbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d0e:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     d10:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     d12:	08 95       	ret
+		
+		case 6:
+		PORTD &=~ (1<<PIND0);
+     d14:	58 98       	cbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     d16:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d18:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     d1a:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     d1c:	08 95       	ret
+		
+		case 7:
+		PORTD |=  (1<<PIND0);
+     d1e:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     d20:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d22:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD &=~ (1<<PIND3);
+     d24:	5b 98       	cbi	0x0b, 3	; 11
+		break;
+     d26:	08 95       	ret
+		
+		case 8:
+		PORTD &=~ (1<<PIND0);
+     d28:	58 98       	cbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     d2a:	59 98       	cbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     d2c:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d2e:	5b 9a       	sbi	0x0b, 3	; 11
+		break;
+     d30:	08 95       	ret
+		
+		case 9:
+		PORTD |=  (1<<PIND0);
+     d32:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     d34:	59 98       	cbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     d36:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d38:	5b 9a       	sbi	0x0b, 3	; 11
+		break;
+     d3a:	08 95       	ret
+		
+		case 'A':
+		PORTD &=~ (1<<PIND0);
+     d3c:	58 98       	cbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     d3e:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     d40:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d42:	5b 9a       	sbi	0x0b, 3	; 11
+		break;
+     d44:	08 95       	ret
+		
+		case 'B':
+		PORTD |=  (1<<PIND0);
+     d46:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     d48:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD &=~ (1<<PIND2);
+     d4a:	5a 98       	cbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d4c:	5b 9a       	sbi	0x0b, 3	; 11
+		break;
+     d4e:	08 95       	ret
+		
+		case 'C':
+		PORTD &=~ (1<<PIND0);
+     d50:	58 98       	cbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     d52:	59 98       	cbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d54:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d56:	5b 9a       	sbi	0x0b, 3	; 11
+		
+		case 'D':
+		PORTD |=  (1<<PIND0);
+     d58:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD &=~ (1<<PIND1);
+     d5a:	59 98       	cbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d5c:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d5e:	5b 9a       	sbi	0x0b, 3	; 11
+		break;
+     d60:	08 95       	ret
+		
+		case 'E':
+		PORTD &=~ (1<<PIND0);
+     d62:	58 98       	cbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     d64:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d66:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d68:	5b 9a       	sbi	0x0b, 3	; 11
+		break;
+     d6a:	08 95       	ret
+		
+		case 'F':
+		PORTD |=  (1<<PIND0);
+     d6c:	58 9a       	sbi	0x0b, 0	; 11
+		PORTD |=  (1<<PIND1);
+     d6e:	59 9a       	sbi	0x0b, 1	; 11
+		PORTD |=  (1<<PIND2);
+     d70:	5a 9a       	sbi	0x0b, 2	; 11
+		PORTD |=  (1<<PIND3);
+     d72:	5b 9a       	sbi	0x0b, 3	; 11
+     d74:	08 95       	ret
+
+00000d76 <_Z10listenFuncv>:
+	
+}
+
+void listenFunc (void)
+{
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     d76:	89 b1       	in	r24, 0x09	; 9
+     d78:	80 fd       	sbrc	r24, 0
+     d7a:	9f c0       	rjmp	.+318    	; 0xeba <_Z10listenFuncv+0x144>
+     d7c:	49 99       	sbic	0x09, 1	; 9
+     d7e:	9d c0       	rjmp	.+314    	; 0xeba <_Z10listenFuncv+0x144>
+     d80:	4a 99       	sbic	0x09, 2	; 9
+     d82:	9b c0       	rjmp	.+310    	; 0xeba <_Z10listenFuncv+0x144>
+     d84:	4b 99       	sbic	0x09, 3	; 9
+     d86:	99 c0       	rjmp	.+306    	; 0xeba <_Z10listenFuncv+0x144>
+	{
+		//0
+		ARD_BUS_val = 0;
+     d88:	10 92 0c 01 	sts	0x010C, r1
+     d8c:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     d8e:	49 99       	sbic	0x09, 1	; 9
+     d90:	96 c0       	rjmp	.+300    	; 0xebe <_Z10listenFuncv+0x148>
+     d92:	4a 99       	sbic	0x09, 2	; 9
+     d94:	94 c0       	rjmp	.+296    	; 0xebe <_Z10listenFuncv+0x148>
+     d96:	4b 99       	sbic	0x09, 3	; 9
+     d98:	92 c0       	rjmp	.+292    	; 0xebe <_Z10listenFuncv+0x148>
+	{
+		//1
+		ARD_BUS_val = 1;
+     d9a:	81 e0       	ldi	r24, 0x01	; 1
+     d9c:	80 93 0c 01 	sts	0x010C, r24
+     da0:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     da2:	49 9b       	sbis	0x09, 1	; 9
+     da4:	8f c0       	rjmp	.+286    	; 0xec4 <_Z10listenFuncv+0x14e>
+     da6:	4a 99       	sbic	0x09, 2	; 9
+     da8:	8d c0       	rjmp	.+282    	; 0xec4 <_Z10listenFuncv+0x14e>
+     daa:	4b 99       	sbic	0x09, 3	; 9
+     dac:	8b c0       	rjmp	.+278    	; 0xec4 <_Z10listenFuncv+0x14e>
+	{
+		//2
+		ARD_BUS_val = 2;
+     dae:	82 e0       	ldi	r24, 0x02	; 2
+     db0:	80 93 0c 01 	sts	0x010C, r24
+     db4:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     db6:	49 9b       	sbis	0x09, 1	; 9
+     db8:	87 c0       	rjmp	.+270    	; 0xec8 <_Z10listenFuncv+0x152>
+     dba:	4a 99       	sbic	0x09, 2	; 9
+     dbc:	85 c0       	rjmp	.+266    	; 0xec8 <_Z10listenFuncv+0x152>
+     dbe:	4b 99       	sbic	0x09, 3	; 9
+     dc0:	83 c0       	rjmp	.+262    	; 0xec8 <_Z10listenFuncv+0x152>
+	{
+		//3
+		ARD_BUS_val = 3;
+     dc2:	83 e0       	ldi	r24, 0x03	; 3
+     dc4:	80 93 0c 01 	sts	0x010C, r24
+     dc8:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     dca:	49 99       	sbic	0x09, 1	; 9
+     dcc:	80 c0       	rjmp	.+256    	; 0xece <_Z10listenFuncv+0x158>
+     dce:	4a 9b       	sbis	0x09, 2	; 9
+     dd0:	7e c0       	rjmp	.+252    	; 0xece <_Z10listenFuncv+0x158>
+     dd2:	4b 99       	sbic	0x09, 3	; 9
+     dd4:	7c c0       	rjmp	.+248    	; 0xece <_Z10listenFuncv+0x158>
+	{
+		//4
+		ARD_BUS_val = 4;
+     dd6:	84 e0       	ldi	r24, 0x04	; 4
+     dd8:	80 93 0c 01 	sts	0x010C, r24
+     ddc:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     dde:	49 99       	sbic	0x09, 1	; 9
+     de0:	78 c0       	rjmp	.+240    	; 0xed2 <_Z10listenFuncv+0x15c>
+     de2:	4a 9b       	sbis	0x09, 2	; 9
+     de4:	76 c0       	rjmp	.+236    	; 0xed2 <_Z10listenFuncv+0x15c>
+     de6:	4b 99       	sbic	0x09, 3	; 9
+     de8:	74 c0       	rjmp	.+232    	; 0xed2 <_Z10listenFuncv+0x15c>
+	{
+		//5
+		ARD_BUS_val = 5;
+     dea:	85 e0       	ldi	r24, 0x05	; 5
+     dec:	80 93 0c 01 	sts	0x010C, r24
+     df0:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     df2:	49 9b       	sbis	0x09, 1	; 9
+     df4:	71 c0       	rjmp	.+226    	; 0xed8 <_Z10listenFuncv+0x162>
+     df6:	4a 9b       	sbis	0x09, 2	; 9
+     df8:	6f c0       	rjmp	.+222    	; 0xed8 <_Z10listenFuncv+0x162>
+     dfa:	4b 99       	sbic	0x09, 3	; 9
+     dfc:	6d c0       	rjmp	.+218    	; 0xed8 <_Z10listenFuncv+0x162>
+	{
+		//6
+		ARD_BUS_val = 6;
+     dfe:	86 e0       	ldi	r24, 0x06	; 6
+     e00:	80 93 0c 01 	sts	0x010C, r24
+     e04:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     e06:	49 9b       	sbis	0x09, 1	; 9
+     e08:	69 c0       	rjmp	.+210    	; 0xedc <_Z10listenFuncv+0x166>
+     e0a:	4a 9b       	sbis	0x09, 2	; 9
+     e0c:	67 c0       	rjmp	.+206    	; 0xedc <_Z10listenFuncv+0x166>
+     e0e:	4b 99       	sbic	0x09, 3	; 9
+     e10:	65 c0       	rjmp	.+202    	; 0xedc <_Z10listenFuncv+0x166>
+	{
+		//7
+		ARD_BUS_val = 7;
+     e12:	87 e0       	ldi	r24, 0x07	; 7
+     e14:	80 93 0c 01 	sts	0x010C, r24
+     e18:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     e1a:	49 99       	sbic	0x09, 1	; 9
+     e1c:	62 c0       	rjmp	.+196    	; 0xee2 <_Z10listenFuncv+0x16c>
+     e1e:	4a 99       	sbic	0x09, 2	; 9
+     e20:	60 c0       	rjmp	.+192    	; 0xee2 <_Z10listenFuncv+0x16c>
+     e22:	4b 9b       	sbis	0x09, 3	; 9
+     e24:	5e c0       	rjmp	.+188    	; 0xee2 <_Z10listenFuncv+0x16c>
+	{
+		//8
+		ARD_BUS_val = 8;
+     e26:	88 e0       	ldi	r24, 0x08	; 8
+     e28:	80 93 0c 01 	sts	0x010C, r24
+     e2c:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     e2e:	49 99       	sbic	0x09, 1	; 9
+     e30:	5a c0       	rjmp	.+180    	; 0xee6 <_Z10listenFuncv+0x170>
+     e32:	4a 99       	sbic	0x09, 2	; 9
+     e34:	58 c0       	rjmp	.+176    	; 0xee6 <_Z10listenFuncv+0x170>
+     e36:	4b 9b       	sbis	0x09, 3	; 9
+     e38:	56 c0       	rjmp	.+172    	; 0xee6 <_Z10listenFuncv+0x170>
+	{
+		//9
+		ARD_BUS_val = 9;
+     e3a:	89 e0       	ldi	r24, 0x09	; 9
+     e3c:	80 93 0c 01 	sts	0x010C, r24
+     e40:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     e42:	49 9b       	sbis	0x09, 1	; 9
+     e44:	53 c0       	rjmp	.+166    	; 0xeec <_Z10listenFuncv+0x176>
+     e46:	4a 99       	sbic	0x09, 2	; 9
+     e48:	51 c0       	rjmp	.+162    	; 0xeec <_Z10listenFuncv+0x176>
+     e4a:	4b 9b       	sbis	0x09, 3	; 9
+     e4c:	4f c0       	rjmp	.+158    	; 0xeec <_Z10listenFuncv+0x176>
+	{
+		//A
+		ARD_BUS_val = 'a';
+     e4e:	81 e6       	ldi	r24, 0x61	; 97
+     e50:	80 93 0c 01 	sts	0x010C, r24
+     e54:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     e56:	49 9b       	sbis	0x09, 1	; 9
+     e58:	4b c0       	rjmp	.+150    	; 0xef0 <_Z10listenFuncv+0x17a>
+     e5a:	4a 99       	sbic	0x09, 2	; 9
+     e5c:	49 c0       	rjmp	.+146    	; 0xef0 <_Z10listenFuncv+0x17a>
+     e5e:	4b 9b       	sbis	0x09, 3	; 9
+     e60:	47 c0       	rjmp	.+142    	; 0xef0 <_Z10listenFuncv+0x17a>
+	{
+		//B
+		ARD_BUS_val = 'b';
+     e62:	82 e6       	ldi	r24, 0x62	; 98
+     e64:	80 93 0c 01 	sts	0x010C, r24
+     e68:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     e6a:	49 99       	sbic	0x09, 1	; 9
+     e6c:	44 c0       	rjmp	.+136    	; 0xef6 <_Z10listenFuncv+0x180>
+     e6e:	4a 9b       	sbis	0x09, 2	; 9
+     e70:	42 c0       	rjmp	.+132    	; 0xef6 <_Z10listenFuncv+0x180>
+     e72:	4b 9b       	sbis	0x09, 3	; 9
+     e74:	40 c0       	rjmp	.+128    	; 0xef6 <_Z10listenFuncv+0x180>
+	{
+		//C
+		ARD_BUS_val = 'c';
+     e76:	83 e6       	ldi	r24, 0x63	; 99
+     e78:	80 93 0c 01 	sts	0x010C, r24
+     e7c:	08 95       	ret
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     e7e:	49 99       	sbic	0x09, 1	; 9
+     e80:	3c c0       	rjmp	.+120    	; 0xefa <_Z10listenFuncv+0x184>
+     e82:	4a 9b       	sbis	0x09, 2	; 9
+     e84:	3a c0       	rjmp	.+116    	; 0xefa <_Z10listenFuncv+0x184>
+     e86:	4b 9b       	sbis	0x09, 3	; 9
+     e88:	38 c0       	rjmp	.+112    	; 0xefa <_Z10listenFuncv+0x184>
+	{
+		//D
+		ARD_BUS_val = 'd';
+     e8a:	84 e6       	ldi	r24, 0x64	; 100
+     e8c:	80 93 0c 01 	sts	0x010C, r24
+     e90:	08 95       	ret
+	}
+	
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     e92:	49 9b       	sbis	0x09, 1	; 9
+     e94:	35 c0       	rjmp	.+106    	; 0xf00 <_Z10listenFuncv+0x18a>
+     e96:	4a 9b       	sbis	0x09, 2	; 9
+     e98:	33 c0       	rjmp	.+102    	; 0xf00 <_Z10listenFuncv+0x18a>
+     e9a:	4b 9b       	sbis	0x09, 3	; 9
+     e9c:	31 c0       	rjmp	.+98     	; 0xf00 <_Z10listenFuncv+0x18a>
+	{
+		//E
+		ARD_BUS_val = 'e';
+     e9e:	85 e6       	ldi	r24, 0x65	; 101
+     ea0:	80 93 0c 01 	sts	0x010C, r24
+     ea4:	08 95       	ret
+	}
+	
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     ea6:	49 9b       	sbis	0x09, 1	; 9
+     ea8:	2d c0       	rjmp	.+90     	; 0xf04 <_Z10listenFuncv+0x18e>
+     eaa:	4a 9b       	sbis	0x09, 2	; 9
+     eac:	2b c0       	rjmp	.+86     	; 0xf04 <_Z10listenFuncv+0x18e>
+     eae:	4b 9b       	sbis	0x09, 3	; 9
+     eb0:	29 c0       	rjmp	.+82     	; 0xf04 <_Z10listenFuncv+0x18e>
+	{
+		//F
+		ARD_BUS_val = 'f';
+     eb2:	86 e6       	ldi	r24, 0x66	; 102
+     eb4:	80 93 0c 01 	sts	0x010C, r24
+     eb8:	08 95       	ret
+		//0
+		ARD_BUS_val = 0;
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     eba:	48 99       	sbic	0x09, 0	; 9
+     ebc:	68 cf       	rjmp	.-304    	; 0xd8e <_Z10listenFuncv+0x18>
+		//1
+		ARD_BUS_val = 1;
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     ebe:	89 b1       	in	r24, 0x09	; 9
+     ec0:	80 ff       	sbrs	r24, 0
+     ec2:	6f cf       	rjmp	.-290    	; 0xda2 <_Z10listenFuncv+0x2c>
+		//2
+		ARD_BUS_val = 2;
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_clear(PIND,3)))
+     ec4:	48 99       	sbic	0x09, 0	; 9
+     ec6:	77 cf       	rjmp	.-274    	; 0xdb6 <_Z10listenFuncv+0x40>
+		//3
+		ARD_BUS_val = 3;
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     ec8:	89 b1       	in	r24, 0x09	; 9
+     eca:	80 ff       	sbrs	r24, 0
+     ecc:	7e cf       	rjmp	.-260    	; 0xdca <_Z10listenFuncv+0x54>
+		//4
+		ARD_BUS_val = 4;
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     ece:	48 99       	sbic	0x09, 0	; 9
+     ed0:	86 cf       	rjmp	.-244    	; 0xdde <_Z10listenFuncv+0x68>
+		//5
+		ARD_BUS_val = 5;
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     ed2:	89 b1       	in	r24, 0x09	; 9
+     ed4:	80 ff       	sbrs	r24, 0
+     ed6:	8d cf       	rjmp	.-230    	; 0xdf2 <_Z10listenFuncv+0x7c>
+		//6
+		ARD_BUS_val = 6;
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_clear(PIND,3)))
+     ed8:	48 99       	sbic	0x09, 0	; 9
+     eda:	95 cf       	rjmp	.-214    	; 0xe06 <_Z10listenFuncv+0x90>
+		//7
+		ARD_BUS_val = 7;
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     edc:	89 b1       	in	r24, 0x09	; 9
+     ede:	80 ff       	sbrs	r24, 0
+     ee0:	9c cf       	rjmp	.-200    	; 0xe1a <_Z10listenFuncv+0xa4>
+		//8
+		ARD_BUS_val = 8;
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     ee2:	48 99       	sbic	0x09, 0	; 9
+     ee4:	a4 cf       	rjmp	.-184    	; 0xe2e <_Z10listenFuncv+0xb8>
+		//9
+		ARD_BUS_val = 9;
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     ee6:	89 b1       	in	r24, 0x09	; 9
+     ee8:	80 ff       	sbrs	r24, 0
+     eea:	ab cf       	rjmp	.-170    	; 0xe42 <_Z10listenFuncv+0xcc>
+		//A
+		ARD_BUS_val = 'a';
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_clear(PIND,2)) && (bit_is_set(PIND,3)))
+     eec:	48 99       	sbic	0x09, 0	; 9
+     eee:	b3 cf       	rjmp	.-154    	; 0xe56 <_Z10listenFuncv+0xe0>
+		//B
+		ARD_BUS_val = 'b';
+	}
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     ef0:	89 b1       	in	r24, 0x09	; 9
+     ef2:	80 ff       	sbrs	r24, 0
+     ef4:	ba cf       	rjmp	.-140    	; 0xe6a <_Z10listenFuncv+0xf4>
+		//C
+		ARD_BUS_val = 'c';
+	}
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_clear(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     ef6:	48 99       	sbic	0x09, 0	; 9
+     ef8:	c2 cf       	rjmp	.-124    	; 0xe7e <_Z10listenFuncv+0x108>
+		ARD_BUS_val = 'd';
+	}
+	
+	
+	else
+	if ((bit_is_clear(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     efa:	89 b1       	in	r24, 0x09	; 9
+     efc:	80 ff       	sbrs	r24, 0
+     efe:	c9 cf       	rjmp	.-110    	; 0xe92 <_Z10listenFuncv+0x11c>
+		ARD_BUS_val = 'e';
+	}
+	
+	
+	else
+	if ((bit_is_set(PIND,0)) && (bit_is_set(PIND,1)) && (bit_is_set(PIND,2)) && (bit_is_set(PIND,3)))
+     f00:	48 99       	sbic	0x09, 0	; 9
+     f02:	d1 cf       	rjmp	.-94     	; 0xea6 <_Z10listenFuncv+0x130>
+     f04:	08 95       	ret
+
+00000f06 <_Z28initialise_common_parametersv>:
+}
+//rectification needed
+
+void initialise_common_parameters(void)
+{
+	DDRD &=~ (1<<PIND4);	//set clock pin to input
+     f06:	54 98       	cbi	0x0a, 4	; 10
+	PORTD |= (1<<PIND4);	//pull up clock pin
+     f08:	5c 9a       	sbi	0x0b, 4	; 11
+	
+	DDRD |= (1<<PIND5);		//set clock generator pin to output
+     f0a:	55 9a       	sbi	0x0a, 5	; 10
+	PORTD &=~ (1<<PIND5);	//sink clock generator pin
+     f0c:	5d 98       	cbi	0x0b, 5	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     f0e:	85 e3       	ldi	r24, 0x35	; 53
+     f10:	8a 95       	dec	r24
+     f12:	f1 f7       	brne	.-4      	; 0xf10 <_Z28initialise_common_parametersv+0xa>
+     f14:	00 00       	nop
+	_delay_us(10);			//little delay to avoid overlap
+}
+     f16:	08 95       	ret
+
+00000f18 <_Z25disable_common_parametersv>:
+
+void disable_common_parameters(void)
+{
+	DDRD &=~ (1<<PIND5);	//disable_clock by making clock generator pin input
+     f18:	55 98       	cbi	0x0a, 5	; 10
+	PORTD |= (1<<PIND5);	//see if there is anything u can do here as well !!
+     f1a:	5d 9a       	sbi	0x0b, 5	; 11
+     f1c:	85 e3       	ldi	r24, 0x35	; 53
+     f1e:	8a 95       	dec	r24
+     f20:	f1 f7       	brne	.-4      	; 0xf1e <_Z25disable_common_parametersv+0x6>
+     f22:	00 00       	nop
+	_delay_us(10);			//little delay to avoid overlap
+}
+     f24:	08 95       	ret
+
+00000f26 <_Z31initialise_listening_parametersv>:
+
+void initialise_listening_parameters(void)
+{
+	DDRD &=~ (1<<PIND0); PORTD |= (1<<PIND0);	//set D0-D3 input & D0-D3 enable pull-up
+     f26:	50 98       	cbi	0x0a, 0	; 10
+     f28:	58 9a       	sbi	0x0b, 0	; 11
+	DDRD &=~ (1<<PIND1); PORTD |= (1<<PIND1);	//set D0-D3 input & D0-D3 enable pull-up
+     f2a:	51 98       	cbi	0x0a, 1	; 10
+     f2c:	59 9a       	sbi	0x0b, 1	; 11
+	DDRD &=~ (1<<PIND2); PORTD |= (1<<PIND2);	//set D0-D3 input & D0-D3 enable pull-up
+     f2e:	52 98       	cbi	0x0a, 2	; 10
+     f30:	5a 9a       	sbi	0x0b, 2	; 11
+	DDRD &=~ (1<<PIND3); PORTD |= (1<<PIND3);	//set D0-D3 input & D0-D3 enable pull-up
+     f32:	53 98       	cbi	0x0a, 3	; 10
+     f34:	5b 9a       	sbi	0x0b, 3	; 11
+	
+}
+     f36:	08 95       	ret
+
+00000f38 <_Z30initialise_speaking_parametersv>:
+
+void initialise_speaking_parameters(void)
+{
+	
+	DDRD |= (1<<PIND0); PORTD &=~ (1<<PIND0);	//set D0-D3 output & D0-D3 pull down
+     f38:	50 9a       	sbi	0x0a, 0	; 10
+     f3a:	58 98       	cbi	0x0b, 0	; 11
+	DDRD |= (1<<PIND1); PORTD &=~ (1<<PIND1);	//set D0-D3 output & D0-D3 pull down
+     f3c:	51 9a       	sbi	0x0a, 1	; 10
+     f3e:	59 98       	cbi	0x0b, 1	; 11
+	DDRD |= (1<<PIND2); PORTD &=~ (1<<PIND2);	//set D0-D3 output & D0-D3 pull down
+     f40:	52 9a       	sbi	0x0a, 2	; 10
+     f42:	5a 98       	cbi	0x0b, 2	; 11
+	DDRD |= (1<<PIND3); PORTD &=~ (1<<PIND3);	//set D0-D3 output & D0-D3 pull down
+     f44:	53 9a       	sbi	0x0a, 3	; 10
+     f46:	5b 98       	cbi	0x0b, 3	; 11
+}
+     f48:	08 95       	ret
+
+00000f4a <_Z19send_OTP_to_arduinov>:
+
+void send_OTP_to_arduino(void)
+{
+     f4a:	cf 93       	push	r28
+     f4c:	df 93       	push	r29
+	initialise_common_parameters();
+     f4e:	0e 94 83 07 	call	0xf06	; 0xf06 <_Z28initialise_common_parametersv>
+	//D0-D3 set to output
+	initialise_speaking_parameters();
+     f52:	0e 94 9c 07 	call	0xf38	; 0xf38 <_Z30initialise_speaking_parametersv>
+	//_delay_ms(100);
+	//pull down pin D6 arduino will be waiting
+	PORTD &=~ (1<<PIND6);	
+     f56:	5e 98       	cbi	0x0b, 6	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     f58:	8f e9       	ldi	r24, 0x9F	; 159
+     f5a:	9f e0       	ldi	r25, 0x0F	; 15
+     f5c:	01 97       	sbiw	r24, 0x01	; 1
+     f5e:	f1 f7       	brne	.-4      	; 0xf5c <_Z19send_OTP_to_arduinov+0x12>
+     f60:	00 c0       	rjmp	.+0      	; 0xf62 <_Z19send_OTP_to_arduinov+0x18>
+     f62:	00 00       	nop
+	_delay_ms(1);
+	//_delay_ms(1000);
+	//PORTC |= (1<<PINC5);
+	PORTD |= (1<<PIND6);
+     f64:	5e 9a       	sbi	0x0b, 6	; 11
+						if (bit_is_clear(PIND,4))
+						{
+							//load and latch
+							if (b == false)
+							{
+								b = true;							
+     f66:	d1 e0       	ldi	r29, 0x01	; 1
+	//PORTC |= (1<<PINC5);
+	PORTD |= (1<<PIND6);
+	
+	while(11)
+	{
+		if (bit_is_clear(PIND,7))//pulled low
+     f68:	4f 99       	sbic	0x09, 7	; 9
+     f6a:	79 c0       	rjmp	.+242    	; 0x105e <_Z19send_OTP_to_arduinov+0x114>
+     f6c:	8f ef       	ldi	r24, 0xFF	; 255
+     f6e:	91 ee       	ldi	r25, 0xE1	; 225
+     f70:	a4 e0       	ldi	r26, 0x04	; 4
+     f72:	81 50       	subi	r24, 0x01	; 1
+     f74:	90 40       	sbci	r25, 0x00	; 0
+     f76:	a0 40       	sbci	r26, 0x00	; 0
+     f78:	e1 f7       	brne	.-8      	; 0xf72 <_Z19send_OTP_to_arduinov+0x28>
+     f7a:	00 c0       	rjmp	.+0      	; 0xf7c <_Z19send_OTP_to_arduinov+0x32>
+     f7c:	00 00       	nop
+		{			
+			//initiate clock
+			_delay_ms(100);
+			initialise_clock();
+     f7e:	0e 94 cc 05 	call	0xb98	; 0xb98 <_Z16initialise_clockv>
+						if (bit_is_clear(PIND,4))
+						{
+							//load and latch
+							if (b == false)
+							{
+								b = true;							
+     f82:	cd 2f       	mov	r28, r29
+			initialise_clock();
+			//first pulse will indicate ready
+			
+			while(2)
+			{
+				if (talkFunc_exitParameter == true)
+     f84:	90 91 17 01 	lds	r25, 0x0117
+     f88:	99 23       	and	r25, r25
+     f8a:	b1 f0       	breq	.+44     	; 0xfb8 <_Z19send_OTP_to_arduinov+0x6e>
+     f8c:	8f ef       	ldi	r24, 0xFF	; 255
+     f8e:	99 ef       	ldi	r25, 0xF9	; 249
+     f90:	a0 e0       	ldi	r26, 0x00	; 0
+     f92:	81 50       	subi	r24, 0x01	; 1
+     f94:	90 40       	sbci	r25, 0x00	; 0
+     f96:	a0 40       	sbci	r26, 0x00	; 0
+     f98:	e1 f7       	brne	.-8      	; 0xf92 <_Z19send_OTP_to_arduinov+0x48>
+     f9a:	00 c0       	rjmp	.+0      	; 0xf9c <_Z19send_OTP_to_arduinov+0x52>
+     f9c:	00 00       	nop
+				{
+					//stop clock
+					_delay_ms(20);//CHANGE TO OPTIMISE
+					stop_clock();
+     f9e:	0e 94 d6 05 	call	0xbac	; 0xbac <_Z10stop_clockv>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     fa2:	95 e0       	ldi	r25, 0x05	; 5
+     fa4:	9a 95       	dec	r25
+     fa6:	f1 f7       	brne	.-4      	; 0xfa4 <_Z19send_OTP_to_arduinov+0x5a>
+     fa8:	00 00       	nop
+					_delay_us(1);
+					//PULL down D0-D3
+					PORTD &=~ (1<<PIND0);
+     faa:	58 98       	cbi	0x0b, 0	; 11
+					PORTD &=~ (1<<PIND1);
+     fac:	59 98       	cbi	0x0b, 1	; 11
+					PORTD &=~ (1<<PIND2);
+     fae:	5a 98       	cbi	0x0b, 2	; 11
+					PORTD &=~ (1<<PIND3);
+     fb0:	5b 98       	cbi	0x0b, 3	; 11
+					
+					PORTC &=~ (1<<PINC2);//lights out
+     fb2:	42 98       	cbi	0x08, 2	; 8
+					PORTC &=~ (1<<PINC5);					
+     fb4:	45 98       	cbi	0x08, 5	; 8
+     fb6:	d8 cf       	rjmp	.-80     	; 0xf68 <_Z19send_OTP_to_arduinov+0x1e>
+					//pull up pin D6
+					
+					break;
+				}
+				else
+				if (clock_init_patameter == true)
+     fb8:	80 91 10 01 	lds	r24, 0x0110
+     fbc:	88 23       	and	r24, r24
+     fbe:	21 f3       	breq	.-56     	; 0xf88 <_Z19send_OTP_to_arduinov+0x3e>
+     fc0:	04 c0       	rjmp	.+8      	; 0xfca <_Z19send_OTP_to_arduinov+0x80>
+				{
+					while (3)
+					{
+						if (talkFunc_exitParameter == true)
+     fc2:	80 91 17 01 	lds	r24, 0x0117
+     fc6:	88 23       	and	r24, r24
+     fc8:	e9 f6       	brne	.-70     	; 0xf84 <_Z19send_OTP_to_arduinov+0x3a>
+						{
+							break;
+						}
+						else
+						if (bit_is_clear(PIND,4))
+     fca:	4c 99       	sbic	0x09, 4	; 9
+     fcc:	3e c0       	rjmp	.+124    	; 0x104a <_Z19send_OTP_to_arduinov+0x100>
+						{
+							//load and latch
+							if (b == false)
+     fce:	80 91 18 01 	lds	r24, 0x0118
+     fd2:	88 23       	and	r24, r24
+     fd4:	b1 f7       	brne	.-20     	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+							{
+								b = true;							
+     fd6:	c0 93 18 01 	sts	0x0118, r28
+								otp_number++;
+     fda:	80 91 0d 01 	lds	r24, 0x010D
+     fde:	90 91 0e 01 	lds	r25, 0x010E
+     fe2:	01 96       	adiw	r24, 0x01	; 1
+     fe4:	90 93 0e 01 	sts	0x010E, r25
+     fe8:	80 93 0d 01 	sts	0x010D, r24
+								
+								switch (otp_number)
+     fec:	83 30       	cpi	r24, 0x03	; 3
+     fee:	91 05       	cpc	r25, r1
+     ff0:	e9 f0       	breq	.+58     	; 0x102c <_Z19send_OTP_to_arduinov+0xe2>
+     ff2:	84 30       	cpi	r24, 0x04	; 4
+     ff4:	91 05       	cpc	r25, r1
+     ff6:	38 f4       	brcc	.+14     	; 0x1006 <_Z19send_OTP_to_arduinov+0xbc>
+     ff8:	81 30       	cpi	r24, 0x01	; 1
+     ffa:	91 05       	cpc	r25, r1
+     ffc:	59 f0       	breq	.+22     	; 0x1014 <_Z19send_OTP_to_arduinov+0xca>
+     ffe:	82 30       	cpi	r24, 0x02	; 2
+    1000:	91 05       	cpc	r25, r1
+    1002:	f9 f6       	brne	.-66     	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+    1004:	0d c0       	rjmp	.+26     	; 0x1020 <_Z19send_OTP_to_arduinov+0xd6>
+    1006:	84 30       	cpi	r24, 0x04	; 4
+    1008:	91 05       	cpc	r25, r1
+    100a:	b1 f0       	breq	.+44     	; 0x1038 <_Z19send_OTP_to_arduinov+0xee>
+    100c:	85 30       	cpi	r24, 0x05	; 5
+    100e:	91 05       	cpc	r25, r1
+    1010:	c1 f6       	brne	.-80     	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+    1012:	18 c0       	rjmp	.+48     	; 0x1044 <_Z19send_OTP_to_arduinov+0xfa>
+								{									
+									case 1:
+									talkFunc(OTP[1]);
+    1014:	a3 e0       	ldi	r26, 0x03	; 3
+    1016:	b1 e0       	ldi	r27, 0x01	; 1
+    1018:	8c 91       	ld	r24, X
+    101a:	0e 94 3e 06 	call	0xc7c	; 0xc7c <_Z8talkFunch>
+									break;
+    101e:	d1 cf       	rjmp	.-94     	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+									
+									case 2:
+									talkFunc(OTP[2]);
+    1020:	e4 e0       	ldi	r30, 0x04	; 4
+    1022:	f1 e0       	ldi	r31, 0x01	; 1
+    1024:	80 81       	ld	r24, Z
+    1026:	0e 94 3e 06 	call	0xc7c	; 0xc7c <_Z8talkFunch>
+									break;
+    102a:	cb cf       	rjmp	.-106    	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+									
+									case 3:
+									talkFunc(OTP[3]);
+    102c:	a5 e0       	ldi	r26, 0x05	; 5
+    102e:	b1 e0       	ldi	r27, 0x01	; 1
+    1030:	8c 91       	ld	r24, X
+    1032:	0e 94 3e 06 	call	0xc7c	; 0xc7c <_Z8talkFunch>
+									break;
+    1036:	c5 cf       	rjmp	.-118    	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+									
+									case 4:
+									talkFunc(OTP[4]);
+    1038:	e6 e0       	ldi	r30, 0x06	; 6
+    103a:	f1 e0       	ldi	r31, 0x01	; 1
+    103c:	80 81       	ld	r24, Z
+    103e:	0e 94 3e 06 	call	0xc7c	; 0xc7c <_Z8talkFunch>
+									break;
+    1042:	bf cf       	rjmp	.-130    	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+									
+									case 5:
+									//talkFunc('F');
+									talkFunc_exitParameter = true;
+    1044:	c0 93 17 01 	sts	0x0117, r28
+    1048:	9d cf       	rjmp	.-198    	; 0xf84 <_Z19send_OTP_to_arduinov+0x3a>
+									break;								
+								}								
+							}
+						}
+						else
+						if (bit_is_set(PIND,4))
+    104a:	4c 9b       	sbis	0x09, 4	; 9
+    104c:	ba cf       	rjmp	.-140    	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+						{
+							if (b == true)
+    104e:	80 91 18 01 	lds	r24, 0x0118
+    1052:	88 23       	and	r24, r24
+    1054:	09 f4       	brne	.+2      	; 0x1058 <_Z19send_OTP_to_arduinov+0x10e>
+    1056:	b5 cf       	rjmp	.-150    	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+							{
+								b = false;
+    1058:	10 92 18 01 	sts	0x0118, r1
+    105c:	b2 cf       	rjmp	.-156    	; 0xfc2 <_Z19send_OTP_to_arduinov+0x78>
+				}
+			}
+		}
+		
+		else
+		if (bit_is_set(PIND,7))// pulled high
+    105e:	4f 9b       	sbis	0x09, 7	; 9
+    1060:	83 cf       	rjmp	.-250    	; 0xf68 <_Z19send_OTP_to_arduinov+0x1e>
+		{
+			if (talkFunc_exitParameter == true)
+    1062:	80 91 17 01 	lds	r24, 0x0117
+    1066:	88 23       	and	r24, r24
+    1068:	09 f4       	brne	.+2      	; 0x106c <_Z19send_OTP_to_arduinov+0x122>
+    106a:	7e cf       	rjmp	.-260    	; 0xf68 <_Z19send_OTP_to_arduinov+0x1e>
+		}
+	}
+	
+	
+	//send all 4 otps
+}
+    106c:	df 91       	pop	r29
+    106e:	cf 91       	pop	r28
+    1070:	08 95       	ret
+
+00001072 <main>:
+
+unsigned char OTP[5];				
+
+int main(void)
+{
+	DDRB |= (1<<PINB0) | (1<<PINB1) | (1<<PINB6) | (1<<PINB7);
+    1072:	84 b1       	in	r24, 0x04	; 4
+    1074:	83 6c       	ori	r24, 0xC3	; 195
+    1076:	84 b9       	out	0x04, r24	; 4
+// 	DataDir_MrLCDsControl |= (1<<LightSwitch) | (1<<ReadWrite);
+// 	DataDir_MrLCDsAUXILLARYControl |= (1<<BiPolarMood);
+	
+	PORTB &=~ (1<<PINB6);
+    1078:	2e 98       	cbi	0x05, 6	; 5
+	PORTB &=~ (1<<PINB7);
+    107a:	2f 98       	cbi	0x05, 7	; 5
+	
+	DDRC |=  (1<<PINC2) |(1<<PINC3) | (1<<PINC4) | (1<<PINC5);
+    107c:	87 b1       	in	r24, 0x07	; 7
+    107e:	8c 63       	ori	r24, 0x3C	; 60
+    1080:	87 b9       	out	0x07, r24	; 7
+	DDRC &=~ (1<<PINC0);
+    1082:	38 98       	cbi	0x07, 0	; 7
+	DDRC &=~ (1<<PINC1);
+    1084:	39 98       	cbi	0x07, 1	; 7
+			
+	PORTC |= (1<<PINC0) | (1<<PINC1) | (1<<PINC3) | (1<<PINC4);	
+    1086:	88 b1       	in	r24, 0x08	; 8
+    1088:	8b 61       	ori	r24, 0x1B	; 27
+    108a:	88 b9       	out	0x08, r24	; 8
+	
+	DDRD  |= (1<<PIND6);	//set D6 as output
+    108c:	56 9a       	sbi	0x0a, 6	; 10
+	PORTD |= (1<<PIND6);	//pull up D6
+    108e:	5e 9a       	sbi	0x0b, 6	; 11
+		
+	DDRD &=~ (1<<PIND7);	//set D7 as input
+    1090:	57 98       	cbi	0x0a, 7	; 10
+	PORTD |= (1<<PIND7);	//pull up D7
+    1092:	5f 9a       	sbi	0x0b, 7	; 11
+	
+	sei();
+    1094:	78 94       	sei
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1096:	8f e1       	ldi	r24, 0x1F	; 31
+    1098:	9e e4       	ldi	r25, 0x4E	; 78
+    109a:	01 97       	sbiw	r24, 0x01	; 1
+    109c:	f1 f7       	brne	.-4      	; 0x109a <main+0x28>
+    109e:	00 c0       	rjmp	.+0      	; 0x10a0 <main+0x2e>
+    10a0:	00 00       	nop
+	
+	_delay_ms(5);
+	spi_init_master();
+    10a2:	0e 94 9e 00 	call	0x13c	; 0x13c <_Z15spi_init_masterv>
+    10a6:	af e1       	ldi	r26, 0x1F	; 31
+    10a8:	be e4       	ldi	r27, 0x4E	; 78
+    10aa:	11 97       	sbiw	r26, 0x01	; 1
+    10ac:	f1 f7       	brne	.-4      	; 0x10aa <main+0x38>
+    10ae:	00 c0       	rjmp	.+0      	; 0x10b0 <main+0x3e>
+    10b0:	00 00       	nop
+// 		_delay_ms(2);
+// 		Send_A_String("CHECK");
+// 		_delay_ms(2);
+
+
+	masterDATA = 'q';
+    10b2:	81 e7       	ldi	r24, 0x71	; 113
+    10b4:	80 93 0b 01 	sts	0x010B, r24
+		if (IO_receivedDATA == 255)
+		{
+			//Send_A_String("255");
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+			OTP[4] = SPDR;
+    10b8:	06 e0       	ldi	r16, 0x06	; 6
+    10ba:	11 e0       	ldi	r17, 0x01	; 1
+
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+			OTP[3] = SPDR;
+    10bc:	78 01       	movw	r14, r16
+    10be:	08 94       	sec
+    10c0:	e1 08       	sbc	r14, r1
+    10c2:	f1 08       	sbc	r15, r1
+
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+			OTP[2] = SPDR;
+    10c4:	0f 2e       	mov	r0, r31
+    10c6:	fe ef       	ldi	r31, 0xFE	; 254
+    10c8:	cf 2e       	mov	r12, r31
+    10ca:	ff ef       	ldi	r31, 0xFF	; 255
+    10cc:	df 2e       	mov	r13, r31
+    10ce:	f0 2d       	mov	r31, r0
+    10d0:	c0 0e       	add	r12, r16
+    10d2:	d1 1e       	adc	r13, r17
+			
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+			OTP[1] = SPDR;
+    10d4:	0f 2e       	mov	r0, r31
+    10d6:	fd ef       	ldi	r31, 0xFD	; 253
+    10d8:	af 2e       	mov	r10, r31
+    10da:	ff ef       	ldi	r31, 0xFF	; 255
+    10dc:	bf 2e       	mov	r11, r31
+    10de:	f0 2d       	mov	r31, r0
+    10e0:	a0 0e       	add	r10, r16
+    10e2:	b1 1e       	adc	r11, r17
+			_delay_ms(10);
+			
+			reset_Everything();
+			//_delay_ms(1200);
+			//trig2
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    10e4:	c0 e4       	ldi	r28, 0x40	; 64
+    10e6:	8f ef       	ldi	r24, 0xFF	; 255
+    10e8:	91 ee       	ldi	r25, 0xE1	; 225
+    10ea:	a4 e0       	ldi	r26, 0x04	; 4
+    10ec:	81 50       	subi	r24, 0x01	; 1
+    10ee:	90 40       	sbci	r25, 0x00	; 0
+    10f0:	a0 40       	sbci	r26, 0x00	; 0
+    10f2:	e1 f7       	brne	.-8      	; 0x10ec <main+0x7a>
+    10f4:	00 c0       	rjmp	.+0      	; 0x10f6 <main+0x84>
+    10f6:	00 00       	nop
+		
+	while (6)
+	{
+		_delay_ms(100);
+		
+		spi_tranceiver(IO_control,masterDATA);
+    10f8:	83 e0       	ldi	r24, 0x03	; 3
+    10fa:	90 e0       	ldi	r25, 0x00	; 0
+    10fc:	60 91 0b 01 	lds	r22, 0x010B
+    1100:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+		IO_receivedDATA = SPDR;
+    1104:	8e b5       	in	r24, 0x2e	; 46
+    1106:	80 93 08 01 	sts	0x0108, r24
+		
+		//Send_A_Character( IO_receivedDATA);
+		
+		if (IO_receivedDATA == 12)
+    110a:	8c 30       	cpi	r24, 0x0C	; 12
+    110c:	29 f4       	brne	.+10     	; 0x1118 <main+0xa6>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    110e:	95 e0       	ldi	r25, 0x05	; 5
+    1110:	9a 95       	dec	r25
+    1112:	f1 f7       	brne	.-4      	; 0x1110 <main+0x9e>
+    1114:	00 00       	nop
+    1116:	e7 cf       	rjmp	.-50     	; 0x10e6 <main+0x74>
+		{
+			_delay_us(1);
+		}
+		
+		else
+		if (IO_receivedDATA == 'P')
+    1118:	80 35       	cpi	r24, 0x50	; 80
+    111a:	09 f0       	breq	.+2      	; 0x111e <main+0xac>
+    111c:	82 c0       	rjmp	.+260    	; 0x1222 <main+0x1b0>
+		{
+			PORTC |= (1<<PINC2);
+    111e:	42 9a       	sbi	0x08, 2	; 8
+			PORTC |= (1<<PINC5);
+    1120:	45 9a       	sbi	0x08, 5	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1122:	af e3       	ldi	r26, 0x3F	; 63
+    1124:	bc e9       	ldi	r27, 0x9C	; 156
+    1126:	11 97       	sbiw	r26, 0x01	; 1
+    1128:	f1 f7       	brne	.-4      	; 0x1126 <main+0xb4>
+    112a:	00 c0       	rjmp	.+0      	; 0x112c <main+0xba>
+    112c:	00 00       	nop
+			
+			_delay_ms(10);
+			spi_tranceiver(actuator_control,255);
+    112e:	81 e0       	ldi	r24, 0x01	; 1
+    1130:	90 e0       	ldi	r25, 0x00	; 0
+    1132:	6f ef       	ldi	r22, 0xFF	; 255
+    1134:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    1138:	ef e3       	ldi	r30, 0x3F	; 63
+    113a:	fc e9       	ldi	r31, 0x9C	; 156
+    113c:	31 97       	sbiw	r30, 0x01	; 1
+    113e:	f1 f7       	brne	.-4      	; 0x113c <main+0xca>
+    1140:	00 c0       	rjmp	.+0      	; 0x1142 <main+0xd0>
+    1142:	00 00       	nop
+			_delay_ms(10);
+			spi_tranceiver(actuator_control,'Y');
+    1144:	81 e0       	ldi	r24, 0x01	; 1
+    1146:	90 e0       	ldi	r25, 0x00	; 0
+    1148:	69 e5       	ldi	r22, 0x59	; 89
+    114a:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    114e:	8f e3       	ldi	r24, 0x3F	; 63
+    1150:	9c e9       	ldi	r25, 0x9C	; 156
+    1152:	01 97       	sbiw	r24, 0x01	; 1
+    1154:	f1 f7       	brne	.-4      	; 0x1152 <main+0xe0>
+    1156:	00 c0       	rjmp	.+0      	; 0x1158 <main+0xe6>
+    1158:	00 00       	nop
+			_delay_ms(10);
+			spi_tranceiver(IO_control,'o');
+    115a:	83 e0       	ldi	r24, 0x03	; 3
+    115c:	90 e0       	ldi	r25, 0x00	; 0
+    115e:	6f e6       	ldi	r22, 0x6F	; 111
+    1160:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    1164:	8f ef       	ldi	r24, 0xFF	; 255
+    1166:	99 e6       	ldi	r25, 0x69	; 105
+    1168:	a8 e1       	ldi	r26, 0x18	; 24
+    116a:	81 50       	subi	r24, 0x01	; 1
+    116c:	90 40       	sbci	r25, 0x00	; 0
+    116e:	a0 40       	sbci	r26, 0x00	; 0
+    1170:	e1 f7       	brne	.-8      	; 0x116a <main+0xf8>
+    1172:	00 c0       	rjmp	.+0      	; 0x1174 <main+0x102>
+    1174:	00 00       	nop
+			_delay_ms(500);//change or introduce loop
+			spi_tranceiver(IO_control,'o');
+    1176:	83 e0       	ldi	r24, 0x03	; 3
+    1178:	90 e0       	ldi	r25, 0x00	; 0
+    117a:	6f e6       	ldi	r22, 0x6F	; 111
+    117c:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    1180:	af e3       	ldi	r26, 0x3F	; 63
+    1182:	bc e9       	ldi	r27, 0x9C	; 156
+    1184:	11 97       	sbiw	r26, 0x01	; 1
+    1186:	f1 f7       	brne	.-4      	; 0x1184 <main+0x112>
+    1188:	00 c0       	rjmp	.+0      	; 0x118a <main+0x118>
+    118a:	00 00       	nop
+			_delay_ms(10);
+			
+			reset_Everything();
+    118c:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z16reset_Everythingv>
+			//_delay_ms(1200);
+			//trig2
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    1190:	8b b1       	in	r24, 0x0b	; 11
+    1192:	8c 27       	eor	r24, r28
+    1194:	8b b9       	out	0x0b, r24	; 11
+    1196:	8f ef       	ldi	r24, 0xFF	; 255
+    1198:	99 ef       	ldi	r25, 0xF9	; 249
+    119a:	a0 e0       	ldi	r26, 0x00	; 0
+    119c:	81 50       	subi	r24, 0x01	; 1
+    119e:	90 40       	sbci	r25, 0x00	; 0
+    11a0:	a0 40       	sbci	r26, 0x00	; 0
+    11a2:	e1 f7       	brne	.-8      	; 0x119c <main+0x12a>
+    11a4:	00 c0       	rjmp	.+0      	; 0x11a6 <main+0x134>
+    11a6:	00 00       	nop
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    11a8:	8b b1       	in	r24, 0x0b	; 11
+    11aa:	8c 27       	eor	r24, r28
+    11ac:	8b b9       	out	0x0b, r24	; 11
+    11ae:	8f ef       	ldi	r24, 0xFF	; 255
+    11b0:	99 ef       	ldi	r25, 0xF9	; 249
+    11b2:	a0 e0       	ldi	r26, 0x00	; 0
+    11b4:	81 50       	subi	r24, 0x01	; 1
+    11b6:	90 40       	sbci	r25, 0x00	; 0
+    11b8:	a0 40       	sbci	r26, 0x00	; 0
+    11ba:	e1 f7       	brne	.-8      	; 0x11b4 <main+0x142>
+    11bc:	00 c0       	rjmp	.+0      	; 0x11be <main+0x14c>
+    11be:	00 00       	nop
+			//trig3
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    11c0:	8b b1       	in	r24, 0x0b	; 11
+    11c2:	8c 27       	eor	r24, r28
+    11c4:	8b b9       	out	0x0b, r24	; 11
+    11c6:	8f ef       	ldi	r24, 0xFF	; 255
+    11c8:	99 ef       	ldi	r25, 0xF9	; 249
+    11ca:	a0 e0       	ldi	r26, 0x00	; 0
+    11cc:	81 50       	subi	r24, 0x01	; 1
+    11ce:	90 40       	sbci	r25, 0x00	; 0
+    11d0:	a0 40       	sbci	r26, 0x00	; 0
+    11d2:	e1 f7       	brne	.-8      	; 0x11cc <main+0x15a>
+    11d4:	00 c0       	rjmp	.+0      	; 0x11d6 <main+0x164>
+    11d6:	00 00       	nop
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    11d8:	8b b1       	in	r24, 0x0b	; 11
+    11da:	8c 27       	eor	r24, r28
+    11dc:	8b b9       	out	0x0b, r24	; 11
+    11de:	8f ef       	ldi	r24, 0xFF	; 255
+    11e0:	99 ef       	ldi	r25, 0xF9	; 249
+    11e2:	a0 e0       	ldi	r26, 0x00	; 0
+    11e4:	81 50       	subi	r24, 0x01	; 1
+    11e6:	90 40       	sbci	r25, 0x00	; 0
+    11e8:	a0 40       	sbci	r26, 0x00	; 0
+    11ea:	e1 f7       	brne	.-8      	; 0x11e4 <main+0x172>
+    11ec:	00 c0       	rjmp	.+0      	; 0x11ee <main+0x17c>
+    11ee:	00 00       	nop
+			//trig4
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    11f0:	8b b1       	in	r24, 0x0b	; 11
+    11f2:	8c 27       	eor	r24, r28
+    11f4:	8b b9       	out	0x0b, r24	; 11
+    11f6:	8f ef       	ldi	r24, 0xFF	; 255
+    11f8:	99 ef       	ldi	r25, 0xF9	; 249
+    11fa:	a0 e0       	ldi	r26, 0x00	; 0
+    11fc:	81 50       	subi	r24, 0x01	; 1
+    11fe:	90 40       	sbci	r25, 0x00	; 0
+    1200:	a0 40       	sbci	r26, 0x00	; 0
+    1202:	e1 f7       	brne	.-8      	; 0x11fc <main+0x18a>
+    1204:	00 c0       	rjmp	.+0      	; 0x1206 <main+0x194>
+    1206:	00 00       	nop
+			PORTD ^= (1<<PIND6);_delay_ms(20);
+    1208:	8b b1       	in	r24, 0x0b	; 11
+    120a:	8c 27       	eor	r24, r28
+    120c:	8b b9       	out	0x0b, r24	; 11
+    120e:	8f ef       	ldi	r24, 0xFF	; 255
+    1210:	99 ef       	ldi	r25, 0xF9	; 249
+    1212:	a0 e0       	ldi	r26, 0x00	; 0
+    1214:	81 50       	subi	r24, 0x01	; 1
+    1216:	90 40       	sbci	r25, 0x00	; 0
+    1218:	a0 40       	sbci	r26, 0x00	; 0
+    121a:	e1 f7       	brne	.-8      	; 0x1214 <main+0x1a2>
+    121c:	00 c0       	rjmp	.+0      	; 0x121e <main+0x1ac>
+    121e:	00 00       	nop
+    1220:	62 cf       	rjmp	.-316    	; 0x10e6 <main+0x74>
+// 			PORTD ^= (1<<PIND6);_delay_ms(20);
+			
+		}
+
+		else
+		if (IO_receivedDATA == 255)
+    1222:	8f 3f       	cpi	r24, 0xFF	; 255
+    1224:	09 f0       	breq	.+2      	; 0x1228 <main+0x1b6>
+    1226:	5f cf       	rjmp	.-322    	; 0x10e6 <main+0x74>
+    1228:	8f ef       	ldi	r24, 0xFF	; 255
+    122a:	91 ee       	ldi	r25, 0xE1	; 225
+    122c:	a4 e0       	ldi	r26, 0x04	; 4
+    122e:	81 50       	subi	r24, 0x01	; 1
+    1230:	90 40       	sbci	r25, 0x00	; 0
+    1232:	a0 40       	sbci	r26, 0x00	; 0
+    1234:	e1 f7       	brne	.-8      	; 0x122e <main+0x1bc>
+    1236:	00 c0       	rjmp	.+0      	; 0x1238 <main+0x1c6>
+    1238:	00 00       	nop
+		{
+			//Send_A_String("255");
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+    123a:	83 e0       	ldi	r24, 0x03	; 3
+    123c:	90 e0       	ldi	r25, 0x00	; 0
+    123e:	60 e0       	ldi	r22, 0x00	; 0
+    1240:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			OTP[4] = SPDR;
+    1244:	8e b5       	in	r24, 0x2e	; 46
+    1246:	d8 01       	movw	r26, r16
+    1248:	8c 93       	st	X, r24
+    124a:	8f ef       	ldi	r24, 0xFF	; 255
+    124c:	91 ee       	ldi	r25, 0xE1	; 225
+    124e:	a4 e0       	ldi	r26, 0x04	; 4
+    1250:	81 50       	subi	r24, 0x01	; 1
+    1252:	90 40       	sbci	r25, 0x00	; 0
+    1254:	a0 40       	sbci	r26, 0x00	; 0
+    1256:	e1 f7       	brne	.-8      	; 0x1250 <main+0x1de>
+    1258:	00 c0       	rjmp	.+0      	; 0x125a <main+0x1e8>
+    125a:	00 00       	nop
+
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+    125c:	83 e0       	ldi	r24, 0x03	; 3
+    125e:	90 e0       	ldi	r25, 0x00	; 0
+    1260:	60 e0       	ldi	r22, 0x00	; 0
+    1262:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			OTP[3] = SPDR;
+    1266:	8e b5       	in	r24, 0x2e	; 46
+    1268:	d7 01       	movw	r26, r14
+    126a:	8c 93       	st	X, r24
+    126c:	8f ef       	ldi	r24, 0xFF	; 255
+    126e:	91 ee       	ldi	r25, 0xE1	; 225
+    1270:	a4 e0       	ldi	r26, 0x04	; 4
+    1272:	81 50       	subi	r24, 0x01	; 1
+    1274:	90 40       	sbci	r25, 0x00	; 0
+    1276:	a0 40       	sbci	r26, 0x00	; 0
+    1278:	e1 f7       	brne	.-8      	; 0x1272 <main+0x200>
+    127a:	00 c0       	rjmp	.+0      	; 0x127c <main+0x20a>
+    127c:	00 00       	nop
+
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+    127e:	83 e0       	ldi	r24, 0x03	; 3
+    1280:	90 e0       	ldi	r25, 0x00	; 0
+    1282:	60 e0       	ldi	r22, 0x00	; 0
+    1284:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			OTP[2] = SPDR;
+    1288:	8e b5       	in	r24, 0x2e	; 46
+    128a:	d6 01       	movw	r26, r12
+    128c:	8c 93       	st	X, r24
+    128e:	8f ef       	ldi	r24, 0xFF	; 255
+    1290:	91 ee       	ldi	r25, 0xE1	; 225
+    1292:	a4 e0       	ldi	r26, 0x04	; 4
+    1294:	81 50       	subi	r24, 0x01	; 1
+    1296:	90 40       	sbci	r25, 0x00	; 0
+    1298:	a0 40       	sbci	r26, 0x00	; 0
+    129a:	e1 f7       	brne	.-8      	; 0x1294 <main+0x222>
+    129c:	00 c0       	rjmp	.+0      	; 0x129e <main+0x22c>
+    129e:	00 00       	nop
+			
+			_delay_ms(100);//have to be re-calibrated
+			spi_tranceiver(IO_control, 0);
+    12a0:	83 e0       	ldi	r24, 0x03	; 3
+    12a2:	90 e0       	ldi	r25, 0x00	; 0
+    12a4:	60 e0       	ldi	r22, 0x00	; 0
+    12a6:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			OTP[1] = SPDR;
+    12aa:	8e b5       	in	r24, 0x2e	; 46
+    12ac:	d5 01       	movw	r26, r10
+    12ae:	8c 93       	st	X, r24
+    12b0:	8f ef       	ldi	r24, 0xFF	; 255
+    12b2:	91 ee       	ldi	r25, 0xE1	; 225
+    12b4:	a4 e0       	ldi	r26, 0x04	; 4
+    12b6:	81 50       	subi	r24, 0x01	; 1
+    12b8:	90 40       	sbci	r25, 0x00	; 0
+    12ba:	a0 40       	sbci	r26, 0x00	; 0
+    12bc:	e1 f7       	brne	.-8      	; 0x12b6 <main+0x244>
+    12be:	00 c0       	rjmp	.+0      	; 0x12c0 <main+0x24e>
+    12c0:	00 00       	nop
+
+			_delay_ms(100);
+			spi_tranceiver(IO_control,0);
+    12c2:	83 e0       	ldi	r24, 0x03	; 3
+    12c4:	90 e0       	ldi	r25, 0x00	; 0
+    12c6:	60 e0       	ldi	r22, 0x00	; 0
+    12c8:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+			IO_receivedDATA = SPDR;
+    12cc:	8e b5       	in	r24, 0x2e	; 46
+    12ce:	80 93 08 01 	sts	0x0108, r24
+			//Send_A_Character(IO_receivedDATA);
+			
+			
+			if (IO_receivedDATA == 'X')
+    12d2:	88 35       	cpi	r24, 0x58	; 88
+    12d4:	09 f0       	breq	.+2      	; 0x12d8 <main+0x266>
+    12d6:	07 cf       	rjmp	.-498    	; 0x10e6 <main+0x74>
+											
+				//validate_OTP();
+// 				initialise_speaking_parameters();
+// 				_delay_us(10);
+// 				initialise_clock();				
+				send_OTP_to_arduino();
+    12d8:	0e 94 a5 07 	call	0xf4a	; 0xf4a <_Z19send_OTP_to_arduinov>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    12dc:	95 e3       	ldi	r25, 0x35	; 53
+    12de:	9a 95       	dec	r25
+    12e0:	f1 f7       	brne	.-4      	; 0x12de <main+0x26c>
+    12e2:	00 00       	nop
+				_delay_us(10);//calibrate to optimize
+				initialise_listening_parameters();
+    12e4:	0e 94 93 07 	call	0xf26	; 0xf26 <_Z31initialise_listening_parametersv>
+				//_delay_ms(1000);					
+				
+				while (17)
+				{					
+					if (bit_is_clear(PIND,7))
+    12e8:	4f 99       	sbic	0x09, 7	; 9
+    12ea:	0d c0       	rjmp	.+26     	; 0x1306 <main+0x294>
+					{						
+						//allow to read the 4-bit bus
+						listenFunc();
+    12ec:	0e 94 bb 06 	call	0xd76	; 0xd76 <_Z10listenFuncv>
+    12f0:	a5 e3       	ldi	r26, 0x35	; 53
+    12f2:	aa 95       	dec	r26
+    12f4:	f1 f7       	brne	.-4      	; 0x12f2 <main+0x280>
+    12f6:	00 00       	nop
+						//initialise_speaking_parameters();
+						_delay_us(10);						
+						
+						process_VEND_REQUEST();				
+    12f8:	0e 94 5f 04 	call	0x8be	; 0x8be <_Z20process_VEND_REQUESTv>
+					{
+						//wait for a go signal
+					}
+				}
+				
+				if (ARD_BUS_val == 0)
+    12fc:	80 91 0c 01 	lds	r24, 0x010C
+    1300:	88 23       	and	r24, r24
+    1302:	f1 f4       	brne	.+60     	; 0x1340 <main+0x2ce>
+    1304:	04 c0       	rjmp	.+8      	; 0x130e <main+0x29c>
+						
+						break;
+					}
+					
+					else
+					if (bit_is_set(PIND,7))
+    1306:	89 b1       	in	r24, 0x09	; 9
+				initialise_listening_parameters();
+				//_delay_ms(1000);					
+				
+				while (17)
+				{					
+					if (bit_is_clear(PIND,7))
+    1308:	4f 99       	sbic	0x09, 7	; 9
+    130a:	fd cf       	rjmp	.-6      	; 0x1306 <main+0x294>
+    130c:	ef cf       	rjmp	.-34     	; 0x12ec <main+0x27a>
+				}
+				
+				if (ARD_BUS_val == 0)
+				{
+					//send 'T' for error
+					spi_tranceiver(IO_control,'T');
+    130e:	83 e0       	ldi	r24, 0x03	; 3
+    1310:	90 e0       	ldi	r25, 0x00	; 0
+    1312:	64 e5       	ldi	r22, 0x54	; 84
+    1314:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1318:	ef e3       	ldi	r30, 0x3F	; 63
+    131a:	fc e9       	ldi	r31, 0x9C	; 156
+    131c:	31 97       	sbiw	r30, 0x01	; 1
+    131e:	f1 f7       	brne	.-4      	; 0x131c <main+0x2aa>
+    1320:	00 c0       	rjmp	.+0      	; 0x1322 <main+0x2b0>
+    1322:	00 00       	nop
+					_delay_ms(10);
+					spi_tranceiver(IO_control,'T');
+    1324:	83 e0       	ldi	r24, 0x03	; 3
+    1326:	90 e0       	ldi	r25, 0x00	; 0
+    1328:	64 e5       	ldi	r22, 0x54	; 84
+    132a:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    132e:	8f e3       	ldi	r24, 0x3F	; 63
+    1330:	9c e9       	ldi	r25, 0x9C	; 156
+    1332:	01 97       	sbiw	r24, 0x01	; 1
+    1334:	f1 f7       	brne	.-4      	; 0x1332 <main+0x2c0>
+    1336:	00 c0       	rjmp	.+0      	; 0x1338 <main+0x2c6>
+    1338:	00 00       	nop
+					_delay_ms(10);
+					reset_Everything();
+    133a:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z16reset_Everythingv>
+    133e:	d3 ce       	rjmp	.-602    	; 0x10e6 <main+0x74>
+				}
+				else
+				if ((ARD_BUS_val != 0) && (ARD_BUS_val != 'f')) 
+    1340:	86 36       	cpi	r24, 0x66	; 102
+    1342:	b9 f0       	breq	.+46     	; 0x1372 <main+0x300>
+				{
+					//send 'Q' for product
+					spi_tranceiver(IO_control,'Q');
+    1344:	83 e0       	ldi	r24, 0x03	; 3
+    1346:	90 e0       	ldi	r25, 0x00	; 0
+    1348:	61 e5       	ldi	r22, 0x51	; 81
+    134a:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    134e:	af e3       	ldi	r26, 0x3F	; 63
+    1350:	bc e9       	ldi	r27, 0x9C	; 156
+    1352:	11 97       	sbiw	r26, 0x01	; 1
+    1354:	f1 f7       	brne	.-4      	; 0x1352 <main+0x2e0>
+    1356:	00 c0       	rjmp	.+0      	; 0x1358 <main+0x2e6>
+    1358:	00 00       	nop
+					_delay_ms(10);
+					spi_tranceiver(IO_control,'Q');
+    135a:	83 e0       	ldi	r24, 0x03	; 3
+    135c:	90 e0       	ldi	r25, 0x00	; 0
+    135e:	61 e5       	ldi	r22, 0x51	; 81
+    1360:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    1364:	ef e3       	ldi	r30, 0x3F	; 63
+    1366:	fc e9       	ldi	r31, 0x9C	; 156
+    1368:	31 97       	sbiw	r30, 0x01	; 1
+    136a:	f1 f7       	brne	.-4      	; 0x1368 <main+0x2f6>
+    136c:	00 c0       	rjmp	.+0      	; 0x136e <main+0x2fc>
+    136e:	00 00       	nop
+    1370:	ba ce       	rjmp	.-652    	; 0x10e6 <main+0x74>
+				}
+				else
+				if (ARD_BUS_val == 'f')
+				{
+					//send 'f' for no Internet
+					spi_tranceiver(IO_control,'f');
+    1372:	83 e0       	ldi	r24, 0x03	; 3
+    1374:	90 e0       	ldi	r25, 0x00	; 0
+    1376:	66 e6       	ldi	r22, 0x66	; 102
+    1378:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    137c:	8f e3       	ldi	r24, 0x3F	; 63
+    137e:	9c e9       	ldi	r25, 0x9C	; 156
+    1380:	01 97       	sbiw	r24, 0x01	; 1
+    1382:	f1 f7       	brne	.-4      	; 0x1380 <main+0x30e>
+    1384:	00 c0       	rjmp	.+0      	; 0x1386 <main+0x314>
+    1386:	00 00       	nop
+					_delay_ms(10);
+					spi_tranceiver(IO_control,'f');
+    1388:	83 e0       	ldi	r24, 0x03	; 3
+    138a:	90 e0       	ldi	r25, 0x00	; 0
+    138c:	66 e6       	ldi	r22, 0x66	; 102
+    138e:	0e 94 bb 00 	call	0x176	; 0x176 <_Z14spi_tranceiverjh>
+    1392:	af e3       	ldi	r26, 0x3F	; 63
+    1394:	bc e9       	ldi	r27, 0x9C	; 156
+    1396:	11 97       	sbiw	r26, 0x01	; 1
+    1398:	f1 f7       	brne	.-4      	; 0x1396 <main+0x324>
+    139a:	00 c0       	rjmp	.+0      	; 0x139c <main+0x32a>
+    139c:	00 00       	nop
+    139e:	a3 ce       	rjmp	.-698    	; 0x10e6 <main+0x74>
+
+000013a0 <_exit>:
+    13a0:	f8 94       	cli
+
+000013a2 <__stop_program>:
+    13a2:	ff cf       	rjmp	.-2      	; 0x13a2 <__stop_program>

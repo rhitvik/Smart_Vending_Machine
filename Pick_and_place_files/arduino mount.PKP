@@ -1,0 +1,25 @@
+LABCENTER PROTEUS PICK AND PLACE FILE
+=====================================
+
+Component positions for arduino mount.LYT
+
+Fields: Part ID, Value, Package, Layer, Rotation, X, Y
+Units:  Rotation - degrees, X, Y  - thou
+Notes:  The X, Y value is the centre of package as drawn in ARES.
+        The origin for these values is the Output Origin.
+        The values are a guide only and must be checked manually when
+        setting up automatic insertion equipment.
+
+"R1","330","RES40",TOP,90,-700,1927.5
+"R2","330","RES40",TOP,0,300,1725
+"ADC CHANNEL","CONN-SIL6","CONN-SIL6",TOP,0,400,350
+"GPIO 1","CONN-SIL8","CONN-SIL8",TOP,180,300,2250
+"ACK PORT","SIL-100-02","SIL-100-02",TOP,0,550,1950
+"COMM PORT","SIL-100-06","SIL-100-06",TOP,0,0,1950
+"GPIO COMM LED","CONN-SIL2","CONN-SIL2",TOP,0,550,1575
+"LED PIN","CONN-SIL2","CONN-SIL2",TOP,90,-525,1775
+"POWER TER 1","TBLOCK-I4","TBLOCK-I4",TOP,90,75,925
+"POWER TER 2","TBLOCK-I4","TBLOCK-I4",TOP,90,500,925
+"BANNER LED POWER","TBLOCK-I2","TBLOCK-I2",TOP,90,-600,725
+"GPIO 2","CONN-SIL8","CONN-SIL8",TOP,180,-550,2250
+"POWER RAIL","CONN-SIL6","CONN-SIL6",TOP,180,-301.181,354.331

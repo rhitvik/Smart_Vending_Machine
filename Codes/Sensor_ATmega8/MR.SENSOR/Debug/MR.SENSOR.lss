@@ -1,0 +1,766 @@
+
+MR.SENSOR.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000003be  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  000003be  00000452  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000009  00800060  00800060  00000452  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000454  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00000b20  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000080  00000000  00000000  00000ba8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000093a  00000000  00000000  00000c28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000180  00000000  00000000  00001562  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000004bd  00000000  00000000  000016e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000074  00000000  00000000  00001ba0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000234  00000000  00000000  00001c14  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000019d  00000000  00000000  00001e48  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ee eb       	ldi	r30, 0xBE	; 190
+  3a:	f3 e0       	ldi	r31, 0x03	; 3
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a9 36       	cpi	r26, 0x69	; 105
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	bb d0       	rcall	.+374    	; 0x1d0 <main>
+  5a:	af c1       	rjmp	.+862    	; 0x3ba <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <_Z27RESTORE_INITIAL_GRID_STATUSv>:
+	}
+}
+
+void RESTORE_INITIAL_GRID_STATUS (void)
+{
+	PORTC |= 0b111111;
+  5e:	85 b3       	in	r24, 0x15	; 21
+  60:	8f 63       	ori	r24, 0x3F	; 63
+  62:	85 bb       	out	0x15, r24	; 21
+}
+  64:	08 95       	ret
+
+00000066 <_Z20DROP_SENSOR_FUNCTIONh>:
+ 
+}	
+
+void DROP_SENSOR_FUNCTION (unsigned char DSF_parameter)
+{
+	switch (DSF_parameter)
+  66:	83 30       	cpi	r24, 0x03	; 3
+  68:	e1 f0       	breq	.+56     	; 0xa2 <_Z20DROP_SENSOR_FUNCTIONh+0x3c>
+  6a:	84 30       	cpi	r24, 0x04	; 4
+  6c:	28 f4       	brcc	.+10     	; 0x78 <_Z20DROP_SENSOR_FUNCTIONh+0x12>
+  6e:	81 30       	cpi	r24, 0x01	; 1
+  70:	41 f0       	breq	.+16     	; 0x82 <_Z20DROP_SENSOR_FUNCTIONh+0x1c>
+  72:	82 30       	cpi	r24, 0x02	; 2
+  74:	69 f5       	brne	.+90     	; 0xd0 <_Z20DROP_SENSOR_FUNCTIONh+0x6a>
+  76:	0d c0       	rjmp	.+26     	; 0x92 <_Z20DROP_SENSOR_FUNCTIONh+0x2c>
+  78:	84 30       	cpi	r24, 0x04	; 4
+  7a:	d9 f0       	breq	.+54     	; 0xb2 <_Z20DROP_SENSOR_FUNCTIONh+0x4c>
+  7c:	85 30       	cpi	r24, 0x05	; 5
+  7e:	41 f5       	brne	.+80     	; 0xd0 <_Z20DROP_SENSOR_FUNCTIONh+0x6a>
+  80:	20 c0       	rjmp	.+64     	; 0xc2 <_Z20DROP_SENSOR_FUNCTIONh+0x5c>
+	{		
+		case 1:
+		PORTC &=~ (1<<PINC0);
+  82:	a8 98       	cbi	0x15, 0	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  84:	83 ed       	ldi	r24, 0xD3	; 211
+  86:	90 e3       	ldi	r25, 0x30	; 48
+  88:	01 97       	sbiw	r24, 0x01	; 1
+  8a:	f1 f7       	brne	.-4      	; 0x88 <_Z20DROP_SENSOR_FUNCTIONh+0x22>
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <_Z20DROP_SENSOR_FUNCTIONh+0x28>
+  8e:	00 00       	nop
+  90:	08 95       	ret
+// 		PORTC &=~ (1<<PINC5);
+		_delay_ms(50);
+		break;
+		
+		case 2:
+		PORTC &=~ (1<<PINC1);
+  92:	a9 98       	cbi	0x15, 1	; 21
+  94:	83 ed       	ldi	r24, 0xD3	; 211
+  96:	90 e3       	ldi	r25, 0x30	; 48
+  98:	01 97       	sbiw	r24, 0x01	; 1
+  9a:	f1 f7       	brne	.-4      	; 0x98 <_Z20DROP_SENSOR_FUNCTIONh+0x32>
+  9c:	00 c0       	rjmp	.+0      	; 0x9e <_Z20DROP_SENSOR_FUNCTIONh+0x38>
+  9e:	00 00       	nop
+  a0:	08 95       	ret
+// 		PORTC &=~ (1<<PINC5);
+		_delay_ms(50);
+		break;
+		
+		case 3:
+		PORTC &=~ (1<<PINC2);
+  a2:	aa 98       	cbi	0x15, 2	; 21
+  a4:	83 ed       	ldi	r24, 0xD3	; 211
+  a6:	90 e3       	ldi	r25, 0x30	; 48
+  a8:	01 97       	sbiw	r24, 0x01	; 1
+  aa:	f1 f7       	brne	.-4      	; 0xa8 <_Z20DROP_SENSOR_FUNCTIONh+0x42>
+  ac:	00 c0       	rjmp	.+0      	; 0xae <_Z20DROP_SENSOR_FUNCTIONh+0x48>
+  ae:	00 00       	nop
+  b0:	08 95       	ret
+// 		PORTC &=~ (1<<PINC5);
+		_delay_ms(50);
+		break;
+		
+		case 4:
+		PORTC &=~ (1<<PINC3);
+  b2:	ab 98       	cbi	0x15, 3	; 21
+  b4:	83 ed       	ldi	r24, 0xD3	; 211
+  b6:	90 e3       	ldi	r25, 0x30	; 48
+  b8:	01 97       	sbiw	r24, 0x01	; 1
+  ba:	f1 f7       	brne	.-4      	; 0xb8 <_Z20DROP_SENSOR_FUNCTIONh+0x52>
+  bc:	00 c0       	rjmp	.+0      	; 0xbe <_Z20DROP_SENSOR_FUNCTIONh+0x58>
+  be:	00 00       	nop
+  c0:	08 95       	ret
+// 		PORTC &=~ (1<<PINC5);
+		_delay_ms(50);
+		break;	
+		
+		case 5:
+		RESTORE_INITIAL_GRID_STATUS();
+  c2:	cd df       	rcall	.-102    	; 0x5e <_Z27RESTORE_INITIAL_GRID_STATUSv>
+  c4:	83 ed       	ldi	r24, 0xD3	; 211
+  c6:	90 e3       	ldi	r25, 0x30	; 48
+  c8:	01 97       	sbiw	r24, 0x01	; 1
+  ca:	f1 f7       	brne	.-4      	; 0xc8 <_Z20DROP_SENSOR_FUNCTIONh+0x62>
+  cc:	00 c0       	rjmp	.+0      	; 0xce <_Z20DROP_SENSOR_FUNCTIONh+0x68>
+  ce:	00 00       	nop
+  d0:	08 95       	ret
+
+000000d2 <_Z11OPEN_SESEMEv>:
+	PORTC |= 0b111111;
+}
+
+void OPEN_SESEME (void)
+{
+	if (loop_lock_status == LOCKED)
+  d2:	80 91 60 00 	lds	r24, 0x0060
+  d6:	88 23       	and	r24, r24
+  d8:	11 f0       	breq	.+4      	; 0xde <_Z11OPEN_SESEMEv+0xc>
+	{
+		loop_lock_status = UNLOCKED;
+  da:	10 92 60 00 	sts	0x0060, r1
+  de:	08 95       	ret
+
+000000e0 <_Z5DEBUGv>:
+	}
+}
+
+void DEBUG (void)
+{
+	PORTC &=~ (1<<PINC4);
+  e0:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+  e2:	ad 98       	cbi	0x15, 5	; 21
+  e4:	8f e9       	ldi	r24, 0x9F	; 159
+  e6:	96 e8       	ldi	r25, 0x86	; 134
+  e8:	a1 e0       	ldi	r26, 0x01	; 1
+  ea:	81 50       	subi	r24, 0x01	; 1
+  ec:	90 40       	sbci	r25, 0x00	; 0
+  ee:	a0 40       	sbci	r26, 0x00	; 0
+  f0:	e1 f7       	brne	.-8      	; 0xea <_Z5DEBUGv+0xa>
+  f2:	00 c0       	rjmp	.+0      	; 0xf4 <_Z5DEBUGv+0x14>
+  f4:	00 00       	nop
+	_delay_ms(500);
+	PORTC |= (1<<PINC4);
+  f6:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+  f8:	ad 9a       	sbi	0x15, 5	; 21
+  fa:	8f e9       	ldi	r24, 0x9F	; 159
+  fc:	96 e8       	ldi	r25, 0x86	; 134
+  fe:	a1 e0       	ldi	r26, 0x01	; 1
+ 100:	81 50       	subi	r24, 0x01	; 1
+ 102:	90 40       	sbci	r25, 0x00	; 0
+ 104:	a0 40       	sbci	r26, 0x00	; 0
+ 106:	e1 f7       	brne	.-8      	; 0x100 <_Z5DEBUGv+0x20>
+ 108:	00 c0       	rjmp	.+0      	; 0x10a <_Z5DEBUGv+0x2a>
+ 10a:	00 00       	nop
+	_delay_ms(500);
+}
+ 10c:	08 95       	ret
+
+0000010e <_Z6DEBUG2v>:
+
+void DEBUG2 (void)
+{
+	PORTC &=~ (1<<PINC4);
+ 10e:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+ 110:	ad 98       	cbi	0x15, 5	; 21
+ 112:	83 ed       	ldi	r24, 0xD3	; 211
+ 114:	90 e3       	ldi	r25, 0x30	; 48
+ 116:	01 97       	sbiw	r24, 0x01	; 1
+ 118:	f1 f7       	brne	.-4      	; 0x116 <_Z6DEBUG2v+0x8>
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <_Z6DEBUG2v+0xe>
+ 11c:	00 00       	nop
+	_delay_ms(50);
+	PORTC |= (1<<PINC4);
+ 11e:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+ 120:	ad 9a       	sbi	0x15, 5	; 21
+ 122:	83 ed       	ldi	r24, 0xD3	; 211
+ 124:	90 e3       	ldi	r25, 0x30	; 48
+ 126:	01 97       	sbiw	r24, 0x01	; 1
+ 128:	f1 f7       	brne	.-4      	; 0x126 <_Z6DEBUG2v+0x18>
+ 12a:	00 c0       	rjmp	.+0      	; 0x12c <_Z6DEBUG2v+0x1e>
+ 12c:	00 00       	nop
+	_delay_ms(50);
+	PORTC &=~ (1<<PINC4);
+ 12e:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+ 130:	ad 98       	cbi	0x15, 5	; 21
+ 132:	83 ed       	ldi	r24, 0xD3	; 211
+ 134:	90 e3       	ldi	r25, 0x30	; 48
+ 136:	01 97       	sbiw	r24, 0x01	; 1
+ 138:	f1 f7       	brne	.-4      	; 0x136 <_Z6DEBUG2v+0x28>
+ 13a:	00 c0       	rjmp	.+0      	; 0x13c <_Z6DEBUG2v+0x2e>
+ 13c:	00 00       	nop
+	_delay_ms(50);
+	PORTC |= (1<<PINC4);
+ 13e:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+ 140:	ad 9a       	sbi	0x15, 5	; 21
+ 142:	83 ed       	ldi	r24, 0xD3	; 211
+ 144:	90 e3       	ldi	r25, 0x30	; 48
+ 146:	01 97       	sbiw	r24, 0x01	; 1
+ 148:	f1 f7       	brne	.-4      	; 0x146 <_Z6DEBUG2v+0x38>
+ 14a:	00 c0       	rjmp	.+0      	; 0x14c <_Z6DEBUG2v+0x3e>
+ 14c:	00 00       	nop
+	_delay_ms(50);
+	PORTC &=~ (1<<PINC4);
+ 14e:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+ 150:	ad 98       	cbi	0x15, 5	; 21
+ 152:	83 ed       	ldi	r24, 0xD3	; 211
+ 154:	90 e3       	ldi	r25, 0x30	; 48
+ 156:	01 97       	sbiw	r24, 0x01	; 1
+ 158:	f1 f7       	brne	.-4      	; 0x156 <_Z6DEBUG2v+0x48>
+ 15a:	00 c0       	rjmp	.+0      	; 0x15c <_Z6DEBUG2v+0x4e>
+ 15c:	00 00       	nop
+	_delay_ms(50);
+	PORTC |= (1<<PINC4);
+ 15e:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+ 160:	ad 9a       	sbi	0x15, 5	; 21
+ 162:	83 ed       	ldi	r24, 0xD3	; 211
+ 164:	90 e3       	ldi	r25, 0x30	; 48
+ 166:	01 97       	sbiw	r24, 0x01	; 1
+ 168:	f1 f7       	brne	.-4      	; 0x166 <_Z6DEBUG2v+0x58>
+ 16a:	00 c0       	rjmp	.+0      	; 0x16c <_Z6DEBUG2v+0x5e>
+ 16c:	00 00       	nop
+	_delay_ms(50);
+	PORTC &=~ (1<<PINC4);
+ 16e:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+ 170:	ad 98       	cbi	0x15, 5	; 21
+ 172:	83 ed       	ldi	r24, 0xD3	; 211
+ 174:	90 e3       	ldi	r25, 0x30	; 48
+ 176:	01 97       	sbiw	r24, 0x01	; 1
+ 178:	f1 f7       	brne	.-4      	; 0x176 <_Z6DEBUG2v+0x68>
+ 17a:	00 c0       	rjmp	.+0      	; 0x17c <_Z6DEBUG2v+0x6e>
+ 17c:	00 00       	nop
+	_delay_ms(50);
+	PORTC |= (1<<PINC4);
+ 17e:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+ 180:	ad 9a       	sbi	0x15, 5	; 21
+ 182:	83 ed       	ldi	r24, 0xD3	; 211
+ 184:	90 e3       	ldi	r25, 0x30	; 48
+ 186:	01 97       	sbiw	r24, 0x01	; 1
+ 188:	f1 f7       	brne	.-4      	; 0x186 <_Z6DEBUG2v+0x78>
+ 18a:	00 c0       	rjmp	.+0      	; 0x18c <_Z6DEBUG2v+0x7e>
+ 18c:	00 00       	nop
+	_delay_ms(50);
+	PORTC &=~ (1<<PINC4);
+ 18e:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+ 190:	ad 98       	cbi	0x15, 5	; 21
+ 192:	83 ed       	ldi	r24, 0xD3	; 211
+ 194:	90 e3       	ldi	r25, 0x30	; 48
+ 196:	01 97       	sbiw	r24, 0x01	; 1
+ 198:	f1 f7       	brne	.-4      	; 0x196 <_Z6DEBUG2v+0x88>
+ 19a:	00 c0       	rjmp	.+0      	; 0x19c <_Z6DEBUG2v+0x8e>
+ 19c:	00 00       	nop
+	_delay_ms(50);
+	PORTC |= (1<<PINC4);
+ 19e:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+ 1a0:	ad 9a       	sbi	0x15, 5	; 21
+ 1a2:	83 ed       	ldi	r24, 0xD3	; 211
+ 1a4:	90 e3       	ldi	r25, 0x30	; 48
+ 1a6:	01 97       	sbiw	r24, 0x01	; 1
+ 1a8:	f1 f7       	brne	.-4      	; 0x1a6 <_Z6DEBUG2v+0x98>
+ 1aa:	00 c0       	rjmp	.+0      	; 0x1ac <_Z6DEBUG2v+0x9e>
+ 1ac:	00 00       	nop
+	_delay_ms(50);
+	PORTC &=~ (1<<PINC4);
+ 1ae:	ac 98       	cbi	0x15, 4	; 21
+	PORTC &=~ (1<<PINC5);
+ 1b0:	ad 98       	cbi	0x15, 5	; 21
+ 1b2:	83 ed       	ldi	r24, 0xD3	; 211
+ 1b4:	90 e3       	ldi	r25, 0x30	; 48
+ 1b6:	01 97       	sbiw	r24, 0x01	; 1
+ 1b8:	f1 f7       	brne	.-4      	; 0x1b6 <_Z6DEBUG2v+0xa8>
+ 1ba:	00 c0       	rjmp	.+0      	; 0x1bc <_Z6DEBUG2v+0xae>
+ 1bc:	00 00       	nop
+	_delay_ms(50);
+	PORTC |= (1<<PINC4);
+ 1be:	ac 9a       	sbi	0x15, 4	; 21
+	PORTC |= (1<<PINC5);
+ 1c0:	ad 9a       	sbi	0x15, 5	; 21
+ 1c2:	83 ed       	ldi	r24, 0xD3	; 211
+ 1c4:	90 e3       	ldi	r25, 0x30	; 48
+ 1c6:	01 97       	sbiw	r24, 0x01	; 1
+ 1c8:	f1 f7       	brne	.-4      	; 0x1c6 <_Z6DEBUG2v+0xb8>
+ 1ca:	00 c0       	rjmp	.+0      	; 0x1cc <_Z6DEBUG2v+0xbe>
+ 1cc:	00 00       	nop
+	_delay_ms(50);
+}
+ 1ce:	08 95       	ret
+
+000001d0 <main>:
+
+bool loop_lock_status = UNLOCKED; 
+
+int main(void)
+{
+	DDRC  |= 0b111111;
+ 1d0:	84 b3       	in	r24, 0x14	; 20
+ 1d2:	8f 63       	ori	r24, 0x3F	; 63
+ 1d4:	84 bb       	out	0x14, r24	; 20
+	PORTC |= 0b111111;
+ 1d6:	85 b3       	in	r24, 0x15	; 21
+ 1d8:	8f 63       	ori	r24, 0x3F	; 63
+ 1da:	85 bb       	out	0x15, r24	; 21
+	
+	DDRB  |= 0x00;
+ 1dc:	87 b3       	in	r24, 0x17	; 23
+ 1de:	87 bb       	out	0x17, r24	; 23
+	PORTB |= 0xFF;
+ 1e0:	88 b3       	in	r24, 0x18	; 24
+ 1e2:	8f ef       	ldi	r24, 0xFF	; 255
+ 1e4:	88 bb       	out	0x18, r24	; 24
+	
+	DDRD  |= 0x00;
+ 1e6:	91 b3       	in	r25, 0x11	; 17
+ 1e8:	91 bb       	out	0x11, r25	; 17
+	PORTD |= 0xFF;	
+ 1ea:	92 b3       	in	r25, 0x12	; 18
+ 1ec:	82 bb       	out	0x12, r24	; 18
+	
+	RESTORE_INITIAL_GRID_STATUS();
+ 1ee:	37 df       	rcall	.-402    	; 0x5e <_Z27RESTORE_INITIAL_GRID_STATUSv>
+	DEBUG2();
+ 1f0:	8e df       	rcall	.-228    	; 0x10e <_Z6DEBUG2v>
+	
+	while(32)
+	{
+		if (bit_is_clear (PINB,0))
+		{
+			sensor_link_group_no = 1;
+ 1f2:	01 e0       	ldi	r16, 0x01	; 1
+ 1f4:	10 e0       	ldi	r17, 0x00	; 0
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 1f6:	c1 e0       	ldi	r28, 0x01	; 1
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+		}
+		else
+		if (bit_is_clear (PIND,7))
+		{
+			sensor_link_group_no = 4;
+ 1f8:	aa 24       	eor	r10, r10
+ 1fa:	bb 24       	eor	r11, r11
+ 1fc:	68 94       	set
+ 1fe:	a2 f8       	bld	r10, 2
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+		}
+		else
+		if (bit_is_clear (PIND,3))
+		{
+			sensor_link_group_no = 3;
+ 200:	0f 2e       	mov	r0, r31
+ 202:	f3 e0       	ldi	r31, 0x03	; 3
+ 204:	cf 2e       	mov	r12, r31
+ 206:	dd 24       	eor	r13, r13
+ 208:	f0 2d       	mov	r31, r0
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+		}
+		else
+		if (bit_is_clear (PINB,7))
+		{
+			sensor_link_group_no = 2;
+ 20a:	ee 24       	eor	r14, r14
+ 20c:	ff 24       	eor	r15, r15
+ 20e:	68 94       	set
+ 210:	e1 f8       	bld	r14, 1
+	RESTORE_INITIAL_GRID_STATUS();
+	DEBUG2();
+	
+	while(32)
+	{
+		if (bit_is_clear (PINB,0))
+ 212:	86 b3       	in	r24, 0x16	; 22
+ 214:	80 fd       	sbrc	r24, 0
+ 216:	09 c0       	rjmp	.+18     	; 0x22a <main+0x5a>
+		{
+			sensor_link_group_no = 1;
+ 218:	10 93 66 00 	sts	0x0066, r17
+ 21c:	00 93 65 00 	sts	0x0065, r16
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 220:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 224:	8c 2f       	mov	r24, r28
+ 226:	1f df       	rcall	.-450    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 228:	f4 cf       	rjmp	.-24     	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PINB,1))
+ 22a:	b1 99       	sbic	0x16, 1	; 22
+ 22c:	09 c0       	rjmp	.+18     	; 0x240 <main+0x70>
+		{
+			sensor_link_group_no = 1;
+ 22e:	10 93 66 00 	sts	0x0066, r17
+ 232:	00 93 65 00 	sts	0x0065, r16
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 236:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 23a:	8c 2f       	mov	r24, r28
+ 23c:	14 df       	rcall	.-472    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 23e:	e9 cf       	rjmp	.-46     	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_clear (PINB,2))
+ 240:	b2 99       	sbic	0x16, 2	; 22
+ 242:	09 c0       	rjmp	.+18     	; 0x256 <main+0x86>
+		{
+			sensor_link_group_no = 1;
+ 244:	10 93 66 00 	sts	0x0066, r17
+ 248:	00 93 65 00 	sts	0x0065, r16
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 24c:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 250:	8c 2f       	mov	r24, r28
+ 252:	09 df       	rcall	.-494    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 254:	de cf       	rjmp	.-68     	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PINB,3))
+ 256:	b3 99       	sbic	0x16, 3	; 22
+ 258:	09 c0       	rjmp	.+18     	; 0x26c <main+0x9c>
+		{
+			sensor_link_group_no = 1;
+ 25a:	10 93 66 00 	sts	0x0066, r17
+ 25e:	00 93 65 00 	sts	0x0065, r16
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 262:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 266:	8c 2f       	mov	r24, r28
+ 268:	fe de       	rcall	.-516    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 26a:	d3 cf       	rjmp	.-90     	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_clear (PINB,4))
+ 26c:	b4 99       	sbic	0x16, 4	; 22
+ 26e:	09 c0       	rjmp	.+18     	; 0x282 <main+0xb2>
+		{
+			sensor_link_group_no = 2;
+ 270:	f0 92 66 00 	sts	0x0066, r15
+ 274:	e0 92 65 00 	sts	0x0065, r14
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 278:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 27c:	82 e0       	ldi	r24, 0x02	; 2
+ 27e:	f3 de       	rcall	.-538    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 280:	c8 cf       	rjmp	.-112    	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PINB,5))
+ 282:	b5 99       	sbic	0x16, 5	; 22
+ 284:	09 c0       	rjmp	.+18     	; 0x298 <main+0xc8>
+		{
+			sensor_link_group_no = 2;
+ 286:	f0 92 66 00 	sts	0x0066, r15
+ 28a:	e0 92 65 00 	sts	0x0065, r14
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 28e:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 292:	82 e0       	ldi	r24, 0x02	; 2
+ 294:	e8 de       	rcall	.-560    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 296:	bd cf       	rjmp	.-134    	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_clear (PINB,6))
+ 298:	b6 99       	sbic	0x16, 6	; 22
+ 29a:	09 c0       	rjmp	.+18     	; 0x2ae <main+0xde>
+		{
+			sensor_link_group_no = 2;
+ 29c:	f0 92 66 00 	sts	0x0066, r15
+ 2a0:	e0 92 65 00 	sts	0x0065, r14
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 2a4:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 2a8:	82 e0       	ldi	r24, 0x02	; 2
+ 2aa:	dd de       	rcall	.-582    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 2ac:	b2 cf       	rjmp	.-156    	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PINB,7))
+ 2ae:	b7 99       	sbic	0x16, 7	; 22
+ 2b0:	09 c0       	rjmp	.+18     	; 0x2c4 <main+0xf4>
+		{
+			sensor_link_group_no = 2;
+ 2b2:	f0 92 66 00 	sts	0x0066, r15
+ 2b6:	e0 92 65 00 	sts	0x0065, r14
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 2ba:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 2be:	82 e0       	ldi	r24, 0x02	; 2
+ 2c0:	d2 de       	rcall	.-604    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 2c2:	a7 cf       	rjmp	.-178    	; 0x212 <main+0x42>
+		}
+		
+		else
+		
+		if (bit_is_clear (PIND,0))
+ 2c4:	80 b3       	in	r24, 0x10	; 16
+ 2c6:	80 fd       	sbrc	r24, 0
+ 2c8:	09 c0       	rjmp	.+18     	; 0x2dc <main+0x10c>
+		{
+			sensor_link_group_no = 3;
+ 2ca:	d0 92 66 00 	sts	0x0066, r13
+ 2ce:	c0 92 65 00 	sts	0x0065, r12
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 2d2:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 2d6:	83 e0       	ldi	r24, 0x03	; 3
+ 2d8:	c6 de       	rcall	.-628    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 2da:	9b cf       	rjmp	.-202    	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PIND,1))
+ 2dc:	81 99       	sbic	0x10, 1	; 16
+ 2de:	09 c0       	rjmp	.+18     	; 0x2f2 <main+0x122>
+		{
+			sensor_link_group_no = 3;
+ 2e0:	d0 92 66 00 	sts	0x0066, r13
+ 2e4:	c0 92 65 00 	sts	0x0065, r12
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 2e8:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 2ec:	83 e0       	ldi	r24, 0x03	; 3
+ 2ee:	bb de       	rcall	.-650    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 2f0:	90 cf       	rjmp	.-224    	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_clear (PIND,2))
+ 2f2:	82 99       	sbic	0x10, 2	; 16
+ 2f4:	09 c0       	rjmp	.+18     	; 0x308 <main+0x138>
+		{
+			sensor_link_group_no = 3;
+ 2f6:	d0 92 66 00 	sts	0x0066, r13
+ 2fa:	c0 92 65 00 	sts	0x0065, r12
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 2fe:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 302:	83 e0       	ldi	r24, 0x03	; 3
+ 304:	b0 de       	rcall	.-672    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 306:	85 cf       	rjmp	.-246    	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PIND,3))
+ 308:	83 99       	sbic	0x10, 3	; 16
+ 30a:	09 c0       	rjmp	.+18     	; 0x31e <main+0x14e>
+		{
+			sensor_link_group_no = 3;
+ 30c:	d0 92 66 00 	sts	0x0066, r13
+ 310:	c0 92 65 00 	sts	0x0065, r12
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 314:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 318:	83 e0       	ldi	r24, 0x03	; 3
+ 31a:	a5 de       	rcall	.-694    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 31c:	7a cf       	rjmp	.-268    	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_clear (PIND,4))
+ 31e:	84 99       	sbic	0x10, 4	; 16
+ 320:	09 c0       	rjmp	.+18     	; 0x334 <main+0x164>
+		{
+			sensor_link_group_no = 4;
+ 322:	b0 92 66 00 	sts	0x0066, r11
+ 326:	a0 92 65 00 	sts	0x0065, r10
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 32a:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 32e:	84 e0       	ldi	r24, 0x04	; 4
+ 330:	9a de       	rcall	.-716    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 332:	6f cf       	rjmp	.-290    	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PIND,5))
+ 334:	85 99       	sbic	0x10, 5	; 16
+ 336:	09 c0       	rjmp	.+18     	; 0x34a <main+0x17a>
+		{
+			sensor_link_group_no = 4;
+ 338:	b0 92 66 00 	sts	0x0066, r11
+ 33c:	a0 92 65 00 	sts	0x0065, r10
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 340:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 344:	84 e0       	ldi	r24, 0x04	; 4
+ 346:	8f de       	rcall	.-738    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 348:	64 cf       	rjmp	.-312    	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_clear (PIND,6))
+ 34a:	86 99       	sbic	0x10, 6	; 16
+ 34c:	09 c0       	rjmp	.+18     	; 0x360 <main+0x190>
+		{
+			sensor_link_group_no = 4;
+ 34e:	b0 92 66 00 	sts	0x0066, r11
+ 352:	a0 92 65 00 	sts	0x0065, r10
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 356:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 35a:	84 e0       	ldi	r24, 0x04	; 4
+ 35c:	84 de       	rcall	.-760    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 35e:	59 cf       	rjmp	.-334    	; 0x212 <main+0x42>
+		}
+		else
+		if (bit_is_clear (PIND,7))
+ 360:	87 99       	sbic	0x10, 7	; 16
+ 362:	09 c0       	rjmp	.+18     	; 0x376 <main+0x1a6>
+		{
+			sensor_link_group_no = 4;
+ 364:	b0 92 66 00 	sts	0x0066, r11
+ 368:	a0 92 65 00 	sts	0x0065, r10
+			sensor_link_group_1 = OBJECT_DETECTED;
+ 36c:	c0 93 64 00 	sts	0x0064, r28
+			DROP_SENSOR_FUNCTION(sensor_link_group_no);
+ 370:	84 e0       	ldi	r24, 0x04	; 4
+ 372:	79 de       	rcall	.-782    	; 0x66 <_Z20DROP_SENSOR_FUNCTIONh>
+ 374:	4e cf       	rjmp	.-356    	; 0x212 <main+0x42>
+		}
+		
+		else
+		if (bit_is_set (PINB,0) && bit_is_set (PINB,1) && bit_is_set (PINB,2) && bit_is_set (PINB,3) && bit_is_set (PINB,4) && bit_is_set (PINB,5) && bit_is_set (PINB,6) && bit_is_set (PINB,7) && bit_is_set (PIND,0) && bit_is_set (PIND,1) && bit_is_set (PIND,2) && bit_is_set (PIND,3) && bit_is_set (PIND,4) && bit_is_set (PIND,5) && bit_is_set (PIND,6) && bit_is_set (PIND,7))
+ 376:	b0 9b       	sbis	0x16, 0	; 22
+ 378:	4c cf       	rjmp	.-360    	; 0x212 <main+0x42>
+ 37a:	b1 9b       	sbis	0x16, 1	; 22
+ 37c:	4a cf       	rjmp	.-364    	; 0x212 <main+0x42>
+ 37e:	b2 9b       	sbis	0x16, 2	; 22
+ 380:	48 cf       	rjmp	.-368    	; 0x212 <main+0x42>
+ 382:	b3 9b       	sbis	0x16, 3	; 22
+ 384:	46 cf       	rjmp	.-372    	; 0x212 <main+0x42>
+ 386:	b4 9b       	sbis	0x16, 4	; 22
+ 388:	44 cf       	rjmp	.-376    	; 0x212 <main+0x42>
+ 38a:	b5 9b       	sbis	0x16, 5	; 22
+ 38c:	42 cf       	rjmp	.-380    	; 0x212 <main+0x42>
+ 38e:	b6 9b       	sbis	0x16, 6	; 22
+ 390:	40 cf       	rjmp	.-384    	; 0x212 <main+0x42>
+ 392:	b7 9b       	sbis	0x16, 7	; 22
+ 394:	3e cf       	rjmp	.-388    	; 0x212 <main+0x42>
+ 396:	80 9b       	sbis	0x10, 0	; 16
+ 398:	3c cf       	rjmp	.-392    	; 0x212 <main+0x42>
+ 39a:	81 9b       	sbis	0x10, 1	; 16
+ 39c:	3a cf       	rjmp	.-396    	; 0x212 <main+0x42>
+ 39e:	82 9b       	sbis	0x10, 2	; 16
+ 3a0:	38 cf       	rjmp	.-400    	; 0x212 <main+0x42>
+ 3a2:	83 9b       	sbis	0x10, 3	; 16
+ 3a4:	36 cf       	rjmp	.-404    	; 0x212 <main+0x42>
+ 3a6:	84 9b       	sbis	0x10, 4	; 16
+ 3a8:	34 cf       	rjmp	.-408    	; 0x212 <main+0x42>
+ 3aa:	85 9b       	sbis	0x10, 5	; 16
+ 3ac:	32 cf       	rjmp	.-412    	; 0x212 <main+0x42>
+ 3ae:	86 9b       	sbis	0x10, 6	; 16
+ 3b0:	30 cf       	rjmp	.-416    	; 0x212 <main+0x42>
+ 3b2:	87 9b       	sbis	0x10, 7	; 16
+ 3b4:	2e cf       	rjmp	.-420    	; 0x212 <main+0x42>
+		{
+			RESTORE_INITIAL_GRID_STATUS();
+ 3b6:	53 de       	rcall	.-858    	; 0x5e <_Z27RESTORE_INITIAL_GRID_STATUSv>
+ 3b8:	2c cf       	rjmp	.-424    	; 0x212 <main+0x42>
+
+000003ba <_exit>:
+ 3ba:	f8 94       	cli
+
+000003bc <__stop_program>:
+ 3bc:	ff cf       	rjmp	.-2      	; 0x3bc <__stop_program>
