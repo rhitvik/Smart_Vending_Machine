@@ -30,7 +30,7 @@ The entire system was can be divided into 4 subsystems:
 
 	- [Master Control Board Master Communication Control (ATmega328p)] (https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_ATmega328pu/10%20motors%20master%20control/10%20motors%20master%20control.cpp
 
-	- [Master Control Board Motor Control (ATmega32)] (https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_Atmega32/10motors/10motors.cpp)
+	- [Master Control Board Motor Control | ATmega32] (https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_Atmega32/10motors/10motors.cpp)
 
 	- [Master Control Board HMI and IO (ATmega16)] (https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_ATmega16/password%20based/password%20based.cpp)
 
