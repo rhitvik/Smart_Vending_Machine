@@ -42,6 +42,8 @@ The entire system was can be divided into 4 subsystems:
 ## Schematics and PCB layout
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/System_Controller_Schematic.JPG "Schematic of the Control Circuit")
 
+![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Control_Board_Smart_Vending_Machine.jpg "Board for Master Control and Supervisory System")
+
 ## Actual pictures
 
 ## Further Potential
