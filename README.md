@@ -3,6 +3,8 @@
 ## About the project
 Smart Vending Machine is a compact wall-mountable vending machine that does not require anyone to insert cash in it. We designed this machine keeping in mind the vending ecosystem of India and the vulnerabilities that impede the proliferation of these machines in the country. The main aim if the project was to make these economic and compact to aid towards the aforementioned cause. This machine also sported an advertisement screen to increase the net revenue of the vendor. 
 
+![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Smart_Vending_Machine_Gen-2.jpg)
+
 ## How to purchase from the machine?
 Simply download the application from the app store and login/sign up to your account. The application will automatically search and locate the nearest SVM and will tell the user all the inventories inside of it. Simply click on the product that you want to purchase and it will give you a secret code after you have made the payment. Now simply enter the code into the machine and you will have it in your hand.
 
@@ -38,7 +40,6 @@ The entire system was can be divided into 4 subsystems:
 [Socket-Client for authorization](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/SocketClient_Ethernet_StateMachine_polled/SocketClient_Ethernet_StateMachine_polled.ino)
 
 ## Schematics and PCB layout
-![](Images_and_Screenshots/Smart_Vending_Machine_Gen-2.jpg)
 
 ## Actual pictures
 
