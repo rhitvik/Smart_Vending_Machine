@@ -27,17 +27,18 @@ The entire system was can be divided into 4 subsystems:
 3. The power system was responsible for powering the microcontrollers and drivers with 5 volts and 12 volts to the motors. Employed a modified PC PSU
 
 ## Codes
-[Master Control Board Master Communication Control | *ATmega328p*](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_ATmega328pu/10%20motors%20master%20control/10%20motors%20master%20control.cpp)
+[Master Control Board Master Communication Control](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_ATmega328pu/10%20motors%20master%20control/10%20motors%20master%20control.cpp)
 
-[Master Control Board Motor Control | *ATmega32*](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_Atmega32/10motors/10motors.cpp)
+[Master Control Board Motor Control](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_Atmega32/10motors/10motors.cpp)
 
-[Master Control Board HMI and IO | *ATmega16*](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_ATmega16/password%20based/password%20based.cpp)
+[Master Control Board HMI and IO](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Control_Board_ATmega16/password%20based/password%20based.cpp)
 
-[Sensor Control Services | *Atmega8*](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Sensor_ATmega8/MR.SENSOR/MR.SENSOR.cpp)
+[Sensor Control Services](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/Sensor_ATmega8/MR.SENSOR/MR.SENSOR.cpp)
 
 [Socket-Client for authorization](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/SocketClient_Ethernet_StateMachine_polled/SocketClient_Ethernet_StateMachine_polled.ino)
 
 ## Schematics and PCB layout
+![](Images_and_Screenshots/Smart_Vending_Machine_Gen-2.jpg)
 
 ## Actual pictures
 
