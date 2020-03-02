@@ -41,28 +41,38 @@ The entire system was can be divided into 4 subsystems:
 
 ## Schematics and PCB layout
 
+### PCB Layout of the Control Circuit
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Control_Board_PCB_Layout.JPG "PCB Layout of the Control Circuit")
 
+### Sensor RX PCB Layout
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Sensor_RX_PCB_Layout.JPG "Sensor RX PCB Layout")
 
+### Sensor TX PCB Layout
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Sensor_TX_PCB_Layout.JPG "Sensor TX PCB Layout")
 
+### Schematic of the Control Circuit
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/System_Controller_Schematic.JPG "Schematic of the Control Circuit")
 
+### Motor Controller Schematic
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Motor_Control_Schematic.JPG "Motor Controller Schematic")
 
+### Sensor Comparator Interface Schematic
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Sensor_Comparators_Schematic.JPG "Sensor Comparator Interface Schematic")
 
 
-## Some Clicked Pictures
+## Some More Clicked Pictures
 
+### Board for Master Control and Supervisory System
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Control_Board_Smart_Vending_Machine.jpg "Board for Master Control and Supervisory System")
 
+### SVM Gen-1 Boards in production
 ![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Control_Boards_in_Production.jpg "SVM Gen-1 Boards in production")
 
-![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Inside_of_the_Vending_Machine.jpg "Inside of the SVM Gen 1")
+### Inside of the SVM Gen-1
+![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Inside_of_the_Vending_Machine.jpg "Inside of the SVM Gen-1")
 
-![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Smart_Vending_Machine_Gen-2.jpg "SVM Gen 2")
+### SVM Gen-2
+![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/Smart_Vending_Machine_Gen-2.jpg "SVM Gen-2")
 
 ## Further Potential
 
