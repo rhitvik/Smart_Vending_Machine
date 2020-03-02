@@ -40,6 +40,7 @@ The entire system was can be divided into 4 subsystems:
 [Socket-Client for authorization](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Codes/SocketClient_Ethernet_StateMachine_polled/SocketClient_Ethernet_StateMachine_polled.ino)
 
 ## Schematics and PCB layout
+![](https://github.com/rhitvik/Smart_Vending_Machine/blob/master/Images_and_Screenshots/System_Controller_Schematic.JPG "Schematic of the Control Circuit")
 
 ## Actual pictures
 
